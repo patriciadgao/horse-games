@@ -29,7 +29,7 @@ export function translateShape(shape) {
 }
 
 export function translateSpots(spots) {
-    const bigSpotCount = spots.filter((s) => s === 'O');
+    const bigSpotCount = spots.filter((s) => s === 'O').length;
 
     if (bigSpotCount > 1) {
         return "spot"
@@ -70,8 +70,8 @@ export function generateHorse() {
 
     return {
         color: choose(colors),
-        shape: choose(shapeGenes, 3),
-        spots: choose(spotGenes, 2),
+        shape: choose(shapeGenes, 3, true),
+        spots: choose(spotGenes, 2, true),
         expression: choose(expressions),
         hat: hasHat ? choose(hats) : undefined,
         apples: hasApple ? 1 : 0

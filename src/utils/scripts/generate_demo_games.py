@@ -11,6 +11,7 @@ apples = 5
 apple_rarity = 0.25
 hats = ['boss-of-the-plains', 'bowler', 'ten-gallon', 'top']
 hat_rarity = 0.25
+attributes = ['color', 'shape', 'spots', 'expression', 'hat', 'apples']
 
 def generate_horse():
     has_hat = random.choices([True, False], [hat_rarity, 1-hat_rarity], k=1)
@@ -61,6 +62,9 @@ def interpret_horse(horse):
         'spots': translate_horse_spots(horse['spots'])
     }
 
+def get_horse_title(horse):
+    return f"{horse['shape']}-{horse['color']}-{horse['spots']}-{horse['expression']}"
+
 def flatten_horse(horse):
     return f"{horse['shape']}-{horse['color']}-{horse['spots']}-{horse['expression']}-{'hat' if horse['hat'] else 'nohat'}-{horse['apples']}"
 
@@ -106,34 +110,100 @@ for week in range(15):
     starting_horse = generate_horse()
 
     for day in range(7):
-        options.append((generate_horse(), generate_horse()))
+        day = start_date + datetime.timedelta(weeks=week, days=day)
+        day_formatted = day.strftime('%Y-%m-%d')
+
+        left_horse = generate_horse()
+        right_horse = generate_different_horse(left_horse)
+        options.append((day_formatted, left_horse, right_horse))
 
     # obtain 100 possible horses 
     possible_horses = []
 
-    for x in range(100):
+    for x in range(1000):
         # go through the week and choose 
         horse = starting_horse
         for day in range(7):
-            horse = merge_horses(horse, random.choice(options[day]))
+            horse = merge_horses(horse, random.choice(options[day][1:]))
 
         possible_horses.append(horse)
 
     result_dict = {}
+    horse_type_dict = {}
 
     for horse in possible_horses:
         interpreted_horse = interpret_horse(horse)
         flattened_horse = flatten_horse(interpreted_horse)
+        title = get_horse_title(interpreted_horse)
         if flattened_horse in result_dict:
             result_dict[flattened_horse] += 1
         else:
             result_dict[flattened_horse] = 1
+        if title in horse_type_dict:
+            horse_type_dict[title] += 1
+        else:
+            horse_type_dict[title] = 1
 
     max_key = max(result_dict, key=result_dict.get)
-    print(max_key, result_dict[max_key])
+    # print('\n\n')
+    # print('horses achieved: ', len(horse_type_dict), '/180')
+    # print('max number of horses with this', result_dict[max_key])
+    horse_attributes = max_key.split('-')
+    goal_horse = {
+        'shape': horse_attributes[0],
+        'color': horse_attributes[1],
+        'spots': horse_attributes[2],
+        'expression': horse_attributes[3],
+        'hat': 'yes' if horse_attributes[4] == 'hat' else 'no',
+        'apples': horse_attributes[5]
+    }
 
-for x in range(20):
-    print(flatten_horse(interpret_horse(generate_horse())))
+    # choose three attributes of this horse to store as goals 
+    goals = {}
+    goal_categories = random.sample(attributes, k=3)
+
+    for c in goal_categories:
+        goals[c] = goal_horse[c]
+
+    total_settings.append({
+        'starting_horse': starting_horse,
+        'choices': options,
+        'goals': goals,
+        'week_number': week
+    })
+
+# print map of date to week number
+week_number = 1
+week_counter = 0
+date_map = []
+for x in range(15*7):
+    week_counter += 1
+    if week_counter > 7:
+        week_counter = 1
+        week_number += 1
+
+    date = start_date + datetime.timedelta(days=x)
+
+    date_formatted = date.strftime("%Y-%m-%d")
+    date_map.append((date_formatted, week_number))
+
+# print(date_map)
+
+# for mapping in date_map:
+#     print(f"'{mapping[0]}': {mapping[1]},")
+
+for setting in total_settings:
+    print(setting['week_number']+1, ":", "{",f"startingHorse: {setting['starting_horse']},")
+    print("choiceMap: {"),
+    for day in setting['choices']:
+        print(f"'{day[0]}':","{")
+        print(f"left: {day[1]},")
+        print(f"right: {day[2]}","},")
+    print("},")
+    print("goals: ", setting['goals'],",")
+    print("},")
+
+# print(total_settings)
 
 # segment October -> December 2026 into weeks (starting Monday, ending Sunday)
 
