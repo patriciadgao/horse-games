@@ -115,7 +115,7 @@ export const Horse = (props) => {
   return horse ? (
     <div
       onClick={onClick}
-      className={`${small ? "w-[150px]" : "w-[200px]"} flex items-center flex-col gap-2 ${isCurrentHorse ? "justify-end" : ""} ${onClick ? "cursor-pointer hover:scale-105" : ""}`}
+      className={`${small ? "w-[75px] sm:w-[150px]" : "w-[200px]"} flex items-center flex-col gap-2 ${isCurrentHorse ? "justify-end" : ""} ${onClick ? "cursor-pointer hover:scale-105" : ""}`}
     >
       <img src={require(`../img/${title}.png`)} alt={title} />
       {horse.hat && <Hat hat={horse.hat} />}
