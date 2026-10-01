@@ -55,7 +55,7 @@ export const HorseArea = (props) => {
 
   return (
     <div className="flex flex-col justify-center m-8 gap-4">
-      <PlayingDate playingDate={playingDate} />
+      <PlayingDate playingDate={playingDate} isPaused={isPaused} />
       <div className="flex flex-col">
         <div className="mb-10 flex justify-center">
           <Horse horse={currentHorse} isCurrentHorse />
@@ -82,10 +82,10 @@ export const HorseArea = (props) => {
 };
 
 const PlayingDate = (props) => {
-  const { playingDate } = props;
+  const { playingDate, isPaused } = props;
   const currentDate = getCurrentDate();
 
-  const isBehind = playingDate !== currentDate;
+  const isBehind = playingDate !== currentDate && !isPaused;
   const playingDateFormatted = new Date(
     `${playingDate}T00:00:00-08:00`,
   ).toLocaleString("en-US", {
