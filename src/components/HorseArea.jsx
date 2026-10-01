@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import {
   getAppleImageTitle,
@@ -66,14 +66,14 @@ export const HorseArea = (props) => {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center m-8 gap-4">
+    <div className="flex flex-col justify-center mx-8">
       <PlayingDate
         playingDate={playingDate}
         isPaused={isPaused}
         refresh={() => setNeedsRefresh(true)}
       />
       <div className="flex flex-col">
-        <div className="mb-10 flex justify-center">
+        <div className="mb-2 flex justify-center">
           <Horse horse={currentHorse} isCurrentHorse />
         </div>
         {isPaused ? (
@@ -135,11 +135,17 @@ export const Horse = (props) => {
   return horse ? (
     <div
       onClick={onClick}
-      className={`${small ? "w-[75px] sm:w-[150px]" : "w-[200px]"} flex items-center flex-col gap-2 ${isCurrentHorse ? "justify-end" : ""} ${onClick ? "cursor-pointer hover:scale-105" : ""}`}
+      className={`flex items-center flex-col gap-2 justify-end ${onClick ? "cursor-pointer hover:scale-105" : ""}`}
     >
-      <img src={require(`../img/${title}.png`)} alt={title} />
-      {horse.hat && <Hat hat={horse.hat} small={small} />}
-      <Apples numApples={horse.apples ?? 0} small={small} />
+      <div
+        className={`${small ? "h-[103px] w-[75px] sm:w-[150px] sm:h-[205px]" : "w-[200px] h-[275px]"} flex items-center flex-col gap-2 justify-end`}
+      >
+        <img src={require(`../img/${title}.png`)} alt={title} />
+      </div>
+      <div className={`${small ? "h-[96px]" : "h-[48px]"} flex align-baseline`}>
+        {horse.hat && <Hat hat={horse.hat} small={small} />}
+        <Apples numApples={horse.apples ?? 0} small={small} />
+      </div>
     </div>
   ) : null;
 };
@@ -172,22 +178,36 @@ export const Apple = (props) => {
   const { small = false } = props;
   const title = getAppleImageTitle();
 
+  const appleMap = {
+    "apple-1": 36,
+    "apple-2": 32,
+    "apple-3": 24,
+    "apple-4": 24,
+    "apple-5": 24,
+  };
+
+  const appleWidth = useMemo(() => {
+    const width = appleMap[title];
+
+    return small ? (width * 3) / 4 : width;
+  }, [title, small]);
+
   return (
-    <img
-      src={require(`../img/${title}.png`)}
-      alt="apple"
-      width={small ? 15 : 35}
-    />
+    <img src={require(`../img/${title}.png`)} alt="apple" width={appleWidth} />
   );
 };
 
 export const Hat = (props) => {
   const { hat, small = false } = props;
+
+  const hatWidth = useMemo(() => {
+    if (["top", "bowler"].includes(hat)) {
+      return small ? 42.5 : 85;
+    }
+    return small ? 50 : 100;
+  }, [hat, small]);
+
   return (
-    <img
-      src={require(`../img/hat-${hat}.png`)}
-      alt={hat}
-      width={small ? 50 : 100}
-    />
+    <img src={require(`../img/hat-${hat}.png`)} alt={hat} width={hatWidth} />
   );
 };

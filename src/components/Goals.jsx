@@ -16,7 +16,7 @@ export const Goals = (props) => {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <div className="DisplayFont font-bold mt-4 mb-2 text-lg">
+      <div className="DisplayFont font-bold mt-6 mb-2 text-lg">
         this week’s goals
       </div>
       <div className="grid grid-cols-8 gap-x-2">

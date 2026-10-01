@@ -10,14 +10,9 @@ export const Faq = (props) => {
         "During each week, you can make catch-up choices up to today. However, once the Sunday (last day of that week) has passed, there’s no way to make it up. Enjoy this week’s challenge instead.",
     },
     {
-      question: "Can I rename my horse?",
-      answer:
-        "Absolutely not! Horses get attached to their names VERY quickly. Come back next week to name a new horse.",
-    },
-    {
       question: "Can I save my progress?",
       answer:
-        "Kind of yes, kind of no. I don’t want to pay a big corporation for storage, and this game is not actually one of the most important things to store in the world, so your progress saves in your browser window. If you delete your browser cache I think it will remove your progress, but other than that, just keep using the same device.",
+        "Your progress is automatically saved in your browser. Right now there is not a way to save progress across devices.",
     },
     {
       question: "Can I clear my progress?",
@@ -27,7 +22,7 @@ export const Faq = (props) => {
     {
       question: "Does this game collect any of my personal information?",
       answer:
-        "Nope! Everything it stores (which is just your choices, horses, and horse names) stays in your browser tab. It does not travel into “the cloud”, it does not pass GO, it does not collect $200.",
+        "Nope! Everything it stores (which is just your choices, horses, and horse names) stays local to you. It does not travel into “the cloud”, it does not pass GO, it does not collect $200.",
     },
     {
       question: "I clicked the wrong horse! Can I undo my choice?",
