@@ -16,6 +16,8 @@ export const HowTo = (props) => {
               expression: "neutral",
               spots: ["O", "O"],
             }}
+            showAppleBox={false}
+            tallHeight={false}
           />
         </div>
         <p>Aww, so cute!</p>
@@ -60,7 +62,8 @@ export const HowTo = (props) => {
         </p>
         <p>
           Your goal each week will be to achieve as many of three goals as you
-          can. You will get points for each goal you achieve!
+          can. These are oriented towards your horse’s attributes. You will get
+          points for each goal you achieve!
         </p>
       </div>
     </Modal>

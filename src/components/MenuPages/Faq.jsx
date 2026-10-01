@@ -63,7 +63,7 @@ export const Faq = (props) => {
     {
       question: "Will this game ever end?",
       answer:
-        "Horse Game is currently on a demo run until January 10, 2027. If you like it, shoot me a message (and please leave feedback!). I will most likely set it up to run for at least all of 2027, but might want to hand-pick some of the weeks instead of randomly generating them ...",
+        "Horse Game is currently on a demo run until January 10, 2027. If you like it, or if you hate it, please send me a message!",
     },
   ];
 
@@ -90,6 +90,7 @@ export const Faq = (props) => {
                       spots: ["o", "o"],
                     }}
                     small
+                    showAppleBox={false}
                   />
                   <Horse
                     horse={{
@@ -99,6 +100,7 @@ export const Faq = (props) => {
                       spots: ["o", "o"],
                     }}
                     small
+                    showAppleBox={false}
                   />
                   <Horse
                     horse={{
@@ -108,6 +110,7 @@ export const Faq = (props) => {
                       spots: ["o", "o"],
                     }}
                     small
+                    showAppleBox={false}
                   />
                   <Horse
                     horse={{
@@ -117,6 +120,7 @@ export const Faq = (props) => {
                       spots: ["o", "o"],
                     }}
                     small
+                    showAppleBox={false}
                   />
                 </div>
               )}
