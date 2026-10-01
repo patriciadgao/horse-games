@@ -42,6 +42,7 @@ export const HowTo = (props) => {
               expression: "smile",
               spots: ["O", "o"],
             }}
+            small
           />
           <Horse
             horse={{
@@ -52,6 +53,7 @@ export const HowTo = (props) => {
               apples: 1,
               hat: "boss-of-the-plains",
             }}
+            small
           />
         </div>
         <p>
