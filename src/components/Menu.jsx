@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "./Button";
 import { About } from "./MenuPages/About";
+import { Faq } from "./MenuPages/Faq";
 import { HowTo } from "./MenuPages/HowTo";
 import { Lineage } from "./MenuPages/Lineage";
 import { Stable } from "./MenuPages/Stable";
@@ -12,6 +13,7 @@ export const Menu = (props) => {
   const [isHowToOpen, setIsHowToOpen] = useState(false);
   const [isStableOpen, setIsStableOpen] = useState(false);
   const [isLineageOpen, setIsLineageOpen] = useState(false);
+  const [isFaqOpen, setIsFaqOpen] = useState(false);
 
   return (
     <>
@@ -38,6 +40,11 @@ export const Menu = (props) => {
             isOpen={isOpen}
             onClick={() => setIsAboutOpen(true)}
           />
+          <WhatItem
+            text="faq"
+            isOpen={isOpen}
+            onClick={() => setIsFaqOpen(true)}
+          />
         </div>
       </div>
       <HowTo isOpen={isHowToOpen} setIsOpen={setIsHowToOpen} />
@@ -52,6 +59,7 @@ export const Menu = (props) => {
         needsRefresh={needsRefresh}
       />
       <About isOpen={isAboutOpen} setIsOpen={setIsAboutOpen} />
+      <Faq isOpen={isFaqOpen} setIsOpen={setIsFaqOpen} />
     </>
   );
 };

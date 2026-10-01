@@ -1,0 +1,140 @@
+import { Horse } from "../HorseArea";
+import { Modal } from "../Modal";
+
+export const Faq = (props) => {
+  const { isOpen, setIsOpen } = props;
+  const faqs = [
+    {
+      question: "I missed a day! What do I do?",
+      answer:
+        "During each week, you can make catch-up choices up to today. However, once the Sunday (last day of that week) has passed, there's no way to make it up. Enjoy this week's challenge instead.",
+    },
+    {
+      question: "Can I rename my horse?",
+      answer:
+        "Absolutely not! Horses get attached to their names VERY quickly. Come back next week to name a new horse.",
+    },
+    {
+      question: "Can I save my progress?",
+      answer:
+        "Kind of yes, kind of no. I don't want to pay a big corporation for storage, and this game is not actually one of the most important things to store in the world, so your progress saves in your browser window. If you delete your browser cache I think it will remove your progress, but other than that, just keep using the same device.",
+    },
+    {
+      question: "Can I clear my progress?",
+      answer:
+        "Yep! Go to 'stable', there is an option there to reset everything. However ... that gets rid of ALL previous weeks' data, not just this one.",
+    },
+    {
+      question: "Does this game collect any of my personal information?",
+      answer:
+        "Nope! Everything it stores (which is just your choices, horses, and horse names) stays in your browser tab. It does not travel into 'the cloud', it does not pass GO, it does not collect $200.",
+    },
+    {
+      question: "I clicked the wrong horse! Can I undo my choice?",
+      answer:
+        "Nah. Better luck next time. This game is also not that big of a deal.",
+    },
+    {
+      question: "What horse shapes are there?",
+      answer:
+        "Currently the possible shapes are round, square, tall, and short.",
+    },
+    {
+      question:
+        "How do I know what will happen to my horse when it merges with another one?",
+      answer:
+        "You can read the source code if you want, but I suggest you figure it out yourself by slowly learning the rules. It seems kinda fun that way.",
+    },
+    {
+      question: "Is my horse happy?",
+      answer: "Yes.",
+    },
+    {
+      question: "Really?",
+      answer: "Well, maybe not if its hat just got stolen.",
+    },
+    {
+      question: "My horse has a hat. Why isn't it wearing the hat?",
+      answer: "Have you ever seen a horse put on a hat?",
+    },
+    {
+      question: "Why do my horse's apples keep changing?",
+      answer: "Apples are mysterious things.",
+    },
+    {
+      question: "When was Horse Game created?",
+      answer: "At the end of September in 2026.",
+    },
+  ];
+
+  return (
+    <Modal isOpen={isOpen} setIsOpen={setIsOpen} title="fun awesome questions">
+      <div className="text-left space-y-4">
+        {faqs.map((q) => {
+          const isShapeQuestion = q.question === "What horse shapes are there?";
+
+          return (
+            <>
+              <Question
+                key={q.question}
+                question={q.question}
+                answer={q.answer}
+              />
+              {isShapeQuestion && (
+                <div className="flex items-baseline">
+                  <Horse
+                    horse={{
+                      shape: ["R", "R", "R"],
+                      color: "tan",
+                      expression: "neutral",
+                      spots: ["o", "o"],
+                    }}
+                    small
+                  />
+                  <Horse
+                    horse={{
+                      shape: ["S", "S", "S"],
+                      color: "tan",
+                      expression: "neutral",
+                      spots: ["o", "o"],
+                    }}
+                    small
+                  />
+                  <Horse
+                    horse={{
+                      shape: ["T", "T", "T"],
+                      color: "tan",
+                      expression: "neutral",
+                      spots: ["o", "o"],
+                    }}
+                    small
+                  />
+                  <Horse
+                    horse={{
+                      shape: ["R", "S", "T"],
+                      color: "tan",
+                      expression: "neutral",
+                      spots: ["o", "o"],
+                    }}
+                    small
+                  />
+                </div>
+              )}
+            </>
+          );
+        })}
+      </div>
+    </Modal>
+  );
+};
+
+const Question = (props) => {
+  const { question, answer } = props;
+
+  return (
+    <div>
+      <p className="font-bold">{question}</p>
+      <p>{answer}</p>
+    </div>
+  );
+};

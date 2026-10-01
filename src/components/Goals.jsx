@@ -17,7 +17,7 @@ export const Goals = (props) => {
   return (
     <div className="flex flex-col justify-center items-center">
       <div className="font-bold my-4">this week's goals</div>
-      <div className="grid grid-cols-8 gap-2">
+      <div className="grid grid-cols-8 gap-x-2">
         {transformedInfo.map((goal, i) => {
           return (
             <React.Fragment key={i}>
@@ -29,7 +29,7 @@ export const Goals = (props) => {
               <div
                 className={`text-left col-span-1 ${goal.isAchieved ? "text-lime-600" : ""}`}
               >
-                {goal.isAchieved ? "✓" : "×"}
+                {goal.isAchieved ? "✓" : ""}
               </div>
             </React.Fragment>
           );
