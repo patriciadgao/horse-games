@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/horse-games/static/css/main.8d920ffd.css",
-    "main.js": "/horse-games/static/js/main.b4984e56.js",
+    "main.js": "/horse-games/static/js/main.a3bda07d.js",
     "static/js/453.7418e8d2.chunk.js": "/horse-games/static/js/453.7418e8d2.chunk.js",
     "static/media/tall-pink-speckled-frown.png": "/horse-games/static/media/tall-pink-speckled-frown.39a99d5af5abc3bc1253.png",
     "static/media/tall-tan-speckled-frown.png": "/horse-games/static/media/tall-tan-speckled-frown.c347e3c8eb76805c9014.png",
@@ -194,11 +194,11 @@
     "static/media/apple-3.png": "/horse-games/static/media/apple-3.f031935e4fc1633b2097.png",
     "index.html": "/horse-games/index.html",
     "main.8d920ffd.css.map": "/horse-games/static/css/main.8d920ffd.css.map",
-    "main.b4984e56.js.map": "/horse-games/static/js/main.b4984e56.js.map",
+    "main.a3bda07d.js.map": "/horse-games/static/js/main.a3bda07d.js.map",
     "453.7418e8d2.chunk.js.map": "/horse-games/static/js/453.7418e8d2.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8d920ffd.css",
-    "static/js/main.b4984e56.js"
+    "static/js/main.a3bda07d.js"
   ]
 }
