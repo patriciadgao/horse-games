@@ -168,7 +168,7 @@ const PlayingDate = (props) => {
       <div className="font-bold text-xl">{playingDateFormatted}</div>
       {isBehind && (
         <div className="font-bold text-md text-lime-600">
-          Make choices to catch up to today’s date!
+          Make choices to catch up to today!
         </div>
       )}
       {isPaused && (
@@ -197,7 +197,7 @@ export const Horse = (props) => {
       className={`flex items-center flex-col gap-2 justify-end ${onClick ? "cursor-pointer hover:scale-105" : ""}`}
     >
       <div
-        className={`${small ? ` w-[75px] sm:w-[150px] ${tallHeight ? "h-[103px] sm:h-[205px]" : "h-[68px] sm:h-[135px]"}` : `w-[200px] ${tallHeight ? "h-[275px]" : "h-[180px]"}`} flex items-center flex-col gap-2 justify-end`}
+        className={`${small ? ` w-[75px] sm:w-[150px] ${tallHeight ? "h-[103px] sm:h-[205px]" : "h-[68px] sm:h-[135px]"}` : `w-[150px] sm:w-[200px] ${tallHeight ? "h-[205px] sm:h-[275px]" : "h-[135px] sm:h-[180px]"}`} flex items-center flex-col gap-2 justify-end`}
       >
         <img src={require(`../img/${title}.png`)} alt={title} />
       </div>
