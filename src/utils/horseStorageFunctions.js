@@ -10,12 +10,16 @@ export function getStableInfo() {
     const achievedHats = JSON.parse(localStorage.getItem('achieved_hats')) ?? [];
     const missingHorse = localStorage.getItem('missing_horse');
     const maxApples = JSON.parse(localStorage.getItem('max_apples'));
+    const totalWeeks = JSON.parse(localStorage.getItem('total_weeks'));
+    const totalPoints = JSON.parse(localStorage.getItem('total_points'));
 
     return {
         achievedHorses: achievedHorses.length,
         achievedHats: achievedHats.length,
         missingHorse: missingHorse,
-        maxApples: maxApples ?? 0
+        maxApples: maxApples ?? 0,
+        totalWeeks: totalWeeks ?? 0,
+        totalPoints: totalPoints ?? 0
     }
 }
 

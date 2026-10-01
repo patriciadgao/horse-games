@@ -28,17 +28,125 @@ export function refreshGameStatus() {
     const playingWeek = JSON.parse(localStorage.getItem('playing_week'));
 
     const playingDate = localStorage.getItem('playing_date');
-
     const playingState = localStorage.getItem('playing_state');
+    const weekFinished = localStorage.getItem('week_finished') === 'yes';
 
     if (playingWeek !== currentWeek) {
-        startGame(currentWeek);
-    } else if (playingState === 'paused' && playingDate === currentDate) {
+        if (currentWeek > 15) {
+            localStorage.setItem('demo_over', 'yes');
+        } else {
+            startGame(currentWeek);
+        }
+    } else if (playingState === 'paused' && playingDate === currentDate && !weekFinished) {
         localStorage.setItem('playing_state', 'playing');
     }
 }
 
-export function getGoalText(goalType, goal) {
+export function getGoalPoints(goalType, goal) {
+    const playingWeek = JSON.parse(localStorage.getItem('playing_week'));
+    const weekData = weekInfo[playingWeek];
+    const startingHorse = weekData.startingHorse;
+    const interpretedHorse = interpretHorse(startingHorse);
+
+    // base points for every goal 
+    let points = 100;
+
+    // up to 30 points depending on how far the starting horse is
+    switch (goalType) {
+        case 'expression':
+        case 'color':
+            if (startingHorse[goalType] !== goal) {
+                points += 30;
+            }
+            break;
+        case 'shape':
+            if (interpretedHorse.shape === 'short' && goal !== 'short') {
+                points += 10;
+            } else {
+                const goalLetter = goal === 'tall' ? 'T' : goal === 'square' ? 'S' : 'R';
+
+                const horseLetterCount = startingHorse.shape.filter((g) => g === goalLetter).length;
+                if (horseLetterCount == 1) {
+                    points += 15;
+                } else if (horseLetterCount === 0) {
+                    points += 30;
+                }
+            }
+            break;
+        case 'spot':
+            if (interpretedHorse.spots !== goal) {
+                if (goal === 'speckled' || interpretedHorse.spots === 'speckled') {
+                    points += 15;
+                } else {
+                    points += 30;
+                }
+            }
+            break;
+        case 'hat':
+            if (interpretedHorse.hat && goal === 'yes') {
+                if (goal === 'yes') {
+                    points += 20;
+                } else {
+                    points += 10;
+                }
+            } else {
+                if (goal === 'yes') {
+                    points += 30;
+                }
+            }
+            break;
+        case 'apples':
+            if (goal > 1) {
+                points += 30;
+            } else {
+                points += 10;
+            }
+            break;
+        default:
+            break;
+    }
+
+    // up to 20 points based on goal difficulty
+    switch (goalType) {
+        case 'expression':
+        case 'color':
+            points += 20;
+            break;
+        case 'shape':
+            if (goal === 'short') {
+                points += 20;
+            } else {
+                points += 10;
+            }
+            break;
+        case 'spot':
+            if (goal === 'speckled') {
+                points += 10;
+            } else {
+                points += 20;
+            }
+            break;
+        case 'hat':
+            if (goal === 'yes') {
+                points += 20;
+            }
+            break;
+        case 'apples':
+            if (goal > 0) {
+                points += 10;
+            }
+            if (goal > 1) {
+                points += 10;
+            }
+            break;
+        default:
+            break;
+    }
+
+    return points;
+}
+
+export function getGoalBaseText(goalType, goal) {
     switch (goalType) {
         case 'shape':
         case 'color':
@@ -71,6 +179,13 @@ export function getGoalText(goalType, goal) {
     }
 }
 
+export function getGoalText(goalType, goal) {
+    let goalText = getGoalBaseText(goalType, goal);
+    const goalPoints = getGoalPoints(goalType, goal);
+
+    return `${goalText} (${goalPoints} points)`;
+}
+
 export function isGoalMet(goalType, goal, interpretedHorse) {
     if (['shape', 'color', 'expression', 'spots'].includes(goalType)) {
         return interpretedHorse[goalType] === goal;
@@ -82,16 +197,17 @@ export function isGoalMet(goalType, goal, interpretedHorse) {
     return false
 }
 
-export function analyzeGoalsMet(goals, horse) {
+export function getPointsTotal(goals, horse) {
     const horseInfo = interpretHorse(horse);
-
-    const goalsCopy = { ...goals };
+    let totalPoints = 0;
 
     for (const [key, value] of Object.entries(goals)) {
-        goalsCopy[key] = isGoalMet(key, value, horseInfo);
+        if (isGoalMet(key, value, horseInfo)) {
+            totalPoints += getGoalPoints(key, value);
+        }
     }
 
-    return goalsCopy
+    return totalPoints;
 }
 
 export function chooseHorse(option) {
@@ -113,13 +229,20 @@ export function chooseHorse(option) {
 
     // increment day if week is unfinished
     let weekFinished = false
-    if (playingDate !== weekData.dateList[-1]) {
+    if (playingDate !== weekData.dateList.at(-1)) {
         const nextIndex = weekData.dateList.indexOf(playingDate) + 1;
         localStorage.setItem('playing_date', weekData.dateList[nextIndex]);
         localStorage.removeItem('week_finished');
     } else {
         weekFinished = true;
         localStorage.setItem('week_finished', 'yes');
+        // upon finishing the week, update average points 
+        let totalPoints = JSON.parse(localStorage.getItem('total_points')) ?? 0;
+        let totalWeeks = JSON.parse(localStorage.getItem('total_weeks')) ?? 0;
+        const thisWeekPoints = getPointsTotal(weekData.goals, newHorse);
+
+        localStorage.setItem('total_points', JSON.stringify(totalPoints + thisWeekPoints));
+        localStorage.setItem('total_weeks', JSON.stringify(totalWeeks + 1));
     }
 
     // add options to lineage

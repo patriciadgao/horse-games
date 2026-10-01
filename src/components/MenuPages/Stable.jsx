@@ -19,7 +19,7 @@ export const Stable = (props) => {
     refreshGameStatus();
     setIsConfirming(false);
     setNeedsRefresh(true);
-    setStableInfo(getStableInfo());
+    setIsOpen(false);
   }, []);
 
   return (
@@ -30,7 +30,7 @@ export const Stable = (props) => {
         <div>{`hat types: ${stableInfo.achievedHats}/4`}</div>
         <div>{`max apples: ${stableInfo.maxApples}`}</div>
         {stableInfo.missingHorse && (
-          <div>
+          <div className="pb-6">
             <div>A horse you’re missing:</div>
             <div className="mt-2 w-[150px] flex items-center flex-col gap-2">
               <img
@@ -40,6 +40,12 @@ export const Stable = (props) => {
             </div>
           </div>
         )}
+        <div>{`weeks completed: ${stableInfo.totalWeeks}`}</div>
+        <div>{`average points per week: ${
+          stableInfo.totalWeeks > 0
+            ? Math.round(stableInfo.totalPoints / stableInfo.totalWeeks)
+            : 0
+        }`}</div>
         <div className="DisplayFont mt-12 text-right">
           <Button onClick={() => setIsConfirming(true)}>reset my stats</Button>
         </div>

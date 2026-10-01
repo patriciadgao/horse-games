@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
+import ReactConfetti from "react-confetti";
 import toast from "react-hot-toast";
 import {
   getAppleImageTitle,
@@ -20,6 +21,7 @@ export const HorseArea = (props) => {
   const [isPaused, setIsPaused] = useState();
   const [isFinished, setIsFinished] = useState();
   const [playingDate, setPlayingDate] = useState();
+  const [demoOver, setDemoOver] = useState();
   const [goals, setGoals] = useState();
 
   const refreshGame = useCallback(() => {
@@ -31,6 +33,7 @@ export const HorseArea = (props) => {
     const isNewlyPaused = localStorage.getItem("playing_state") === "paused";
     const weekFinished = localStorage.getItem("week_finished") === "yes";
     const newPlayingDate = localStorage.getItem("playing_date");
+    const isDemoOver = localStorage.getItem("demo_over");
 
     if (isNewlyPaused && isPaused) {
       toast("oops, the date hasn't changed.", {
@@ -45,6 +48,7 @@ export const HorseArea = (props) => {
     setIsPaused(isNewlyPaused);
     setIsFinished(weekFinished);
     setPlayingDate(newPlayingDate);
+    setDemoOver(isDemoOver);
   }, []);
 
   useEffect(() => {
@@ -73,25 +77,74 @@ export const HorseArea = (props) => {
         refresh={() => setNeedsRefresh(true)}
       />
       <div className="flex flex-col">
+        {demoOver && (
+          <div className="DisplayFont font-bold text-red-700 flex justify-center">
+            <div className="max-w-96">
+              Uh oh—looks like the demo period for this game is over. Time to
+              bother Pat to have her get it back up and running!
+            </div>
+          </div>
+        )}
         <div className="mb-2 flex justify-center">
-          <Horse horse={currentHorse} isCurrentHorse />
+          <Horse
+            horse={currentHorse}
+            showAppleBox={
+              currentHorse && (currentHorse.apples > 0 || currentHorse.hat)
+            }
+          />
         </div>
         {isPaused ? (
           isFinished ? (
-            <div>Congrats on completing the week!</div>
+            <>
+              <ReactConfetti
+                width={window.innerWidth}
+                height={window.innerHeight}
+                recycle={false}
+                colors={["#a1d99a", "#f7becb", "#bee5f7", "#d16949", "#f7eeda"]}
+                opacity={80}
+                initialVelocityY={7}
+                gravity={0.075}
+                numberOfPieces={700}
+              />
+              <div>Congrats on completing the week!</div>
+            </>
           ) : (
-            <div>
-              You’ve made today’s choice—come back tomorrow for another one.
-            </div>
+            <>
+              <ReactConfetti
+                width={window.innerWidth}
+                height={window.innerHeight}
+                recycle={false}
+                colors={["#a1d99a", "#f7becb", "#bee5f7", "#d16949", "#f7eeda"]}
+                opacity={80}
+                initialVelocityY={7}
+                gravity={0.075}
+                numberOfPieces={100}
+              />
+              <div>
+                You’ve made today’s choice—come back tomorrow for another one.
+              </div>
+            </>
           )
         ) : (
           <div className="flex justify-center gap-12">
-            <Horse horse={leftHorse} onClick={() => selectHorse("left")} />
-            <Horse horse={rightHorse} onClick={() => selectHorse("right")} />
+            <PairOfHorses
+              horse1={leftHorse}
+              horse2={rightHorse}
+              onClick={{
+                horse1: () => selectHorse("left"),
+                horse2: () => selectHorse("right"),
+              }}
+            />
           </div>
         )}
       </div>
-      {currentHorse && <Goals goals={goals} currentHorse={currentHorse} />}
+      {currentHorse && (
+        <Goals
+          goals={goals}
+          currentHorse={currentHorse}
+          isFinished={isFinished}
+        />
+      )}
     </div>
   );
 };
@@ -128,7 +181,13 @@ const PlayingDate = (props) => {
 };
 
 export const Horse = (props) => {
-  const { horse, onClick, isCurrentHorse = false, small = false } = props;
+  const {
+    horse,
+    onClick,
+    small = false,
+    tallHeight = true,
+    showAppleBox = true,
+  } = props;
 
   const title = horse ? getHorseImageTitle(horse) : undefined;
 
@@ -138,16 +197,64 @@ export const Horse = (props) => {
       className={`flex items-center flex-col gap-2 justify-end ${onClick ? "cursor-pointer hover:scale-105" : ""}`}
     >
       <div
-        className={`${small ? "h-[103px] w-[75px] sm:w-[150px] sm:h-[205px]" : "w-[200px] h-[275px]"} flex items-center flex-col gap-2 justify-end`}
+        className={`${small ? ` w-[75px] sm:w-[150px] ${tallHeight ? "h-[103px] sm:h-[205px]" : "h-[68px] sm:h-[135px]"}` : `w-[200px] ${tallHeight ? "h-[275px]" : "h-[180px]"}`} flex items-center flex-col gap-2 justify-end`}
       >
         <img src={require(`../img/${title}.png`)} alt={title} />
       </div>
-      <div className={`${small ? "h-[96px]" : "h-[48px]"} flex align-baseline`}>
-        {horse.hat && <Hat hat={horse.hat} small={small} />}
-        <Apples numApples={horse.apples ?? 0} small={small} />
-      </div>
+      {showAppleBox && (
+        <div
+          className={`${small ? "h-[96px]" : "h-[48px]"} flex align-baseline`}
+        >
+          {horse.hat && <Hat hat={horse.hat} small={small} />}
+          <Apples numApples={horse.apples ?? 0} small={small} />
+        </div>
+      )}
     </div>
   ) : null;
+};
+
+export const PairOfHorses = (props) => {
+  const { horse1, horse2, onClick, small = false } = props;
+
+  const horse1Title = horse1 ? getHorseImageTitle(horse1) : undefined;
+  const horse2Title = horse2 ? getHorseImageTitle(horse2) : undefined;
+
+  const atLeastOneTallHorse = useMemo(() => {
+    return (
+      horse1Title &&
+      horse2Title &&
+      (horse1Title.includes("tall") || horse2Title.includes("tall"))
+    );
+  }, [horse1, horse2]);
+
+  const hasHatsOrApples = useMemo(() => {
+    if (!horse1 || !horse2) {
+      return false;
+    }
+    if (horse1.hat || horse2.hat) {
+      return true;
+    }
+    return horse1.apples > 0 || horse2.apples > 0;
+  }, [horse1, horse2]);
+
+  return (
+    <>
+      <Horse
+        horse={horse1}
+        small={small}
+        tallHeight={atLeastOneTallHorse}
+        onClick={onClick ? onClick.horse1 : undefined}
+        showAppleBox={hasHatsOrApples}
+      />
+      <Horse
+        horse={horse2}
+        small={small}
+        tallHeight={atLeastOneTallHorse}
+        onClick={onClick ? onClick.horse2 : undefined}
+        showAppleBox={hasHatsOrApples}
+      />
+    </>
+  );
 };
 
 const Apples = (props) => {
