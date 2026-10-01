@@ -203,7 +203,7 @@ export const Horse = (props) => {
       </div>
       {showAppleBox && (
         <div
-          className={`${small ? "h-[96px]" : "h-[48px]"} flex align-baseline`}
+          className={`${small ? "h-[48px]" : "h-[96px]"} flex align-baseline space-x-2 items-center`}
         >
           {horse.hat && <Hat hat={horse.hat} small={small} />}
           <Apples numApples={horse.apples ?? 0} small={small} />
