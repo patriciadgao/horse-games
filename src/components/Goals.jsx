@@ -1,3 +1,4 @@
+import React from "react";
 import { interpretHorse } from "../utils/horseFunctions";
 import { getGoalText, isGoalMet } from "../utils/horseGameFunctions";
 
@@ -17,9 +18,9 @@ export const Goals = (props) => {
     <div className="flex flex-col justify-center items-center">
       <div className="font-bold my-4">this week's goals</div>
       <div className="grid grid-cols-8 gap-2">
-        {transformedInfo.map((goal) => {
+        {transformedInfo.map((goal, i) => {
           return (
-            <>
+            <React.Fragment key={i}>
               <div
                 className={`text-right col-span-7 ${goal.isAchieved ? "text-lime-600" : ""}`}
               >
@@ -30,7 +31,7 @@ export const Goals = (props) => {
               >
                 {goal.isAchieved ? "✓" : "×"}
               </div>
-            </>
+            </React.Fragment>
           );
         })}
       </div>

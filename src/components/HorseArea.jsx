@@ -26,13 +26,13 @@ export const HorseArea = (props) => {
     setRightHorse(JSON.parse(localStorage.getItem("right_horse")));
     setGoals(JSON.parse(localStorage.getItem("goals")));
 
-    const isPaused = localStorage.getItem("playing_state") === "paused";
+    const isNewlyPaused = localStorage.getItem("playing_state") === "paused";
     const weekFinished = localStorage.getItem("week_finished") === "yes";
-    const playingDate = localStorage.getItem("playing_date");
+    const newPlayingDate = localStorage.getItem("playing_date");
 
-    setIsPaused(isPaused);
+    setIsPaused(isNewlyPaused);
     setIsFinished(weekFinished);
-    setPlayingDate(playingDate);
+    setPlayingDate(newPlayingDate);
   }, []);
 
   useEffect(() => {
@@ -50,7 +50,7 @@ export const HorseArea = (props) => {
 
   const selectHorse = useCallback((option) => {
     chooseHorse(option);
-    refreshGame();
+    setNeedsRefresh(true);
   }, []);
 
   return (

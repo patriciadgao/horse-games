@@ -46,7 +46,11 @@ export const Menu = (props) => {
         setIsOpen={setIsStableOpen}
         setNeedsRefresh={setNeedsRefresh}
       />
-      <Lineage isOpen={isLineageOpen} setIsOpen={setIsLineageOpen} />
+      <Lineage
+        isOpen={isLineageOpen}
+        setIsOpen={setIsLineageOpen}
+        needsRefresh={needsRefresh}
+      />
       <About isOpen={isAboutOpen} setIsOpen={setIsAboutOpen} />
     </>
   );

@@ -22,7 +22,7 @@ export function getStableInfo() {
 export function updateStable(newHorse) {
     let achievedHorses = JSON.parse(localStorage.getItem('achieved_horses')) ?? [];
     let achievedHats = JSON.parse(localStorage.getItem('achieved_hats')) ?? [];
-    let missingHorse = JSON.parse(localStorage.getItem('missing_horse'));
+    let missingHorse = localStorage.getItem('missing_horse');
     let maxApples = JSON.parse(localStorage.getItem('max_apples'));
 
     const flattenedHorse = flattenHorse(newHorse);

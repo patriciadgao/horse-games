@@ -1,8 +1,8 @@
-import { useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import { Horse } from "../HorseArea";
 import { Modal } from "../Modal";
 
-const days = [
+const dayList = [
   "Monday",
   "Tuesday",
   "Wednesday",
@@ -13,10 +13,16 @@ const days = [
 ];
 
 export const Lineage = (props) => {
-  const { isOpen, setIsOpen } = props;
-  const lineage = useMemo(() => {
-    return JSON.parse(localStorage.getItem("lineage")) ?? [];
-  }, [isOpen]);
+  const { isOpen, setIsOpen, needsRefresh } = props;
+  const [lineage, setLineage] = useState(
+    JSON.parse(localStorage.getItem("lineage")) ?? [],
+  );
+
+  useEffect(() => {
+    if (isOpen || needsRefresh) {
+      setLineage(JSON.parse(localStorage.getItem("lineage")) ?? []);
+    }
+  }, [isOpen, needsRefresh]);
 
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen} title="lineage">
@@ -28,12 +34,12 @@ export const Lineage = (props) => {
           const returnDay = i % 2 === 0;
 
           return returnDay ? (
-            <>
-              <div>{days[i % 2]}</div>
-              <Horse horse={lineage[i]} small />
-            </>
+            <React.Fragment key={i}>
+              <div>{dayList[i / 2]}</div>
+              <Horse horse={horse} small />
+            </React.Fragment>
           ) : (
-            <Horse horse={lineage[i]} small />
+            <Horse horse={horse} small key={i} />
           );
         })}
       </div>
