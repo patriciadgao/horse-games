@@ -8,7 +8,7 @@ export function clearStable() {
 export function getStableInfo() {
     const achievedHorses = JSON.parse(localStorage.getItem('achieved_horses')) ?? [];
     const achievedHats = JSON.parse(localStorage.getItem('achieved_hats')) ?? [];
-    const missingHorse = JSON.parse(localStorage.getItem('missing_horse'));
+    const missingHorse = localStorage.getItem('missing_horse');
     const maxApples = JSON.parse(localStorage.getItem('max_apples'));
 
     return {

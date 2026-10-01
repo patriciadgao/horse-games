@@ -1,75 +1,121 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
-  generateDifferentHorse,
-  generateHorse,
   getAppleImageTitle,
   getHorseImageTitle,
-  mergeHorses,
 } from "../utils/horseFunctions";
+import {
+  chooseHorse,
+  getCurrentDate,
+  refreshGameStatus,
+} from "../utils/horseGameFunctions";
+import { Goals } from "./Goals";
 
-export const HorseArea = () => {
-  const [currentHorse, setCurrentHorse] = useState(
-    JSON.parse(localStorage.getItem("current_horse")),
-  );
-  const [leftHorse, setLeftHorse] = useState(
-    JSON.parse(localStorage.getItem("left_horse")),
-  );
-  const [rightHorse, setRightHorse] = useState(
-    JSON.parse(localStorage.getItem("right_horse")),
-  );
+export const HorseArea = (props) => {
+  const { needsRefresh, setNeedsRefresh } = props;
+  const [currentHorse, setCurrentHorse] = useState();
+  const [leftHorse, setLeftHorse] = useState();
+  const [rightHorse, setRightHorse] = useState();
+  const [isPaused, setIsPaused] = useState();
+  const [isFinished, setIsFinished] = useState();
+  const [playingDate, setPlayingDate] = useState();
+  const [goals, setGoals] = useState();
 
-  function setHorses(newCurrentHorse) {
-    const leftHorse = generateHorse();
-    const rightHorse = generateDifferentHorse(leftHorse);
+  const refreshGame = useCallback(() => {
+    setCurrentHorse(JSON.parse(localStorage.getItem("current_horse")));
+    setLeftHorse(JSON.parse(localStorage.getItem("left_horse")));
+    setRightHorse(JSON.parse(localStorage.getItem("right_horse")));
+    setGoals(JSON.parse(localStorage.getItem("goals")));
 
-    localStorage.setItem("current_horse", JSON.stringify(newCurrentHorse));
-    localStorage.setItem("left_horse", JSON.stringify(leftHorse));
-    localStorage.setItem("right_horse", JSON.stringify(rightHorse));
+    const isPaused = localStorage.getItem("playing_state") === "paused";
+    const weekFinished = localStorage.getItem("week_finished") === "yes";
+    const playingDate = localStorage.getItem("playing_date");
 
-    setCurrentHorse(newCurrentHorse);
-    setLeftHorse(leftHorse);
-    setRightHorse(rightHorse);
-  }
-
-  function chooseHorse(option) {
-    let currentHorse = JSON.parse(localStorage.getItem("current_horse"));
-    let chosenHorse = JSON.parse(localStorage.getItem(`${option}_horse`));
-
-    const newHorse = mergeHorses(currentHorse, chosenHorse);
-    setHorses(newHorse);
-  }
+    setIsPaused(isPaused);
+    setIsFinished(weekFinished);
+    setPlayingDate(playingDate);
+  }, []);
 
   useEffect(() => {
-    if (!currentHorse || !leftHorse || !rightHorse) {
-      const newHorse = generateHorse();
-      setHorses(newHorse);
+    refreshGameStatus();
+    refreshGame();
+  }, []);
+
+  useEffect(() => {
+    if (needsRefresh) {
+      refreshGameStatus();
+      refreshGame();
+      setNeedsRefresh(false);
     }
-  }, [currentHorse, leftHorse, rightHorse]);
+  }, [needsRefresh]);
+
+  const selectHorse = useCallback((option) => {
+    chooseHorse(option);
+    refreshGame();
+  }, []);
 
   return (
-    <div className="flex justify-center mb-8">
+    <div className="flex flex-col justify-center m-8 gap-4">
+      <PlayingDate playingDate={playingDate} />
       <div className="flex flex-col">
-        <div className="mb-10 flex justify-center h-96">
+        <div className="mb-10 flex justify-center">
           <Horse horse={currentHorse} isCurrentHorse />
         </div>
-        <div className="flex gap-12">
-          <Horse horse={leftHorse} onClick={() => chooseHorse("left")} />
-          <Horse horse={rightHorse} onClick={() => chooseHorse("right")} />
-        </div>
+        {isPaused ? (
+          isFinished ? (
+            <div>Congrats on completing the week!</div>
+          ) : (
+            <div>
+              That's enough choices for now. Come back tomorrow for another
+              choice.
+            </div>
+          )
+        ) : (
+          <div className="flex justify-center gap-12">
+            <Horse horse={leftHorse} onClick={() => selectHorse("left")} />
+            <Horse horse={rightHorse} onClick={() => selectHorse("right")} />
+          </div>
+        )}
       </div>
+      {currentHorse && <Goals goals={goals} currentHorse={currentHorse} />}
     </div>
   );
 };
 
-const Horse = (props) => {
-  const { horse, onClick, isCurrentHorse = false } = props;
+const PlayingDate = (props) => {
+  const { playingDate } = props;
+  const currentDate = getCurrentDate();
+
+  const isBehind = playingDate !== currentDate;
+  const playingDateFormatted = new Date(
+    `${playingDate}T00:00:00-08:00`,
+  ).toLocaleString("en-US", {
+    weekday: "long",
+    month: "short",
+    day: "numeric",
+    timeZone: "America/Los_Angeles",
+  });
+
+  return (
+    <div className="text-left mb-4">
+      <div className="font-bold text-xl">{playingDateFormatted}</div>
+      {isBehind && (
+        <div className="font-bold text-md text-lime-600">
+          Make choices to catch up to today's date!
+        </div>
+      )}
+    </div>
+  );
+};
+
+export const Horse = (props) => {
+  const { horse, onClick, isCurrentHorse = false, small = false } = props;
 
   const title = horse ? getHorseImageTitle(horse) : undefined;
 
   return horse ? (
     <div
       onClick={onClick}
-      className={`w-[200px] flex items-center flex-col gap-2 ${isCurrentHorse ? "justify-end" : ""} ${onClick ? "cursor-pointer hover:scale-105" : ""}`}
+      className={`${small ? "w-[150px]" : "w-[200px]"} flex items-center flex-col gap-2 ${isCurrentHorse ? "justify-end" : ""} ${onClick ? "cursor-pointer hover:scale-105" : ""}`}
     >
       <img src={require(`../img/${title}.png`)} alt={title} />
       {horse.hat && <Hat hat={horse.hat} />}
@@ -102,13 +148,13 @@ const Apples = (props) => {
   );
 };
 
-const Apple = () => {
+export const Apple = () => {
   const title = getAppleImageTitle();
 
   return <img src={require(`../img/${title}.png`)} alt="apple" width={35} />;
 };
 
-const Hat = (props) => {
+export const Hat = (props) => {
   const { hat } = props;
   return <img src={require(`../img/hat-${hat}.png`)} alt={hat} width={100} />;
 };

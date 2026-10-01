@@ -1,0 +1,39 @@
+import { interpretHorse } from "../utils/horseFunctions";
+import { getGoalText, isGoalMet } from "../utils/horseGameFunctions";
+
+export const Goals = (props) => {
+  const { goals, currentHorse } = props;
+
+  const interpretedHorse = interpretHorse(currentHorse);
+
+  const transformedInfo = Object.keys(goals).map((goal) => {
+    return {
+      goalText: getGoalText(goal, goals[goal]),
+      isAchieved: isGoalMet(goal, goals[goal], interpretedHorse),
+    };
+  });
+
+  return (
+    <div className="flex flex-col justify-center items-center">
+      <div className="font-bold my-4">this week's goals</div>
+      <div className="grid grid-cols-8 gap-2">
+        {transformedInfo.map((goal) => {
+          return (
+            <>
+              <div
+                className={`text-right col-span-7 ${goal.isAchieved ? "text-lime-600" : ""}`}
+              >
+                {goal.goalText}
+              </div>
+              <div
+                className={`text-left col-span-1 ${goal.isAchieved ? "text-lime-600" : ""}`}
+              >
+                {goal.isAchieved ? "✓" : "×"}
+              </div>
+            </>
+          );
+        })}
+      </div>
+    </div>
+  );
+};

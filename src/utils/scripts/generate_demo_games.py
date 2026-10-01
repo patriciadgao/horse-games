@@ -194,7 +194,11 @@ for x in range(15*7):
 
 for setting in total_settings:
     print(setting['week_number']+1, ":", "{",f"startingHorse: {setting['starting_horse']},")
-    print("choiceMap: {"),
+    print("dateList: [")
+    for day in setting['choices']:
+        print(f"'{day[0]}',")
+    print("],")
+    print("choiceList: {"),
     for day in setting['choices']:
         print(f"'{day[0]}':","{")
         print(f"left: {day[1]},")

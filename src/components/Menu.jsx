@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { Button } from "./Button";
-import { Modal } from "./Modal";
+import { About } from "./MenuPages/About";
+import { HowTo } from "./MenuPages/HowTo";
+import { Lineage } from "./MenuPages/Lineage";
+import { Stable } from "./MenuPages/Stable";
 
-export const Menu = () => {
+export const Menu = (props) => {
+  const { needsRefresh, setNeedsRefresh } = props;
   const [isOpen, setIsOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isHowToOpen, setIsHowToOpen] = useState(false);
@@ -37,7 +41,11 @@ export const Menu = () => {
         </div>
       </div>
       <HowTo isOpen={isHowToOpen} setIsOpen={setIsHowToOpen} />
-      <Stable isOpen={isStableOpen} setIsOpen={setIsStableOpen} />
+      <Stable
+        isOpen={isStableOpen}
+        setIsOpen={setIsStableOpen}
+        setNeedsRefresh={setNeedsRefresh}
+      />
       <Lineage isOpen={isLineageOpen} setIsOpen={setIsLineageOpen} />
       <About isOpen={isAboutOpen} setIsOpen={setIsAboutOpen} />
     </>
@@ -51,41 +59,5 @@ const WhatItem = (props) => {
     >
       <Button onClick={props.onClick}>{props.text}</Button>
     </div>
-  );
-};
-
-const HowTo = (props) => {
-  const { isOpen, setIsOpen } = props;
-  return (
-    <Modal isOpen={isOpen} setIsOpen={setIsOpen} title="how to">
-      Hello world!
-    </Modal>
-  );
-};
-
-const Stable = (props) => {
-  const { isOpen, setIsOpen } = props;
-  return (
-    <Modal isOpen={isOpen} setIsOpen={setIsOpen} title="stable">
-      Hello world!
-    </Modal>
-  );
-};
-
-const Lineage = (props) => {
-  const { isOpen, setIsOpen } = props;
-  return (
-    <Modal isOpen={isOpen} setIsOpen={setIsOpen} title="lineage">
-      Hello world!
-    </Modal>
-  );
-};
-
-const About = (props) => {
-  const { isOpen, setIsOpen } = props;
-  return (
-    <Modal isOpen={isOpen} setIsOpen={setIsOpen} title="about">
-      Hello world!
-    </Modal>
   );
 };
