@@ -7,7 +7,7 @@ export const HowTo = (props) => {
     <Modal isOpen={isOpen} setIsOpen={setIsOpen} title="how to">
       <div className="text-left space-y-4">
         <p>Welcome to Horse Game.</p>
-        <p>Each week you start with a horse. Here's an example:</p>
+        <p>Each week you start with a horse. Here’s an example:</p>
         <div className="flex justify-center">
           <Horse
             horse={{
@@ -32,7 +32,7 @@ export const HowTo = (props) => {
         <p>
           Each <i>day</i> you will have a choice between two other horses.
         </p>
-        <div className="flex justify-center items-center align-baseline space-x-8">
+        <div className="flex justify-center items-baseline align-baseline space-x-8">
           <Horse
             horse={{
               shape: ["T", "T", "T"],
@@ -53,9 +53,9 @@ export const HowTo = (props) => {
           />
         </div>
         <p>
-          This horse will "merge" with your horse, changing its attributes. (Idk
-          I wasn't really thinking about horses mating or whatever when I came
-          up with this concept. I still want you to be able to name each week's
+          This horse will “merge” with your horse, changing its attributes. (Idk
+          I wasn’t really thinking about horses mating or whatever when I came
+          up with this concept. I still want you to be able to name each week’s
           horse eventually so consider it the same horse.)
         </p>
         <p>

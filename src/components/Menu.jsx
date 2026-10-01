@@ -18,7 +18,7 @@ export const Menu = (props) => {
   return (
     <>
       <div className="fixed top-12 right-8">
-        <div className="flex flex-col gap-2 text-right w-24 cursor-pointer">
+        <div className="DisplayFont flex flex-col gap-2 text-right w-24 cursor-pointer">
           <Button onClick={() => setIsOpen(!isOpen)}>what?</Button>
           <WhatItem
             text="how to"

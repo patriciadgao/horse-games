@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Toaster } from 'react-hot-toast';
 import './App.css';
 import { Header } from './components/Header';
 import { HorseArea } from './components/HorseArea';
@@ -9,6 +10,7 @@ function App() {
 
   return (
     <div className="App bg-amber-50 items-center">
+      <Toaster position="top-left" />
       <Header />
       <Menu needsRefresh={needsRefresh} setNeedsRefresh={setNeedsRefresh} />
       <HorseArea needsRefresh={needsRefresh} setNeedsRefresh={setNeedsRefresh} />

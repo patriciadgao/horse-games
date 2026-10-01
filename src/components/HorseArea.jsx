@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import {
   getAppleImageTitle,
   getHorseImageTitle,
@@ -8,6 +9,7 @@ import {
   getCurrentDate,
   refreshGameStatus,
 } from "../utils/horseGameFunctions";
+import { Button } from "./Button";
 import { Goals } from "./Goals";
 
 export const HorseArea = (props) => {
@@ -29,6 +31,16 @@ export const HorseArea = (props) => {
     const isNewlyPaused = localStorage.getItem("playing_state") === "paused";
     const weekFinished = localStorage.getItem("week_finished") === "yes";
     const newPlayingDate = localStorage.getItem("playing_date");
+
+    if (isNewlyPaused && isPaused) {
+      toast("oops, the date hasn't changed.", {
+        duration: 1800,
+        style: {
+          background: "none",
+          boxShadow: "none",
+        },
+      });
+    }
 
     setIsPaused(isNewlyPaused);
     setIsFinished(weekFinished);
@@ -55,7 +67,11 @@ export const HorseArea = (props) => {
 
   return (
     <div className="flex flex-col justify-center m-8 gap-4">
-      <PlayingDate playingDate={playingDate} isPaused={isPaused} />
+      <PlayingDate
+        playingDate={playingDate}
+        isPaused={isPaused}
+        refresh={() => setNeedsRefresh(true)}
+      />
       <div className="flex flex-col">
         <div className="mb-10 flex justify-center">
           <Horse horse={currentHorse} isCurrentHorse />
@@ -65,8 +81,7 @@ export const HorseArea = (props) => {
             <div>Congrats on completing the week!</div>
           ) : (
             <div>
-              That's enough choices for now. Come back tomorrow for another
-              choice.
+              You’ve made today’s choice—come back tomorrow for another one.
             </div>
           )
         ) : (
@@ -82,7 +97,7 @@ export const HorseArea = (props) => {
 };
 
 const PlayingDate = (props) => {
-  const { playingDate, isPaused } = props;
+  const { playingDate, isPaused, refresh } = props;
   const currentDate = getCurrentDate();
 
   const isBehind = playingDate !== currentDate && !isPaused;
@@ -96,11 +111,16 @@ const PlayingDate = (props) => {
   });
 
   return (
-    <div className="text-left mb-4">
+    <div className="DisplayFont text-left mb-4">
       <div className="font-bold text-xl">{playingDateFormatted}</div>
       {isBehind && (
         <div className="font-bold text-md text-lime-600">
-          Make choices to catch up to today's date!
+          Make choices to catch up to today’s date!
+        </div>
+      )}
+      {isPaused && (
+        <div className="text-sky-600">
+          <Button onClick={refresh}>click to refresh</Button>
         </div>
       )}
     </div>
@@ -118,14 +138,14 @@ export const Horse = (props) => {
       className={`${small ? "w-[75px] sm:w-[150px]" : "w-[200px]"} flex items-center flex-col gap-2 ${isCurrentHorse ? "justify-end" : ""} ${onClick ? "cursor-pointer hover:scale-105" : ""}`}
     >
       <img src={require(`../img/${title}.png`)} alt={title} />
-      {horse.hat && <Hat hat={horse.hat} />}
-      <Apples numApples={horse.apples ?? 0} />
+      {horse.hat && <Hat hat={horse.hat} small={small} />}
+      <Apples numApples={horse.apples ?? 0} small={small} />
     </div>
   ) : null;
 };
 
 const Apples = (props) => {
-  const { numApples } = props;
+  const { numApples, small = false } = props;
 
   const horseApples = [];
   for (let i = 0; i < numApples; i++) {
@@ -138,23 +158,36 @@ const Apples = (props) => {
     <div className="flex gap-2 flex-wrap items-center">
       {tooManyApples ? (
         <div className="flex gap-2 items-center">
-          <Apple />
+          <Apple small={small} />
           <div className="font-bold">{`×${numApples}`}</div>
         </div>
       ) : (
-        horseApples.map((a) => <Apple key={a} />)
+        horseApples.map((a) => <Apple key={a} small={small} />)
       )}
     </div>
   );
 };
 
-export const Apple = () => {
+export const Apple = (props) => {
+  const { small = false } = props;
   const title = getAppleImageTitle();
 
-  return <img src={require(`../img/${title}.png`)} alt="apple" width={35} />;
+  return (
+    <img
+      src={require(`../img/${title}.png`)}
+      alt="apple"
+      width={small ? 15 : 35}
+    />
+  );
 };
 
 export const Hat = (props) => {
-  const { hat } = props;
-  return <img src={require(`../img/hat-${hat}.png`)} alt={hat} width={100} />;
+  const { hat, small = false } = props;
+  return (
+    <img
+      src={require(`../img/hat-${hat}.png`)}
+      alt={hat}
+      width={small ? 50 : 100}
+    />
+  );
 };

@@ -7,7 +7,7 @@ export const Faq = (props) => {
     {
       question: "I missed a day! What do I do?",
       answer:
-        "During each week, you can make catch-up choices up to today. However, once the Sunday (last day of that week) has passed, there's no way to make it up. Enjoy this week's challenge instead.",
+        "During each week, you can make catch-up choices up to today. However, once the Sunday (last day of that week) has passed, there’s no way to make it up. Enjoy this week’s challenge instead.",
     },
     {
       question: "Can I rename my horse?",
@@ -17,17 +17,17 @@ export const Faq = (props) => {
     {
       question: "Can I save my progress?",
       answer:
-        "Kind of yes, kind of no. I don't want to pay a big corporation for storage, and this game is not actually one of the most important things to store in the world, so your progress saves in your browser window. If you delete your browser cache I think it will remove your progress, but other than that, just keep using the same device.",
+        "Kind of yes, kind of no. I don’t want to pay a big corporation for storage, and this game is not actually one of the most important things to store in the world, so your progress saves in your browser window. If you delete your browser cache I think it will remove your progress, but other than that, just keep using the same device.",
     },
     {
       question: "Can I clear my progress?",
       answer:
-        "Yep! Go to 'stable', there is an option there to reset everything. However ... that gets rid of ALL previous weeks' data, not just this one.",
+        "Yep! Go to the stable, there is an option there to reset everything. However ... that gets rid of ALL previous weeks’ data, not just this one.",
     },
     {
       question: "Does this game collect any of my personal information?",
       answer:
-        "Nope! Everything it stores (which is just your choices, horses, and horse names) stays in your browser tab. It does not travel into 'the cloud', it does not pass GO, it does not collect $200.",
+        "Nope! Everything it stores (which is just your choices, horses, and horse names) stays in your browser tab. It does not travel into “the cloud”, it does not pass GO, it does not collect $200.",
     },
     {
       question: "I clicked the wrong horse! Can I undo my choice?",
@@ -54,16 +54,21 @@ export const Faq = (props) => {
       answer: "Well, maybe not if its hat just got stolen.",
     },
     {
-      question: "My horse has a hat. Why isn't it wearing the hat?",
+      question: "My horse has a hat. Why isn’t it wearing the hat?",
       answer: "Have you ever seen a horse put on a hat?",
     },
     {
-      question: "Why do my horse's apples keep changing?",
+      question: "Why do my horse’s apples keep changing?",
       answer: "Apples are mysterious things.",
     },
     {
       question: "When was Horse Game created?",
       answer: "At the end of September in 2026.",
+    },
+    {
+      question: "Will this game ever end?",
+      answer:
+        "Horse Game is currently on a demo run until January 10, 2027. If you like it, shoot me a message (and please leave feedback!). I will most likely set it up to run for at least all of 2027, but might want to hand-pick some of the weeks instead of randomly generating them ...",
     },
   ];
 
@@ -133,7 +138,7 @@ const Question = (props) => {
 
   return (
     <div>
-      <p className="font-bold">{question}</p>
+      <p className="DisplayFont font-bold text-lg">{question}</p>
       <p>{answer}</p>
     </div>
   );

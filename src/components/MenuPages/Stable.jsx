@@ -25,13 +25,13 @@ export const Stable = (props) => {
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen} title="stable">
       <div className="text-md text-left">
-        <div className="font-bold text-lg">Your achievements:</div>
+        <div className="DisplayFont font-bold text-lg">Your achievements:</div>
         <div>{`horse types: ${stableInfo.achievedHorses}/${horses.length} (${Math.round((stableInfo.achievedHorses * 100) / horses.length)}%)`}</div>
         <div>{`hat types: ${stableInfo.achievedHats}/4`}</div>
         <div>{`max apples: ${stableInfo.maxApples}`}</div>
         {stableInfo.missingHorse && (
           <div>
-            <div>A horse you're missing:</div>
+            <div>A horse you’re missing:</div>
             <div className="mt-2 w-[150px] flex items-center flex-col gap-2">
               <img
                 src={require(`../../img/${stableInfo.missingHorse}.png`)}
@@ -40,7 +40,7 @@ export const Stable = (props) => {
             </div>
           </div>
         )}
-        <div className="mt-12 text-right">
+        <div className="DisplayFont mt-12 text-right">
           <Button onClick={() => setIsConfirming(true)}>reset my stats</Button>
         </div>
       </div>
@@ -49,7 +49,9 @@ export const Stable = (props) => {
         setIsOpen={setIsConfirming}
         title="are you sure?"
       >
-        <Button onClick={resetStable}>yes</Button>
+        <div className="DisplayFont">
+          <Button onClick={resetStable}>yes</Button>
+        </div>
       </Modal>
     </Modal>
   );

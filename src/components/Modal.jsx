@@ -11,9 +11,9 @@ export const Modal = (props) => {
           onClick={() => setIsOpen(false)}
         />
         <div className="z-20 bg-amber-50 p-8 w-[80vw] fixed top-[5vw] left-[10vw] overflow-auto max-h-[90vh]">
-          <div className="flex justify-between">
+          <div className="DisplayFont flex justify-between">
             <div className="w-3" />
-            <div className="text-xl font-bold mb-8">{title}</div>
+            <div className="text-2xl font-bold mb-8">{title}</div>
             <Button onClick={() => setIsOpen(false)}>back</Button>
           </div>
           {children}
