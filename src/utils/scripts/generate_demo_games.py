@@ -89,9 +89,13 @@ def merge_horses(horse1, horse2):
         hat_got_stolen = True
     elif (horse1['hat'] is None) and hat is not None:
         hat_acquired = True
+
+    random_new_color = horse1['color']
+    while random_new_color == horse1['color']:
+        random_new_color = random.choice(colors)
     
     return {
-        'color': horse1['color'] if horse1['color'] != horse2['color'] else random.choice(colors),
+        'color': horse1['color'] if horse1['color'] != horse2['color'] else random_new_color,
         'shape': new_shape,
         'spots': random.choice(horse1['spots']) + random.choice(horse2['spots']),
         'expression': 'smile' if hat_acquired else 'frown' if hat_got_stolen else expression,

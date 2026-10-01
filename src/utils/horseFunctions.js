@@ -121,8 +121,10 @@ export function mergeHorses(horse1, horse2) {
         apples = choose([minusApples, minusApples, minusApples, horse1.apples * 2])
     }
 
+    const colorsNotCurrentColor = [...colors].filter((c) => c !== horse1.color);
+
     return {
-        color: horse1.color !== horse2.color ? horse1.color : choose(colors),
+        color: horse1.color !== horse2.color ? horse1.color : choose(colorsNotCurrentColor),
         shape: newShape,
         spots: [choose(horse1.spots), choose(horse2.spots)],
         expression: hatAcquired ? 'smile' : hatGotStolen ? 'frown' : expression,
