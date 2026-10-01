@@ -22,7 +22,7 @@ export const Faq = (props) => {
     {
       question: "Does this game collect any of my personal information?",
       answer:
-        "Nope! Everything it stores (which is just your choices, horses, and horse names) stays local to you. It does not travel into “the cloud”, it does not pass GO, it does not collect $200.",
+        "Nope! Everything it stores (which is just your choices / horses) stays local to you. It does not travel into “the cloud”, it does not pass GO, it does not collect $200.",
     },
     {
       question: "I clicked the wrong horse! Can I undo my choice?",
