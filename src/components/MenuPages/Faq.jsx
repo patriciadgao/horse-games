@@ -29,12 +29,6 @@ export const Faq = (props) => {
         "Nah. Better luck next time. This game is also not that big of a deal.",
     },
     {
-      question:
-        "How do I know what will happen to my horse when it merges with another one?",
-      answer:
-        "You can read the source code if you want, but I suggest you figure it out yourself by slowly learning the rules. It seems kinda fun that way.",
-    },
-    {
       question: "Is my horse happy?",
       answer: "Yes.",
     },
