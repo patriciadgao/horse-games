@@ -1,4 +1,3 @@
-import { Horse } from "../HorseArea";
 import { Modal } from "../Modal";
 
 export const Faq = (props) => {
@@ -28,11 +27,6 @@ export const Faq = (props) => {
       question: "I clicked the wrong horse! Can I undo my choice?",
       answer:
         "Nah. Better luck next time. This game is also not that big of a deal.",
-    },
-    {
-      question: "What horse shapes are there?",
-      answer:
-        "Currently the possible shapes are round, square, tall, and short.",
     },
     {
       question:
@@ -71,60 +65,12 @@ export const Faq = (props) => {
     <Modal isOpen={isOpen} setIsOpen={setIsOpen} title="fun awesome questions">
       <div className="text-left space-y-4">
         {faqs.map((q) => {
-          const isShapeQuestion = q.question === "What horse shapes are there?";
-
           return (
-            <>
-              <Question
-                key={q.question}
-                question={q.question}
-                answer={q.answer}
-              />
-              {isShapeQuestion && (
-                <div className="flex items-baseline">
-                  <Horse
-                    horse={{
-                      shape: ["R", "R", "R"],
-                      color: "tan",
-                      expression: "neutral",
-                      spots: ["o", "o"],
-                    }}
-                    small
-                    showAppleBox={false}
-                  />
-                  <Horse
-                    horse={{
-                      shape: ["S", "S", "S"],
-                      color: "tan",
-                      expression: "neutral",
-                      spots: ["o", "o"],
-                    }}
-                    small
-                    showAppleBox={false}
-                  />
-                  <Horse
-                    horse={{
-                      shape: ["T", "T", "T"],
-                      color: "tan",
-                      expression: "neutral",
-                      spots: ["o", "o"],
-                    }}
-                    small
-                    showAppleBox={false}
-                  />
-                  <Horse
-                    horse={{
-                      shape: ["R", "S", "T"],
-                      color: "tan",
-                      expression: "neutral",
-                      spots: ["o", "o"],
-                    }}
-                    small
-                    showAppleBox={false}
-                  />
-                </div>
-              )}
-            </>
+            <Question
+              key={q.question}
+              question={q.question}
+              answer={q.answer}
+            />
           );
         })}
       </div>

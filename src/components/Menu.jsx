@@ -4,6 +4,7 @@ import { About } from "./MenuPages/About";
 import { Faq } from "./MenuPages/Faq";
 import { HowTo } from "./MenuPages/HowTo";
 import { Lineage } from "./MenuPages/Lineage";
+import { Rules } from "./MenuPages/Rules";
 import { Stable } from "./MenuPages/Stable";
 
 export const Menu = (props) => {
@@ -14,6 +15,7 @@ export const Menu = (props) => {
   const [isStableOpen, setIsStableOpen] = useState(false);
   const [isLineageOpen, setIsLineageOpen] = useState(false);
   const [isFaqOpen, setIsFaqOpen] = useState(false);
+  const [isRulesOpen, setIsRulesOpen] = useState(false);
 
   return (
     <>
@@ -24,6 +26,11 @@ export const Menu = (props) => {
             text="how to"
             isOpen={isOpen}
             onClick={() => setIsHowToOpen(true)}
+          />
+          <WhatItem
+            text="rules"
+            isOpen={isOpen}
+            onClick={() => setIsRulesOpen(true)}
           />
           <WhatItem
             text="stable"
@@ -48,6 +55,7 @@ export const Menu = (props) => {
         </div>
       </div>
       <HowTo isOpen={isHowToOpen} setIsOpen={setIsHowToOpen} />
+      <Rules isOpen={isRulesOpen} setIsOpen={setIsRulesOpen} />
       <Stable
         isOpen={isStableOpen}
         setIsOpen={setIsStableOpen}
