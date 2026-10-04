@@ -10,6 +10,7 @@ const dayList = [
   "Friday",
   "Saturday",
   "Sunday",
+  "final horse",
 ];
 
 export const Lineage = (props) => {
