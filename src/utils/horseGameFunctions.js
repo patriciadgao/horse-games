@@ -96,7 +96,7 @@ export function getGoalPoints(goalType, goal) {
             }
             break;
         case 'apples':
-            if (goal > 1) {
+            if (Number(goal) > 1) {
                 points += 30;
             } else {
                 points += 10;
@@ -132,10 +132,10 @@ export function getGoalPoints(goalType, goal) {
             }
             break;
         case 'apples':
-            if (goal > 0) {
+            if (Number(goal) > 0) {
                 points += 10;
             }
-            if (goal > 1) {
+            if (Number(goal) > 1) {
                 points += 10;
             }
             break;
@@ -172,7 +172,7 @@ export function getGoalBaseText(goalType, goal) {
                     return 'horse has no spots'
             }
         case 'apples':
-            if (goal === 1) {
+            if (Number(goal) === 1) {
                 return `horse has 1 apple`;
             }
             return `horse has ${goal} apples`;
