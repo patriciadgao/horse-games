@@ -172,6 +172,9 @@ export function getGoalBaseText(goalType, goal) {
                     return 'horse has no spots'
             }
         case 'apples':
+            if (goal === 1) {
+                return `horse has 1 apple`;
+            }
             return `horse has ${goal} apples`;
         case 'hat':
         default:
@@ -187,10 +190,10 @@ export function getGoalText(goalType, goal) {
 }
 
 export function isGoalMet(goalType, goal, interpretedHorse) {
-    if (['shape', 'color', 'expression', 'spots'].includes(goalType)) {
+    if (['shape', 'color', 'expression', 'spots', 'apples'].includes(goalType)) {
         return interpretedHorse[goalType] === goal;
-    } else if (goalType === 'apples') {
-        return interpretedHorse.apples === goal;
+    } else if (goalType === 'apple') {
+        return interpretedHorse[goalType] === Number(goal);
     } else if (goalType === 'hat') {
         return goal === 'yes' ? interpretedHorse.hat !== undefined : interpretedHorse.hat === undefined;
     }
