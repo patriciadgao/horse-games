@@ -190,9 +190,9 @@ export function getGoalText(goalType, goal) {
 }
 
 export function isGoalMet(goalType, goal, interpretedHorse) {
-    if (['shape', 'color', 'expression', 'spots', 'apples'].includes(goalType)) {
+    if (['shape', 'color', 'expression', 'spots'].includes(goalType)) {
         return interpretedHorse[goalType] === goal;
-    } else if (goalType === 'apple') {
+    } else if (goalType === 'apples') {
         return interpretedHorse[goalType] === Number(goal);
     } else if (goalType === 'hat') {
         return goal === 'yes' ? interpretedHorse.hat !== undefined : interpretedHorse.hat === undefined;
