@@ -173,7 +173,7 @@ export function getGoalBaseText(goalType, goal) {
             }
         case 'apples':
             if (Number(goal) === 1) {
-                return `horse has 1 apple`;
+                return 'horse has 1 apple';
             }
             return `horse has ${goal} apples`;
         case 'hat':
