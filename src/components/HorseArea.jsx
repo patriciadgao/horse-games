@@ -172,6 +172,14 @@ const PlayingDate = (props) => {
   const currentDate = getCurrentDate();
 
   const isBehind = playingDate !== currentDate && !isPaused;
+  const currentDateFormatted = new Date(
+    `${currentDate}T00:00:00-08:00`,
+  ).toLocaleString("en-US", {
+    weekday: "long",
+    month: "short",
+    day: "numeric",
+    timeZone: "America/Los_Angeles",
+  });
   const playingDateFormatted = new Date(
     `${playingDate}T00:00:00-08:00`,
   ).toLocaleString("en-US", {
@@ -183,7 +191,9 @@ const PlayingDate = (props) => {
 
   return (
     <div className="DisplayFont text-left mb-4">
-      <div className="font-bold text-xl">{playingDateFormatted}</div>
+      <div className="font-bold text-xl">
+        {isPaused ? currentDateFormatted : playingDateFormatted}
+      </div>
       {isBehind && (
         <div className="font-bold text-md text-lime-600">
           Make choices to catch up to today!

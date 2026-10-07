@@ -10,7 +10,7 @@ const dayList = [
   "Friday",
   "Saturday",
   "Sunday",
-  "final horse",
+  "final",
 ];
 
 export const Lineage = (props) => {
@@ -44,6 +44,13 @@ export const Lineage = (props) => {
 
     if (current_map.length > 0) {
       map.push([...current_map]);
+    }
+
+    // set last map label to "current horse" unless it's the final horse
+    const lastMapItem = map.at(-1);
+    const lastMapLabel = lastMapItem[0];
+    if (lastMapLabel !== "final") {
+      lastMapItem[0] = "current";
     }
 
     return map;
