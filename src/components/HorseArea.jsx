@@ -23,6 +23,7 @@ export const HorseArea = (props) => {
   const [playingDate, setPlayingDate] = useState();
   const [demoOver, setDemoOver] = useState();
   const [goals, setGoals] = useState();
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const refreshGame = useCallback(() => {
     setCurrentHorse(JSON.parse(localStorage.getItem("current_horse")));
@@ -66,6 +67,7 @@ export const HorseArea = (props) => {
 
   const selectHorse = useCallback((option) => {
     chooseHorse(option);
+    setShowConfetti(true);
     setNeedsRefresh(true);
   }, []);
 
@@ -96,30 +98,46 @@ export const HorseArea = (props) => {
         {isPaused ? (
           isFinished ? (
             <>
-              <ReactConfetti
-                width={window.innerWidth}
-                height={window.innerHeight}
-                recycle={false}
-                colors={["#a1d99a", "#f7becb", "#bee5f7", "#d16949", "#f7eeda"]}
-                opacity={80}
-                initialVelocityY={7}
-                gravity={0.075}
-                numberOfPieces={700}
-              />
+              {showConfetti && (
+                <ReactConfetti
+                  width={window.innerWidth}
+                  height={window.innerHeight}
+                  recycle={false}
+                  colors={[
+                    "#a1d99a",
+                    "#f7becb",
+                    "#bee5f7",
+                    "#d16949",
+                    "#f7eeda",
+                  ]}
+                  opacity={80}
+                  initialVelocityY={7}
+                  gravity={0.075}
+                  numberOfPieces={700}
+                />
+              )}
               <div>Congrats on completing the week!</div>
             </>
           ) : (
             <>
-              <ReactConfetti
-                width={window.innerWidth}
-                height={window.innerHeight}
-                recycle={false}
-                colors={["#a1d99a", "#f7becb", "#bee5f7", "#d16949", "#f7eeda"]}
-                opacity={80}
-                initialVelocityY={7}
-                gravity={0.075}
-                numberOfPieces={100}
-              />
+              {showConfetti && (
+                <ReactConfetti
+                  width={window.innerWidth}
+                  height={window.innerHeight}
+                  recycle={false}
+                  colors={[
+                    "#a1d99a",
+                    "#f7becb",
+                    "#bee5f7",
+                    "#d16949",
+                    "#f7eeda",
+                  ]}
+                  opacity={80}
+                  initialVelocityY={7}
+                  gravity={0.075}
+                  numberOfPieces={100}
+                />
+              )}
               <div>
                 You’ve made today’s choice—come back tomorrow for another one.
               </div>
