@@ -185,7 +185,7 @@ export const Rules = (props) => {
 };
 
 const Section = (props) => {
-  const { heading, text, children } = props;
+  const { heading, children } = props;
 
   return (
     <div className="space-y-2">

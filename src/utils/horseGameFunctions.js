@@ -66,7 +66,7 @@ export function getGoalPoints(goalType, goal) {
                 const goalLetter = goal === 'tall' ? 'T' : goal === 'square' ? 'S' : 'R';
 
                 const horseLetterCount = startingHorse.shape.filter((g) => g === goalLetter).length;
-                if (horseLetterCount == 1) {
+                if (horseLetterCount === 1) {
                     points += 15;
                 } else if (horseLetterCount === 0) {
                     points += 30;
