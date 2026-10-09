@@ -47,10 +47,12 @@ export const Lineage = (props) => {
     }
 
     // set last map label to "current horse" unless it's the final horse
-    const lastMapItem = map.at(-1);
-    const lastMapLabel = lastMapItem[0];
-    if (lastMapLabel !== "final") {
-      lastMapItem[0] = "current";
+    if (map.length > 0) {
+      const lastMapItem = map.at(-1);
+      const lastMapLabel = lastMapItem[0];
+      if (lastMapLabel !== "final") {
+        lastMapItem[0] = "current";
+      }
     }
 
     return map;
