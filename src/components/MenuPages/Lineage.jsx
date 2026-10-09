@@ -79,9 +79,15 @@ export const Lineage = (props) => {
                       row[1].shape.filter((g) => g === "T").length > 1
                     }
                     small
+                    oneAppleMax
                   />
                 ) : (
-                  <PairOfHorses horse1={row[1]} horse2={row[2]} small />
+                  <PairOfHorses
+                    horse1={row[1]}
+                    horse2={row[2]}
+                    small
+                    oneAppleMax
+                  />
                 )}
               </React.Fragment>
             );

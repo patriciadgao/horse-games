@@ -215,6 +215,7 @@ export const Horse = (props) => {
     small = false,
     tallHeight = true,
     showAppleBox = true,
+    oneAppleMax = false,
   } = props;
 
   const title = horse ? getHorseImageTitle(horse) : undefined;
@@ -234,7 +235,11 @@ export const Horse = (props) => {
           className={`${small ? "h-[48px]" : "h-[96px]"} flex align-baseline space-x-2 items-center`}
         >
           {horse.hat && <Hat hat={horse.hat} small={small} />}
-          <Apples numApples={horse.apples ?? 0} small={small} />
+          <Apples
+            numApples={horse.apples ?? 0}
+            small={small}
+            oneAppleMax={oneAppleMax}
+          />
         </div>
       )}
     </div>
@@ -242,7 +247,7 @@ export const Horse = (props) => {
 };
 
 export const PairOfHorses = (props) => {
-  const { horse1, horse2, onClick, small = false } = props;
+  const { horse1, horse2, onClick, small = false, oneAppleMax } = props;
 
   const horse1Title = horse1 ? getHorseImageTitle(horse1) : undefined;
   const horse2Title = horse2 ? getHorseImageTitle(horse2) : undefined;
@@ -273,6 +278,7 @@ export const PairOfHorses = (props) => {
         tallHeight={atLeastOneTallHorse}
         onClick={onClick ? onClick.horse1 : undefined}
         showAppleBox={hasHatsOrApples}
+        oneAppleMax={oneAppleMax}
       />
       <Horse
         horse={horse2}
@@ -280,20 +286,21 @@ export const PairOfHorses = (props) => {
         tallHeight={atLeastOneTallHorse}
         onClick={onClick ? onClick.horse2 : undefined}
         showAppleBox={hasHatsOrApples}
+        oneAppleMax={oneAppleMax}
       />
     </>
   );
 };
 
 const Apples = (props) => {
-  const { numApples, small = false } = props;
+  const { numApples, small = false, oneAppleMax } = props;
 
   const horseApples = [];
   for (let i = 0; i < numApples; i++) {
     horseApples.push(i);
   }
 
-  const tooManyApples = numApples > 10;
+  const tooManyApples = numApples > (oneAppleMax ? 1 : 10);
 
   return (
     <div className="flex gap-2 flex-wrap items-center">
