@@ -85,7 +85,7 @@ export const HorseArea = (props) => {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center mx-8">
+    <div className="flex flex-col justify-center px-8">
       <PlayingDate
         playingDate={playingDate}
         isPaused={isPaused}
