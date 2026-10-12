@@ -31,10 +31,11 @@ export const HorseArea = (props) => {
 
   const refreshGame = useCallback(() => {
     const currentHorse = JSON.parse(localStorage.getItem("current_horse"));
+    const newGoals = JSON.parse(localStorage.getItem("goals"));
     setCurrentHorse(currentHorse);
+    setGoals(newGoals);
     setLeftHorse(JSON.parse(localStorage.getItem("left_horse")));
     setRightHorse(JSON.parse(localStorage.getItem("right_horse")));
-    setGoals(JSON.parse(localStorage.getItem("goals")));
 
     const isNowPaused = localStorage.getItem("playing_state") === "paused";
     const weekFinished = localStorage.getItem("week_finished") === "yes";
@@ -44,7 +45,7 @@ export const HorseArea = (props) => {
     const chosenMessage = generateChoiceMadeMessage(currentHorse);
 
     if (weekFinished) {
-      setGameOverMessage(generateGameOverMessage(currentHorse, goals));
+      setGameOverMessage(generateGameOverMessage(currentHorse, newGoals));
     }
 
     if (isNowPaused && isPaused) {
