@@ -1,5 +1,5 @@
 import { weekInfo, weekMapping } from "./horseDemoInfo";
-import { interpretHorse, mergeHorses } from "./horseFunctions";
+import { choose, interpretHorse, mergeHorses } from "./horseFunctions";
 import { updateStable } from "./horseStorageFunctions";
 
 export function startGame(week) {
@@ -213,6 +213,16 @@ export function getPointsTotal(goals, horse) {
     return totalPoints;
 }
 
+export function getPossiblePoints(goals) {
+    let pointsSum = 0;
+
+    for (const [key, value] of Object.entries(goals)) {
+        pointsSum += getGoalPoints(key, value);
+    }
+
+    return pointsSum;
+}
+
 export function chooseHorse(option) {
     const currentHorse = JSON.parse(localStorage.getItem("current_horse"));
     const chosenHorse = JSON.parse(localStorage.getItem(`${option}_horse`));
@@ -262,4 +272,81 @@ export function chooseHorse(option) {
 
     // update stable
     updateStable(newHorse);
+}
+
+export function generateChoiceMadeMessage(horse) {
+    if (!horse) {
+        return 'Something strange has happened.';
+    }
+
+    const commentOptions = [
+        'You’ve made today’s choice—come back tomorrow for another one.',
+        'You’ve made today’s choice—come back tomorrow for another one.',
+        'You’ve made today’s choice—come back tomorrow for another one.',
+        'You’ve made today’s choice—come back tomorrow for another one.',
+        'What an adorable horse!',
+    ];
+
+    if (horse.apples > 4) {
+        if (horse.expression === 'frown') {
+            commentOptions.push('I do not think your horse likes apples. Unfortunately, it’s acquired so many ...');
+        }
+        commentOptions.push('Whoa, that’s quite a lot of apples.');
+        commentOptions.push('Your horse is quite the apple connoisseur.');
+        commentOptions.push('Looks like today is apple day!');
+    }
+
+    if (horse.hat) {
+        commentOptions.push('What a good-looking hat. If only your horse had a way to put it on.');
+        commentOptions.push('Nice hat!');
+    }
+
+    if (horse.expression === 'smile') {
+        commentOptions.push(':)');
+    }
+
+    return choose(commentOptions);
+}
+
+export function generateGameOverMessage(horse, goals) {
+    if (!horse) {
+        return 'Something strange has happened.'
+    }
+
+    const totalEarned = getPointsTotal(goals, horse);
+    const possiblePoints = getPossiblePoints(goals);
+
+    const allPointsEarned = totalEarned === possiblePoints;
+
+    if (allPointsEarned) {
+        return choose([
+            'Way to go achieving all those goals!',
+            'You’re a star :)',
+            'Wahoo! You’ve won horse game! (Actually there is not really a way to win horse game, but you have won it in my heart.',
+            'NICE!',
+            'Looks like you’ve earned the right to say that you are really good at horses.',
+            'Yay!!!!',
+            'Happy Sunday!'
+        ]);
+    }
+
+    if (totalEarned === 0) {
+        if (horse.expression === 'smile') {
+            return 'At least your horse is happy.';
+        }
+
+        if (horse.apples > 4) {
+            return 'At least you have some apples.';
+        }
+
+        return choose([
+            'Aw man ... better luck next week.',
+            'Maybe what matters the most is the horses we made along the way?',
+        ]);
+    }
+
+    return choose([
+        'Congrats on completing the week!',
+        'Another exciting week up ahead!'
+    ])
 }

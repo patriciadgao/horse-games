@@ -7,6 +7,8 @@ import {
 } from "../utils/horseFunctions";
 import {
   chooseHorse,
+  generateChoiceMadeMessage,
+  generateGameOverMessage,
   getCurrentDate,
   refreshGameStatus,
 } from "../utils/horseGameFunctions";
@@ -24,9 +26,12 @@ export const HorseArea = (props) => {
   const [demoOver, setDemoOver] = useState();
   const [goals, setGoals] = useState();
   const [showConfetti, setShowConfetti] = useState(false);
+  const [choiceMadeMessage, setChoiceMadeMessage] = useState();
+  const [gameOverMessage, setGameOverMessage] = useState();
 
   const refreshGame = useCallback(() => {
-    setCurrentHorse(JSON.parse(localStorage.getItem("current_horse")));
+    const currentHorse = JSON.parse(localStorage.getItem("current_horse"));
+    setCurrentHorse(currentHorse);
     setLeftHorse(JSON.parse(localStorage.getItem("left_horse")));
     setRightHorse(JSON.parse(localStorage.getItem("right_horse")));
     setGoals(JSON.parse(localStorage.getItem("goals")));
@@ -35,6 +40,12 @@ export const HorseArea = (props) => {
     const weekFinished = localStorage.getItem("week_finished") === "yes";
     const newPlayingDate = localStorage.getItem("playing_date");
     const isDemoOver = localStorage.getItem("demo_over");
+
+    const chosenMessage = generateChoiceMadeMessage(currentHorse);
+
+    if (weekFinished) {
+      setGameOverMessage(generateGameOverMessage(currentHorse, goals));
+    }
 
     if (isNowPaused && isPaused) {
       toast("oops, the date hasn't changed.", {
@@ -50,6 +61,7 @@ export const HorseArea = (props) => {
     setIsFinished(weekFinished);
     setPlayingDate(newPlayingDate);
     setDemoOver(isDemoOver);
+    setChoiceMadeMessage(chosenMessage);
   }, []);
 
   useEffect(() => {
@@ -116,7 +128,7 @@ export const HorseArea = (props) => {
                   numberOfPieces={700}
                 />
               )}
-              <div>Congrats on completing the week!</div>
+              <div>{gameOverMessage}</div>
             </>
           ) : (
             <>
@@ -138,9 +150,7 @@ export const HorseArea = (props) => {
                   numberOfPieces={100}
                 />
               )}
-              <div>
-                You’ve made today’s choice—come back tomorrow for another one.
-              </div>
+              <div>{choiceMadeMessage}</div>
             </>
           )
         ) : (
