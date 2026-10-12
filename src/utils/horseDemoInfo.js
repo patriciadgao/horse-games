@@ -129,7 +129,7 @@ export const weekInfo = {
         goals: { 'hat': 'no', 'shape': 'round', 'spots': 'speckled' },
     },
     4: {
-        startingHorse: { 'color': 'blue', 'shape': ['R', 'T', 'T'], 'spots': ['o', 'o'], 'expression': 'frown', 'hat': 'bowler', 'apples': 1 },
+        startingHorse: { 'color': 'copper', 'shape': ['R', 'T', 'T'], 'spots': ['o', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
         dateList: [
             '2026-10-19',
             '2026-10-20',
@@ -141,38 +141,38 @@ export const weekInfo = {
         ],
         choiceList: {
             '2026-10-19': {
-                left: { 'color': 'tan', 'shape': ['R', 'S', 'S'], 'spots': ['o', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'pink', 'shape': ['S', 'T', 'R'], 'spots': ['o', 'o'], 'expression': 'frown', 'hat': 'boss-of-the-plains', 'apples': 0 }
+                left: { 'color': 'tan', 'shape': ['T', 'S', 'T'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'pink', 'shape': ['T', 'R', 'T'], 'spots': ['O', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 }
             },
             '2026-10-20': {
-                left: { 'color': 'tan', 'shape': ['R', 'S', 'S'], 'spots': ['o', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'tan', 'shape': ['T', 'T', 'S'], 'spots': ['O', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'tan', 'shape': ['R', 'R', 'S'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': 'top', 'apples': 0 },
+                right: { 'color': 'copper', 'shape': ['T', 'R', 'T'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 1 }
             },
             '2026-10-21': {
-                left: { 'color': 'pink', 'shape': ['T', 'S', 'R'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': 'boss-of-the-plains', 'apples': 0 },
-                right: { 'color': 'pink', 'shape': ['S', 'S', 'T'], 'spots': ['o', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'blue', 'shape': ['R', 'S', 'R'], 'spots': ['O', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 1 },
+                right: { 'color': 'pink', 'shape': ['T', 'T', 'R'], 'spots': ['O', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
             },
             '2026-10-22': {
-                left: { 'color': 'green', 'shape': ['T', 'R', 'T'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': 'ten-gallon', 'apples': 0 },
-                right: { 'color': 'tan', 'shape': ['S', 'T', 'S'], 'spots': ['o', 'O'], 'expression': 'neutral', 'hat': 'bowler', 'apples': 0 }
+                left: { 'color': 'green', 'shape': ['T', 'T', 'R'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'pink', 'shape': ['T', 'T', 'T'], 'spots': ['o', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 }
             },
             '2026-10-23': {
-                left: { 'color': 'green', 'shape': ['R', 'S', 'R'], 'spots': ['O', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 1 },
-                right: { 'color': 'tan', 'shape': ['R', 'R', 'T'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': 'top', 'apples': 0 }
+                left: { 'color': 'pink', 'shape': ['S', 'R', 'R'], 'spots': ['o', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 1 },
+                right: { 'color': 'green', 'shape': ['R', 'T', 'T'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': 'ten-gallon', 'apples': 1 }
             },
             '2026-10-24': {
-                left: { 'color': 'blue', 'shape': ['S', 'R', 'R'], 'spots': ['o', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 1 },
-                right: { 'color': 'green', 'shape': ['T', 'R', 'R'], 'spots': ['o', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'tan', 'shape': ['S', 'T', 'T'], 'spots': ['o', 'O'], 'expression': 'neutral', 'hat': 'ten-gallon', 'apples': 0 },
+                right: { 'color': 'copper', 'shape': ['R', 'T', 'T'], 'spots': ['O', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
             },
             '2026-10-25': {
-                left: { 'color': 'pink', 'shape': ['S', 'R', 'R'], 'spots': ['o', 'o'], 'expression': 'neutral', 'hat': 'top', 'apples': 1 },
-                right: { 'color': 'tan', 'shape': ['R', 'R', 'R'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'blue', 'shape': ['S', 'T', 'R'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'blue', 'shape': ['S', 'T', 'T'], 'spots': ['O', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
             },
         },
-        goals: { 'expression': 'frown', 'hat': 'no', 'apples': '0' },
+        goals: { 'color': 'copper', 'hat': 'no', 'spots': 'speckled' },
     },
     5: {
-        startingHorse: { 'color': 'blue', 'shape': ['R', 'S', 'R'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
+        startingHorse: { 'color': 'pink', 'shape': ['S', 'R', 'T'], 'spots': ['o', 'o'], 'expression': 'frown', 'hat': 'bowler', 'apples': 0 },
         dateList: [
             '2026-10-26',
             '2026-10-27',
@@ -184,38 +184,38 @@ export const weekInfo = {
         ],
         choiceList: {
             '2026-10-26': {
-                left: { 'color': 'green', 'shape': ['T', 'T', 'T'], 'spots': ['O', 'O'], 'expression': 'smile', 'hat': 'top', 'apples': 0 },
-                right: { 'color': 'blue', 'shape': ['R', 'R', 'S'], 'spots': ['o', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'copper', 'shape': ['T', 'T', 'R'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': 'ten-gallon', 'apples': 0 },
+                right: { 'color': 'blue', 'shape': ['T', 'T', 'R'], 'spots': ['o', 'o'], 'expression': 'neutral', 'hat': 'bowler', 'apples': 0 }
             },
             '2026-10-27': {
-                left: { 'color': 'copper', 'shape': ['T', 'R', 'T'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': 'ten-gallon', 'apples': 0 },
-                right: { 'color': 'pink', 'shape': ['T', 'R', 'R'], 'spots': ['O', 'o'], 'expression': 'smile', 'hat': 'boss-of-the-plains', 'apples': 0 }
+                left: { 'color': 'blue', 'shape': ['S', 'S', 'S'], 'spots': ['O', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'copper', 'shape': ['S', 'T', 'S'], 'spots': ['o', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 }
             },
             '2026-10-28': {
-                left: { 'color': 'pink', 'shape': ['R', 'R', 'R'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': 'ten-gallon', 'apples': 0 },
-                right: { 'color': 'pink', 'shape': ['R', 'R', 'T'], 'spots': ['o', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'blue', 'shape': ['R', 'R', 'T'], 'spots': ['O', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 1 },
+                right: { 'color': 'pink', 'shape': ['R', 'R', 'T'], 'spots': ['O', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 }
             },
             '2026-10-29': {
-                left: { 'color': 'blue', 'shape': ['T', 'S', 'R'], 'spots': ['o', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 1 },
-                right: { 'color': 'green', 'shape': ['R', 'S', 'R'], 'spots': ['O', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'pink', 'shape': ['S', 'R', 'R'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'tan', 'shape': ['T', 'R', 'T'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': 'boss-of-the-plains', 'apples': 0 }
             },
             '2026-10-30': {
-                left: { 'color': 'green', 'shape': ['R', 'R', 'S'], 'spots': ['O', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 1 },
-                right: { 'color': 'tan', 'shape': ['R', 'R', 'R'], 'spots': ['o', 'O'], 'expression': 'neutral', 'hat': 'boss-of-the-plains', 'apples': 1 }
+                left: { 'color': 'tan', 'shape': ['R', 'S', 'T'], 'spots': ['o', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'tan', 'shape': ['S', 'S', 'R'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': 'boss-of-the-plains', 'apples': 0 }
             },
             '2026-10-31': {
-                left: { 'color': 'tan', 'shape': ['R', 'T', 'T'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': 'bowler', 'apples': 0 },
-                right: { 'color': 'tan', 'shape': ['T', 'S', 'T'], 'spots': ['O', 'O'], 'expression': 'neutral', 'hat': 'top', 'apples': 0 }
+                left: { 'color': 'pink', 'shape': ['R', 'R', 'T'], 'spots': ['o', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 1 },
+                right: { 'color': 'pink', 'shape': ['S', 'R', 'R'], 'spots': ['O', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
             },
             '2026-11-01': {
-                left: { 'color': 'tan', 'shape': ['S', 'S', 'S'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': 'boss-of-the-plains', 'apples': 0 },
-                right: { 'color': 'green', 'shape': ['R', 'R', 'T'], 'spots': ['o', 'O'], 'expression': 'neutral', 'hat': 'ten-gallon', 'apples': 0 }
+                left: { 'color': 'copper', 'shape': ['T', 'R', 'T'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'blue', 'shape': ['S', 'R', 'R'], 'spots': ['o', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 1 }
             },
         },
-        goals: { 'hat': 'yes', 'shape': 'round', 'apples': '0' },
+        goals: { 'shape': 'round', 'hat': 'no', 'apples': '2' },
     },
     6: {
-        startingHorse: { 'color': 'blue', 'shape': ['S', 'R', 'R'], 'spots': ['o', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
+        startingHorse: { 'color': 'copper', 'shape': ['S', 'T', 'T'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 1 },
         dateList: [
             '2026-11-02',
             '2026-11-03',
@@ -227,38 +227,38 @@ export const weekInfo = {
         ],
         choiceList: {
             '2026-11-02': {
-                left: { 'color': 'pink', 'shape': ['S', 'R', 'T'], 'spots': ['O', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'copper', 'shape': ['T', 'R', 'R'], 'spots': ['o', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'green', 'shape': ['S', 'R', 'S'], 'spots': ['o', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'copper', 'shape': ['R', 'R', 'T'], 'spots': ['o', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 }
             },
             '2026-11-03': {
-                left: { 'color': 'copper', 'shape': ['R', 'S', 'R'], 'spots': ['o', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'tan', 'shape': ['R', 'R', 'S'], 'spots': ['o', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'green', 'shape': ['T', 'R', 'T'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'pink', 'shape': ['S', 'T', 'T'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 }
             },
             '2026-11-04': {
-                left: { 'color': 'green', 'shape': ['T', 'S', 'S'], 'spots': ['o', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'blue', 'shape': ['R', 'S', 'T'], 'spots': ['o', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 1 }
+                left: { 'color': 'copper', 'shape': ['T', 'T', 'T'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 1 },
+                right: { 'color': 'pink', 'shape': ['T', 'T', 'T'], 'spots': ['O', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 }
             },
             '2026-11-05': {
-                left: { 'color': 'blue', 'shape': ['T', 'S', 'T'], 'spots': ['o', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'blue', 'shape': ['T', 'S', 'S'], 'spots': ['o', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 1 }
+                left: { 'color': 'pink', 'shape': ['T', 'R', 'T'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'tan', 'shape': ['R', 'S', 'R'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 }
             },
             '2026-11-06': {
-                left: { 'color': 'copper', 'shape': ['R', 'S', 'R'], 'spots': ['o', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 1 },
-                right: { 'color': 'green', 'shape': ['R', 'R', 'T'], 'spots': ['o', 'o'], 'expression': 'smile', 'hat': 'boss-of-the-plains', 'apples': 0 }
+                left: { 'color': 'tan', 'shape': ['T', 'T', 'S'], 'spots': ['O', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 1 },
+                right: { 'color': 'blue', 'shape': ['T', 'S', 'S'], 'spots': ['O', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
             },
             '2026-11-07': {
-                left: { 'color': 'tan', 'shape': ['T', 'R', 'R'], 'spots': ['O', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 1 },
-                right: { 'color': 'pink', 'shape': ['S', 'R', 'S'], 'spots': ['o', 'O'], 'expression': 'smile', 'hat': 'top', 'apples': 1 }
+                left: { 'color': 'green', 'shape': ['T', 'S', 'R'], 'spots': ['o', 'O'], 'expression': 'smile', 'hat': 'boss-of-the-plains', 'apples': 0 },
+                right: { 'color': 'green', 'shape': ['R', 'T', 'T'], 'spots': ['o', 'o'], 'expression': 'smile', 'hat': 'top', 'apples': 0 }
             },
             '2026-11-08': {
-                left: { 'color': 'green', 'shape': ['R', 'T', 'T'], 'spots': ['O', 'O'], 'expression': 'frown', 'hat': 'ten-gallon', 'apples': 0 },
-                right: { 'color': 'tan', 'shape': ['R', 'S', 'S'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': 'boss-of-the-plains', 'apples': 0 }
+                left: { 'color': 'copper', 'shape': ['R', 'R', 'T'], 'spots': ['o', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 1 },
+                right: { 'color': 'green', 'shape': ['T', 'S', 'T'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 1 }
             },
         },
-        goals: { 'shape': 'round', 'color': 'copper', 'hat': 'yes' },
+        goals: { 'hat': 'no', 'expression': 'frown', 'apples': '1' },
     },
     7: {
-        startingHorse: { 'color': 'green', 'shape': ['T', 'S', 'T'], 'spots': ['o', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
+        startingHorse: { 'color': 'pink', 'shape': ['T', 'R', 'S'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': 'boss-of-the-plains', 'apples': 1 },
         dateList: [
             '2026-11-09',
             '2026-11-10',
@@ -270,38 +270,38 @@ export const weekInfo = {
         ],
         choiceList: {
             '2026-11-09': {
-                left: { 'color': 'copper', 'shape': ['R', 'T', 'R'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 1 },
-                right: { 'color': 'pink', 'shape': ['S', 'S', 'T'], 'spots': ['O', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'pink', 'shape': ['S', 'S', 'S'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'pink', 'shape': ['T', 'R', 'R'], 'spots': ['O', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 1 }
             },
             '2026-11-10': {
-                left: { 'color': 'copper', 'shape': ['S', 'S', 'R'], 'spots': ['o', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 1 },
-                right: { 'color': 'green', 'shape': ['S', 'R', 'S'], 'spots': ['O', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'copper', 'shape': ['T', 'R', 'T'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'tan', 'shape': ['S', 'R', 'S'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 }
             },
             '2026-11-11': {
-                left: { 'color': 'tan', 'shape': ['S', 'S', 'R'], 'spots': ['O', 'O'], 'expression': 'neutral', 'hat': 'ten-gallon', 'apples': 0 },
-                right: { 'color': 'tan', 'shape': ['T', 'T', 'R'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': 'bowler', 'apples': 0 }
+                left: { 'color': 'blue', 'shape': ['T', 'S', 'S'], 'spots': ['o', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'copper', 'shape': ['R', 'R', 'S'], 'spots': ['o', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
             },
             '2026-11-12': {
-                left: { 'color': 'tan', 'shape': ['T', 'S', 'S'], 'spots': ['o', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'blue', 'shape': ['S', 'R', 'S'], 'spots': ['o', 'o'], 'expression': 'smile', 'hat': 'boss-of-the-plains', 'apples': 0 }
+                left: { 'color': 'copper', 'shape': ['S', 'R', 'S'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'tan', 'shape': ['T', 'S', 'T'], 'spots': ['o', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
             },
             '2026-11-13': {
-                left: { 'color': 'green', 'shape': ['T', 'S', 'T'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 1 },
-                right: { 'color': 'green', 'shape': ['S', 'T', 'T'], 'spots': ['O', 'O'], 'expression': 'neutral', 'hat': 'ten-gallon', 'apples': 0 }
+                left: { 'color': 'green', 'shape': ['R', 'R', 'S'], 'spots': ['O', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'copper', 'shape': ['R', 'S', 'R'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': 'top', 'apples': 0 }
             },
             '2026-11-14': {
-                left: { 'color': 'green', 'shape': ['S', 'T', 'T'], 'spots': ['o', 'o'], 'expression': 'neutral', 'hat': 'top', 'apples': 1 },
-                right: { 'color': 'blue', 'shape': ['S', 'T', 'S'], 'spots': ['o', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'blue', 'shape': ['S', 'S', 'T'], 'spots': ['o', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 1 },
+                right: { 'color': 'copper', 'shape': ['T', 'R', 'S'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 }
             },
             '2026-11-15': {
-                left: { 'color': 'pink', 'shape': ['T', 'R', 'S'], 'spots': ['O', 'O'], 'expression': 'frown', 'hat': 'ten-gallon', 'apples': 0 },
-                right: { 'color': 'blue', 'shape': ['R', 'S', 'R'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'blue', 'shape': ['S', 'S', 'S'], 'spots': ['o', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'green', 'shape': ['S', 'T', 'S'], 'spots': ['O', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
             },
         },
-        goals: { 'apples': '0', 'expression': 'frown', 'color': 'copper' },
+        goals: { 'color': 'tan', 'hat': 'no', 'apples': '0' },
     },
     8: {
-        startingHorse: { 'color': 'blue', 'shape': ['R', 'S', 'T'], 'spots': ['O', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 1 },
+        startingHorse: { 'color': 'blue', 'shape': ['S', 'S', 'R'], 'spots': ['o', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
         dateList: [
             '2026-11-16',
             '2026-11-17',
@@ -313,38 +313,38 @@ export const weekInfo = {
         ],
         choiceList: {
             '2026-11-16': {
-                left: { 'color': 'green', 'shape': ['R', 'R', 'T'], 'spots': ['O', 'O'], 'expression': 'smile', 'hat': 'bowler', 'apples': 0 },
-                right: { 'color': 'blue', 'shape': ['R', 'R', 'S'], 'spots': ['o', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'pink', 'shape': ['T', 'T', 'T'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 1 },
+                right: { 'color': 'blue', 'shape': ['S', 'T', 'S'], 'spots': ['o', 'O'], 'expression': 'neutral', 'hat': 'top', 'apples': 0 }
             },
             '2026-11-17': {
-                left: { 'color': 'green', 'shape': ['T', 'T', 'T'], 'spots': ['O', 'o'], 'expression': 'smile', 'hat': 'bowler', 'apples': 1 },
-                right: { 'color': 'blue', 'shape': ['S', 'R', 'S'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': 'boss-of-the-plains', 'apples': 0 }
+                left: { 'color': 'blue', 'shape': ['R', 'S', 'T'], 'spots': ['o', 'o'], 'expression': 'neutral', 'hat': 'top', 'apples': 0 },
+                right: { 'color': 'pink', 'shape': ['R', 'T', 'S'], 'spots': ['o', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 1 }
             },
             '2026-11-18': {
-                left: { 'color': 'tan', 'shape': ['S', 'S', 'R'], 'spots': ['o', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'pink', 'shape': ['T', 'T', 'T'], 'spots': ['o', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'green', 'shape': ['R', 'T', 'R'], 'spots': ['O', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'pink', 'shape': ['T', 'T', 'S'], 'spots': ['O', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
             },
             '2026-11-19': {
-                left: { 'color': 'blue', 'shape': ['R', 'R', 'S'], 'spots': ['o', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'tan', 'shape': ['T', 'T', 'S'], 'spots': ['O', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 1 }
+                left: { 'color': 'green', 'shape': ['S', 'T', 'S'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'green', 'shape': ['T', 'T', 'R'], 'spots': ['O', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 }
             },
             '2026-11-20': {
-                left: { 'color': 'copper', 'shape': ['R', 'T', 'S'], 'spots': ['O', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'blue', 'shape': ['S', 'T', 'T'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': 'bowler', 'apples': 1 }
+                left: { 'color': 'pink', 'shape': ['S', 'R', 'T'], 'spots': ['o', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'pink', 'shape': ['S', 'S', 'T'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 1 }
             },
             '2026-11-21': {
-                left: { 'color': 'pink', 'shape': ['R', 'R', 'S'], 'spots': ['O', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'copper', 'shape': ['S', 'T', 'T'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'blue', 'shape': ['S', 'S', 'S'], 'spots': ['O', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 1 },
+                right: { 'color': 'pink', 'shape': ['S', 'T', 'S'], 'spots': ['O', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 }
             },
             '2026-11-22': {
-                left: { 'color': 'tan', 'shape': ['R', 'S', 'S'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'copper', 'shape': ['S', 'T', 'R'], 'spots': ['O', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 1 }
+                left: { 'color': 'copper', 'shape': ['S', 'T', 'R'], 'spots': ['O', 'O'], 'expression': 'neutral', 'hat': 'ten-gallon', 'apples': 1 },
+                right: { 'color': 'tan', 'shape': ['R', 'S', 'S'], 'spots': ['o', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 1 }
             },
         },
-        goals: { 'apples': '0', 'spots': 'speckled', 'color': 'green' },
+        goals: { 'hat': 'no', 'spots': 'speckled', 'expression': 'frown' },
     },
     9: {
-        startingHorse: { 'color': 'green', 'shape': ['S', 'R', 'T'], 'spots': ['o', 'o'], 'expression': 'smile', 'hat': 'bowler', 'apples': 0 },
+        startingHorse: { 'color': 'tan', 'shape': ['T', 'R', 'R'], 'spots': ['o', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
         dateList: [
             '2026-11-23',
             '2026-11-24',
@@ -356,38 +356,38 @@ export const weekInfo = {
         ],
         choiceList: {
             '2026-11-23': {
-                left: { 'color': 'tan', 'shape': ['S', 'S', 'R'], 'spots': ['o', 'O'], 'expression': 'neutral', 'hat': 'boss-of-the-plains', 'apples': 0 },
-                right: { 'color': 'blue', 'shape': ['S', 'R', 'T'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': 'ten-gallon', 'apples': 1 }
+                left: { 'color': 'pink', 'shape': ['R', 'S', 'R'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 1 },
+                right: { 'color': 'blue', 'shape': ['R', 'S', 'R'], 'spots': ['O', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
             },
             '2026-11-24': {
-                left: { 'color': 'copper', 'shape': ['T', 'S', 'R'], 'spots': ['o', 'o'], 'expression': 'neutral', 'hat': 'bowler', 'apples': 0 },
-                right: { 'color': 'pink', 'shape': ['S', 'R', 'R'], 'spots': ['o', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 1 }
+                left: { 'color': 'pink', 'shape': ['T', 'R', 'S'], 'spots': ['O', 'O'], 'expression': 'frown', 'hat': 'bowler', 'apples': 1 },
+                right: { 'color': 'blue', 'shape': ['S', 'R', 'T'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': 'top', 'apples': 1 }
             },
             '2026-11-25': {
-                left: { 'color': 'tan', 'shape': ['S', 'R', 'S'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 1 },
-                right: { 'color': 'green', 'shape': ['R', 'T', 'T'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'copper', 'shape': ['R', 'T', 'S'], 'spots': ['o', 'o'], 'expression': 'neutral', 'hat': 'bowler', 'apples': 1 },
+                right: { 'color': 'copper', 'shape': ['R', 'T', 'T'], 'spots': ['o', 'O'], 'expression': 'neutral', 'hat': 'top', 'apples': 1 }
             },
             '2026-11-26': {
-                left: { 'color': 'tan', 'shape': ['T', 'R', 'R'], 'spots': ['o', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 1 },
-                right: { 'color': 'copper', 'shape': ['R', 'S', 'T'], 'spots': ['o', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 1 }
+                left: { 'color': 'blue', 'shape': ['S', 'R', 'T'], 'spots': ['o', 'o'], 'expression': 'neutral', 'hat': 'boss-of-the-plains', 'apples': 0 },
+                right: { 'color': 'green', 'shape': ['R', 'T', 'R'], 'spots': ['O', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 }
             },
             '2026-11-27': {
-                left: { 'color': 'pink', 'shape': ['R', 'T', 'S'], 'spots': ['O', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'green', 'shape': ['T', 'S', 'S'], 'spots': ['O', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 1 }
+                left: { 'color': 'copper', 'shape': ['T', 'R', 'T'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 1 },
+                right: { 'color': 'copper', 'shape': ['R', 'R', 'R'], 'spots': ['O', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 }
             },
             '2026-11-28': {
-                left: { 'color': 'tan', 'shape': ['S', 'R', 'S'], 'spots': ['o', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'pink', 'shape': ['S', 'T', 'S'], 'spots': ['O', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'copper', 'shape': ['S', 'S', 'S'], 'spots': ['O', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 1 },
+                right: { 'color': 'tan', 'shape': ['T', 'R', 'R'], 'spots': ['o', 'o'], 'expression': 'frown', 'hat': 'top', 'apples': 1 }
             },
             '2026-11-29': {
-                left: { 'color': 'green', 'shape': ['S', 'T', 'T'], 'spots': ['o', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 1 },
-                right: { 'color': 'green', 'shape': ['T', 'R', 'R'], 'spots': ['O', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 1 }
+                left: { 'color': 'green', 'shape': ['T', 'R', 'T'], 'spots': ['O', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'copper', 'shape': ['R', 'S', 'R'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 0 }
             },
         },
-        goals: { 'hat': 'no', 'color': 'blue', 'expression': 'neutral' },
+        goals: { 'spots': 'speckled', 'expression': 'neutral', 'color': 'tan' },
     },
     10: {
-        startingHorse: { 'color': 'copper', 'shape': ['T', 'S', 'T'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
+        startingHorse: { 'color': 'green', 'shape': ['R', 'R', 'S'], 'spots': ['O', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 },
         dateList: [
             '2026-11-30',
             '2026-12-01',
@@ -399,38 +399,38 @@ export const weekInfo = {
         ],
         choiceList: {
             '2026-11-30': {
-                left: { 'color': 'blue', 'shape': ['S', 'T', 'S'], 'spots': ['O', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'green', 'shape': ['S', 'T', 'S'], 'spots': ['o', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'pink', 'shape': ['S', 'S', 'S'], 'spots': ['O', 'O'], 'expression': 'smile', 'hat': 'top', 'apples': 1 },
+                right: { 'color': 'pink', 'shape': ['T', 'S', 'S'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 0 }
             },
             '2026-12-01': {
-                left: { 'color': 'green', 'shape': ['R', 'T', 'S'], 'spots': ['o', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'green', 'shape': ['T', 'T', 'T'], 'spots': ['O', 'o'], 'expression': 'smile', 'hat': 'bowler', 'apples': 0 }
+                left: { 'color': 'copper', 'shape': ['R', 'S', 'T'], 'spots': ['O', 'O'], 'expression': 'smile', 'hat': 'top', 'apples': 1 },
+                right: { 'color': 'blue', 'shape': ['T', 'S', 'T'], 'spots': ['O', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 1 }
             },
             '2026-12-02': {
-                left: { 'color': 'pink', 'shape': ['S', 'T', 'S'], 'spots': ['o', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 1 },
-                right: { 'color': 'copper', 'shape': ['R', 'S', 'R'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'green', 'shape': ['T', 'R', 'S'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'green', 'shape': ['R', 'S', 'T'], 'spots': ['O', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 }
             },
             '2026-12-03': {
-                left: { 'color': 'copper', 'shape': ['T', 'R', 'T'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 1 },
-                right: { 'color': 'pink', 'shape': ['S', 'S', 'S'], 'spots': ['o', 'O'], 'expression': 'smile', 'hat': 'bowler', 'apples': 1 }
+                left: { 'color': 'tan', 'shape': ['R', 'T', 'R'], 'spots': ['o', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'green', 'shape': ['R', 'T', 'S'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 }
             },
             '2026-12-04': {
-                left: { 'color': 'tan', 'shape': ['S', 'S', 'S'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': 'bowler', 'apples': 0 },
-                right: { 'color': 'copper', 'shape': ['R', 'R', 'R'], 'spots': ['o', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'copper', 'shape': ['T', 'R', 'R'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'blue', 'shape': ['T', 'S', 'S'], 'spots': ['o', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
             },
             '2026-12-05': {
-                left: { 'color': 'pink', 'shape': ['S', 'R', 'R'], 'spots': ['O', 'O'], 'expression': 'smile', 'hat': 'ten-gallon', 'apples': 0 },
-                right: { 'color': 'copper', 'shape': ['R', 'S', 'T'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'pink', 'shape': ['S', 'R', 'T'], 'spots': ['O', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 1 },
+                right: { 'color': 'green', 'shape': ['T', 'R', 'S'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 0 }
             },
             '2026-12-06': {
-                left: { 'color': 'pink', 'shape': ['S', 'T', 'R'], 'spots': ['O', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'copper', 'shape': ['T', 'R', 'T'], 'spots': ['O', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'copper', 'shape': ['T', 'S', 'T'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': 'ten-gallon', 'apples': 1 },
+                right: { 'color': 'copper', 'shape': ['R', 'T', 'S'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': 'ten-gallon', 'apples': 0 }
             },
         },
-        goals: { 'spots': 'spot', 'expression': 'neutral', 'hat': 'no' },
+        goals: { 'hat': 'yes', 'spots': 'speckled', 'shape': 'tall' },
     },
     11: {
-        startingHorse: { 'color': 'tan', 'shape': ['S', 'S', 'S'], 'spots': ['o', 'O'], 'expression': 'neutral', 'hat': 'boss-of-the-plains', 'apples': 1 },
+        startingHorse: { 'color': 'tan', 'shape': ['R', 'T', 'S'], 'spots': ['o', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 1 },
         dateList: [
             '2026-12-07',
             '2026-12-08',
@@ -442,38 +442,38 @@ export const weekInfo = {
         ],
         choiceList: {
             '2026-12-07': {
-                left: { 'color': 'pink', 'shape': ['R', 'S', 'R'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'pink', 'shape': ['T', 'S', 'R'], 'spots': ['o', 'o'], 'expression': 'smile', 'hat': 'ten-gallon', 'apples': 0 }
+                left: { 'color': 'tan', 'shape': ['R', 'S', 'R'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'tan', 'shape': ['R', 'T', 'T'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 0 }
             },
             '2026-12-08': {
-                left: { 'color': 'copper', 'shape': ['R', 'T', 'S'], 'spots': ['O', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'green', 'shape': ['R', 'R', 'R'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'pink', 'shape': ['S', 'R', 'R'], 'spots': ['o', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'pink', 'shape': ['T', 'T', 'T'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 0 }
             },
             '2026-12-09': {
-                left: { 'color': 'pink', 'shape': ['S', 'R', 'R'], 'spots': ['O', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 1 },
-                right: { 'color': 'tan', 'shape': ['T', 'S', 'T'], 'spots': ['O', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 1 }
+                left: { 'color': 'green', 'shape': ['R', 'S', 'R'], 'spots': ['O', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 1 },
+                right: { 'color': 'blue', 'shape': ['S', 'S', 'S'], 'spots': ['o', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 1 }
             },
             '2026-12-10': {
-                left: { 'color': 'blue', 'shape': ['R', 'T', 'S'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'pink', 'shape': ['R', 'S', 'R'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': 'top', 'apples': 0 }
+                left: { 'color': 'tan', 'shape': ['R', 'R', 'S'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 1 },
+                right: { 'color': 'tan', 'shape': ['R', 'R', 'R'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': 'bowler', 'apples': 1 }
             },
             '2026-12-11': {
-                left: { 'color': 'green', 'shape': ['R', 'T', 'S'], 'spots': ['O', 'O'], 'expression': 'frown', 'hat': 'top', 'apples': 0 },
-                right: { 'color': 'pink', 'shape': ['S', 'R', 'R'], 'spots': ['o', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 1 }
+                left: { 'color': 'tan', 'shape': ['S', 'S', 'T'], 'spots': ['o', 'o'], 'expression': 'frown', 'hat': 'top', 'apples': 0 },
+                right: { 'color': 'blue', 'shape': ['R', 'S', 'S'], 'spots': ['O', 'o'], 'expression': 'smile', 'hat': 'ten-gallon', 'apples': 0 }
             },
             '2026-12-12': {
-                left: { 'color': 'copper', 'shape': ['S', 'S', 'R'], 'spots': ['o', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 1 },
-                right: { 'color': 'green', 'shape': ['R', 'R', 'T'], 'spots': ['O', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'tan', 'shape': ['S', 'R', 'T'], 'spots': ['o', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'copper', 'shape': ['R', 'T', 'S'], 'spots': ['o', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
             },
             '2026-12-13': {
-                left: { 'color': 'pink', 'shape': ['T', 'S', 'S'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': 'top', 'apples': 0 },
-                right: { 'color': 'blue', 'shape': ['S', 'T', 'S'], 'spots': ['O', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 1 }
+                left: { 'color': 'pink', 'shape': ['S', 'T', 'R'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'blue', 'shape': ['S', 'T', 'S'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 1 }
             },
         },
-        goals: { 'apples': '1', 'spots': 'speckled', 'shape': 'round' },
+        goals: { 'expression': 'frown', 'color': 'green', 'shape': 'square' },
     },
     12: {
-        startingHorse: { 'color': 'green', 'shape': ['R', 'R', 'S'], 'spots': ['o', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 1 },
+        startingHorse: { 'color': 'pink', 'shape': ['T', 'S', 'R'], 'spots': ['o', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
         dateList: [
             '2026-12-14',
             '2026-12-15',
@@ -485,38 +485,38 @@ export const weekInfo = {
         ],
         choiceList: {
             '2026-12-14': {
-                left: { 'color': 'copper', 'shape': ['T', 'T', 'R'], 'spots': ['o', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'tan', 'shape': ['R', 'S', 'T'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'pink', 'shape': ['R', 'T', 'R'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 1 },
+                right: { 'color': 'pink', 'shape': ['T', 'S', 'T'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 }
             },
             '2026-12-15': {
-                left: { 'color': 'tan', 'shape': ['S', 'R', 'T'], 'spots': ['O', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'copper', 'shape': ['T', 'T', 'T'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 1 }
+                left: { 'color': 'blue', 'shape': ['R', 'T', 'S'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 1 },
+                right: { 'color': 'green', 'shape': ['T', 'S', 'T'], 'spots': ['o', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 1 }
             },
             '2026-12-16': {
-                left: { 'color': 'copper', 'shape': ['R', 'R', 'T'], 'spots': ['o', 'O'], 'expression': 'neutral', 'hat': 'boss-of-the-plains', 'apples': 1 },
-                right: { 'color': 'pink', 'shape': ['T', 'R', 'S'], 'spots': ['o', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'pink', 'shape': ['R', 'T', 'S'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': 'top', 'apples': 0 },
+                right: { 'color': 'green', 'shape': ['R', 'T', 'T'], 'spots': ['o', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 0 }
             },
             '2026-12-17': {
-                left: { 'color': 'green', 'shape': ['T', 'S', 'S'], 'spots': ['O', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'green', 'shape': ['R', 'S', 'T'], 'spots': ['O', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'blue', 'shape': ['R', 'R', 'R'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': 'bowler', 'apples': 0 },
+                right: { 'color': 'tan', 'shape': ['R', 'R', 'R'], 'spots': ['o', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
             },
             '2026-12-18': {
-                left: { 'color': 'copper', 'shape': ['R', 'R', 'T'], 'spots': ['o', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'pink', 'shape': ['S', 'S', 'S'], 'spots': ['o', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'blue', 'shape': ['R', 'R', 'T'], 'spots': ['O', 'o'], 'expression': 'smile', 'hat': 'top', 'apples': 0 },
+                right: { 'color': 'blue', 'shape': ['S', 'T', 'S'], 'spots': ['o', 'O'], 'expression': 'smile', 'hat': 'bowler', 'apples': 0 }
             },
             '2026-12-19': {
-                left: { 'color': 'pink', 'shape': ['S', 'T', 'S'], 'spots': ['o', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'pink', 'shape': ['R', 'R', 'T'], 'spots': ['O', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'blue', 'shape': ['S', 'S', 'R'], 'spots': ['O', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'pink', 'shape': ['T', 'T', 'S'], 'spots': ['o', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 }
             },
             '2026-12-20': {
-                left: { 'color': 'copper', 'shape': ['S', 'T', 'T'], 'spots': ['O', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'green', 'shape': ['S', 'R', 'T'], 'spots': ['O', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'green', 'shape': ['R', 'T', 'R'], 'spots': ['o', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 1 },
+                right: { 'color': 'pink', 'shape': ['S', 'R', 'R'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 }
             },
         },
-        goals: { 'spots': 'speckled', 'expression': 'neutral', 'color': 'tan' },
+        goals: { 'apples': '0', 'shape': 'round', 'spots': 'speckled' },
     },
     13: {
-        startingHorse: { 'color': 'pink', 'shape': ['T', 'S', 'T'], 'spots': ['o', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 1 },
+        startingHorse: { 'color': 'copper', 'shape': ['S', 'T', 'R'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': 'bowler', 'apples': 0 },
         dateList: [
             '2026-12-21',
             '2026-12-22',
@@ -528,38 +528,38 @@ export const weekInfo = {
         ],
         choiceList: {
             '2026-12-21': {
-                left: { 'color': 'tan', 'shape': ['T', 'R', 'R'], 'spots': ['O', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'pink', 'shape': ['S', 'S', 'R'], 'spots': ['O', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'blue', 'shape': ['T', 'R', 'S'], 'spots': ['O', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'copper', 'shape': ['R', 'S', 'S'], 'spots': ['o', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 }
             },
             '2026-12-22': {
-                left: { 'color': 'tan', 'shape': ['S', 'R', 'S'], 'spots': ['o', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'tan', 'shape': ['S', 'S', 'S'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': 'bowler', 'apples': 0 }
+                left: { 'color': 'pink', 'shape': ['T', 'T', 'T'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'green', 'shape': ['R', 'R', 'T'], 'spots': ['O', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
             },
             '2026-12-23': {
-                left: { 'color': 'pink', 'shape': ['R', 'T', 'S'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'tan', 'shape': ['R', 'T', 'R'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'tan', 'shape': ['R', 'R', 'R'], 'spots': ['O', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 1 },
+                right: { 'color': 'pink', 'shape': ['S', 'R', 'R'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': 'boss-of-the-plains', 'apples': 1 }
             },
             '2026-12-24': {
-                left: { 'color': 'blue', 'shape': ['R', 'R', 'T'], 'spots': ['o', 'O'], 'expression': 'smile', 'hat': 'bowler', 'apples': 1 },
-                right: { 'color': 'copper', 'shape': ['S', 'S', 'S'], 'spots': ['O', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'blue', 'shape': ['R', 'T', 'S'], 'spots': ['o', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'pink', 'shape': ['S', 'T', 'T'], 'spots': ['O', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 }
             },
             '2026-12-25': {
-                left: { 'color': 'copper', 'shape': ['S', 'R', 'T'], 'spots': ['O', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'blue', 'shape': ['T', 'S', 'R'], 'spots': ['o', 'O'], 'expression': 'smile', 'hat': 'top', 'apples': 0 }
+                left: { 'color': 'tan', 'shape': ['R', 'R', 'R'], 'spots': ['o', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'tan', 'shape': ['T', 'T', 'R'], 'spots': ['O', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 }
             },
             '2026-12-26': {
-                left: { 'color': 'green', 'shape': ['S', 'R', 'R'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'pink', 'shape': ['R', 'S', 'S'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': 'top', 'apples': 1 }
+                left: { 'color': 'pink', 'shape': ['R', 'R', 'T'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': 'top', 'apples': 0 },
+                right: { 'color': 'tan', 'shape': ['S', 'S', 'S'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 }
             },
             '2026-12-27': {
-                left: { 'color': 'tan', 'shape': ['T', 'S', 'T'], 'spots': ['o', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 1 },
-                right: { 'color': 'pink', 'shape': ['S', 'T', 'T'], 'spots': ['O', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'blue', 'shape': ['T', 'S', 'T'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 1 },
+                right: { 'color': 'pink', 'shape': ['T', 'S', 'R'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 }
             },
         },
-        goals: { 'color': 'pink', 'hat': 'no', 'expression': 'neutral' },
+        goals: { 'shape': 'tall', 'apples': '1', 'color': 'copper' },
     },
     14: {
-        startingHorse: { 'color': 'blue', 'shape': ['S', 'S', 'T'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
+        startingHorse: { 'color': 'green', 'shape': ['S', 'R', 'T'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': 'bowler', 'apples': 0 },
         dateList: [
             '2026-12-28',
             '2026-12-29',
@@ -571,38 +571,38 @@ export const weekInfo = {
         ],
         choiceList: {
             '2026-12-28': {
-                left: { 'color': 'green', 'shape': ['R', 'S', 'S'], 'spots': ['O', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 1 },
-                right: { 'color': 'pink', 'shape': ['S', 'R', 'S'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': 'bowler', 'apples': 0 }
+                left: { 'color': 'pink', 'shape': ['T', 'R', 'S'], 'spots': ['O', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'green', 'shape': ['S', 'T', 'S'], 'spots': ['o', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 }
             },
             '2026-12-29': {
-                left: { 'color': 'blue', 'shape': ['T', 'T', 'R'], 'spots': ['o', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'copper', 'shape': ['S', 'T', 'S'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': 'top', 'apples': 1 }
+                left: { 'color': 'copper', 'shape': ['R', 'S', 'T'], 'spots': ['o', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'green', 'shape': ['S', 'R', 'T'], 'spots': ['o', 'o'], 'expression': 'smile', 'hat': 'boss-of-the-plains', 'apples': 0 }
             },
             '2026-12-30': {
-                left: { 'color': 'pink', 'shape': ['R', 'R', 'R'], 'spots': ['o', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'copper', 'shape': ['S', 'S', 'R'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'green', 'shape': ['R', 'T', 'T'], 'spots': ['O', 'O'], 'expression': 'neutral', 'hat': 'top', 'apples': 0 },
+                right: { 'color': 'tan', 'shape': ['S', 'T', 'T'], 'spots': ['o', 'O'], 'expression': 'smile', 'hat': 'top', 'apples': 1 }
             },
             '2026-12-31': {
-                left: { 'color': 'blue', 'shape': ['T', 'T', 'S'], 'spots': ['O', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 1 },
-                right: { 'color': 'tan', 'shape': ['T', 'R', 'T'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'green', 'shape': ['R', 'T', 'S'], 'spots': ['o', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'green', 'shape': ['R', 'R', 'T'], 'spots': ['O', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 1 }
             },
             '2027-01-01': {
-                left: { 'color': 'blue', 'shape': ['R', 'S', 'R'], 'spots': ['O', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'pink', 'shape': ['T', 'S', 'S'], 'spots': ['o', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 1 }
+                left: { 'color': 'pink', 'shape': ['T', 'T', 'R'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 1 },
+                right: { 'color': 'copper', 'shape': ['T', 'S', 'T'], 'spots': ['o', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 1 }
             },
             '2027-01-02': {
-                left: { 'color': 'green', 'shape': ['S', 'T', 'S'], 'spots': ['O', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'copper', 'shape': ['T', 'S', 'S'], 'spots': ['o', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'green', 'shape': ['S', 'R', 'S'], 'spots': ['o', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'pink', 'shape': ['T', 'R', 'R'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 0 }
             },
             '2027-01-03': {
-                left: { 'color': 'copper', 'shape': ['R', 'S', 'T'], 'spots': ['o', 'o'], 'expression': 'neutral', 'hat': 'top', 'apples': 0 },
-                right: { 'color': 'tan', 'shape': ['S', 'S', 'T'], 'spots': ['O', 'o'], 'expression': 'frown', 'hat': 'boss-of-the-plains', 'apples': 0 }
+                left: { 'color': 'tan', 'shape': ['S', 'S', 'T'], 'spots': ['o', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 1 },
+                right: { 'color': 'green', 'shape': ['S', 'R', 'T'], 'spots': ['o', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 1 }
             },
         },
-        goals: { 'expression': 'smile', 'apples': '0', 'spots': 'speckled' },
+        goals: { 'color': 'blue', 'apples': '1', 'hat': 'no' },
     },
     15: {
-        startingHorse: { 'color': 'copper', 'shape': ['R', 'R', 'S'], 'spots': ['o', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
+        startingHorse: { 'color': 'pink', 'shape': ['T', 'S', 'S'], 'spots': ['o', 'o'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
         dateList: [
             '2027-01-04',
             '2027-01-05',
@@ -614,37 +614,36 @@ export const weekInfo = {
         ],
         choiceList: {
             '2027-01-04': {
-                left: { 'color': 'tan', 'shape': ['T', 'S', 'R'], 'spots': ['O', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'green', 'shape': ['S', 'R', 'S'], 'spots': ['O', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 1 }
+                left: { 'color': 'tan', 'shape': ['S', 'T', 'S'], 'spots': ['o', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 1 },
+                right: { 'color': 'blue', 'shape': ['S', 'S', 'T'], 'spots': ['O', 'O'], 'expression': 'neutral', 'hat': 'boss-of-the-plains', 'apples': 1 }
             },
             '2027-01-05': {
-                left: { 'color': 'green', 'shape': ['R', 'S', 'R'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': 'ten-gallon', 'apples': 0 },
-                right: { 'color': 'copper', 'shape': ['R', 'S', 'S'], 'spots': ['O', 'O'], 'expression': 'neutral', 'hat': 'ten-gallon', 'apples': 1 }
+                left: { 'color': 'pink', 'shape': ['R', 'R', 'T'], 'spots': ['o', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'green', 'shape': ['S', 'T', 'T'], 'spots': ['o', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
             },
             '2027-01-06': {
-                left: { 'color': 'green', 'shape': ['S', 'S', 'R'], 'spots': ['O', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'green', 'shape': ['S', 'T', 'T'], 'spots': ['O', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 1 }
+                left: { 'color': 'blue', 'shape': ['T', 'S', 'S'], 'spots': ['o', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'copper', 'shape': ['S', 'R', 'T'], 'spots': ['o', 'o'], 'expression': 'neutral', 'hat': 'top', 'apples': 0 }
             },
             '2027-01-07': {
-                left: { 'color': 'blue', 'shape': ['T', 'R', 'R'], 'spots': ['o', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'tan', 'shape': ['S', 'T', 'S'], 'spots': ['o', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'green', 'shape': ['T', 'R', 'T'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 1 },
+                right: { 'color': 'tan', 'shape': ['R', 'R', 'R'], 'spots': ['O', 'O'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 }
             },
             '2027-01-08': {
-                left: { 'color': 'pink', 'shape': ['T', 'T', 'S'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 1 },
-                right: { 'color': 'tan', 'shape': ['R', 'S', 'S'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': 'boss-of-the-plains', 'apples': 0 }
+                left: { 'color': 'tan', 'shape': ['R', 'T', 'T'], 'spots': ['o', 'o'], 'expression': 'smile', 'hat': undefined, 'apples': 1 },
+                right: { 'color': 'pink', 'shape': ['T', 'R', 'R'], 'spots': ['O', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
             },
             '2027-01-09': {
-                left: { 'color': 'copper', 'shape': ['R', 'R', 'S'], 'spots': ['O', 'o'], 'expression': 'neutral', 'hat': undefined, 'apples': 0 },
-                right: { 'color': 'blue', 'shape': ['S', 'T', 'T'], 'spots': ['o', 'o'], 'expression': 'smile', 'hat': 'ten-gallon', 'apples': 0 }
+                left: { 'color': 'green', 'shape': ['R', 'T', 'S'], 'spots': ['O', 'o'], 'expression': 'smile', 'hat': 'ten-gallon', 'apples': 1 },
+                right: { 'color': 'pink', 'shape': ['T', 'R', 'T'], 'spots': ['O', 'o'], 'expression': 'smile', 'hat': 'boss-of-the-plains', 'apples': 0 }
             },
             '2027-01-10': {
-                left: { 'color': 'pink', 'shape': ['S', 'T', 'R'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': 'top', 'apples': 0 },
-                right: { 'color': 'pink', 'shape': ['R', 'S', 'S'], 'spots': ['o', 'O'], 'expression': 'smile', 'hat': undefined, 'apples': 0 }
+                left: { 'color': 'tan', 'shape': ['T', 'R', 'T'], 'spots': ['o', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 },
+                right: { 'color': 'pink', 'shape': ['R', 'R', 'T'], 'spots': ['O', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 }
             },
         },
-        goals: { 'shape': 'square', 'apples': '0', 'hat': 'yes' },
+        goals: { 'apples': '0', 'color': 'green', 'expression': 'frown' },
     },
-
 }
 
 export const weekMapping = {

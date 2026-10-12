@@ -1,6 +1,12 @@
 import datetime
 import random
 
+####
+# Script to generate demo horse games from 09-28-26 to 01-10-27. 
+# 
+# Remember to replace "None" with "undefined"—otherwise the output is fine. 
+####
+
 colors = ['tan', 'blue', 'pink', 'green', 'copper']
 shapes = ['round', 'square', 'tall', 'short']
 shape_genes = ['R', 'S', 'T']
@@ -28,12 +34,21 @@ def generate_horse():
 
     return horse
 
+def count_horse_differences(horse1, horse2):
+    first_horse = interpret_horse(horse1)
+    second_horse = interpret_horse(horse2)
+
+    differences = 0
+    for attribute in attributes:
+        if first_horse[attribute] == second_horse[attribute]:
+            differences += 1
+
+    return differences
+
 def generate_different_horse(horse):
     new_horse = generate_horse()
 
-    interpreted_horse = interpret_horse(horse)
-
-    while interpret_horse(new_horse) == interpreted_horse:
+    while count_horse_differences(horse, new_horse) < 2:
         new_horse = generate_horse()
 
     return new_horse
@@ -223,8 +238,7 @@ for setting in total_settings:
 
 # then choose two option horses for each day
 
-# analyze the possib
-# le horses that you could end up with at the end of this week 
+# analyze the possible horses that you could end up with at the end of this week 
 # for the first five weeks, choose the horse that is most likely (break ties randomly)
 # choose from its attributes for the weekly goals
 # three goals every week 
