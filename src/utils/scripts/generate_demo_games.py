@@ -118,113 +118,133 @@ def merge_horses(horse1, horse2):
         'apples': horse1['apples'] + horse2['apples'] if horse2['apples'] else random.choices([max(horse1['apples'] - 1, 0), horse1['apples']*2], [0.75, 0.25], k=1)[0]
     }
 
-# 15 weeks for the trial starting yesterday
-start_date = datetime.date(2026, 9, 28)
+def generate_demo_weeks(start_year, start_month, start_day, num_weeks, start_numbering_at = 1):
+    # 15 weeks for the trial starting yesterday
+    start_date = datetime.date(start_year, start_month, start_day)
 
-total_settings = []
+    total_settings = []
 
-for week in range(15):
-    options = []
+    for week in range(num_weeks):
+        options = []
 
-    starting_horse = generate_horse()
+        starting_horse = generate_horse()
 
-    for day in range(7):
-        day = start_date + datetime.timedelta(weeks=week, days=day)
-        day_formatted = day.strftime('%Y-%m-%d')
-
-        left_horse = generate_horse()
-        right_horse = generate_different_horse(left_horse)
-        options.append((day_formatted, left_horse, right_horse))
-
-    # obtain 100 possible horses 
-    possible_horses = []
-
-    for x in range(1000):
-        # go through the week and choose 
-        horse = starting_horse
         for day in range(7):
-            horse = merge_horses(horse, random.choice(options[day][1:]))
+            day = start_date + datetime.timedelta(weeks=week, days=day)
+            day_formatted = day.strftime('%Y-%m-%d')
 
-        possible_horses.append(horse)
+            left_horse = generate_horse()
+            right_horse = generate_different_horse(left_horse)
+            options.append((day_formatted, left_horse, right_horse))
 
-    result_dict = {}
-    horse_type_dict = {}
+        # obtain 100 possible horses 
+        possible_horses = []
 
-    for horse in possible_horses:
-        interpreted_horse = interpret_horse(horse)
-        flattened_horse = flatten_horse(interpreted_horse)
-        title = get_horse_title(interpreted_horse)
-        if flattened_horse in result_dict:
-            result_dict[flattened_horse] += 1
-        else:
-            result_dict[flattened_horse] = 1
-        if title in horse_type_dict:
-            horse_type_dict[title] += 1
-        else:
-            horse_type_dict[title] = 1
+        for _ in range(1000):
+            # go through the week and choose 
+            horse = starting_horse
+            for day in range(7):
+                horse = merge_horses(horse, random.choice(options[day][1:]))
 
-    max_key = max(result_dict, key=result_dict.get)
-    # print('\n\n')
-    # print('horses achieved: ', len(horse_type_dict), '/180')
-    # print('max number of horses with this', result_dict[max_key])
-    horse_attributes = max_key.split('-')
-    goal_horse = {
-        'shape': horse_attributes[0],
-        'color': horse_attributes[1],
-        'spots': horse_attributes[2],
-        'expression': horse_attributes[3],
-        'hat': 'yes' if horse_attributes[4] == 'hat' else 'no',
-        'apples': horse_attributes[5]
-    }
+            possible_horses.append(horse)
 
-    # choose three attributes of this horse to store as goals 
-    goals = {}
-    goal_categories = random.sample(attributes, k=3)
+        result_dict = {}
+        horse_type_dict = {}
 
-    for c in goal_categories:
-        goals[c] = goal_horse[c]
+        for horse in possible_horses:
+            interpreted_horse = interpret_horse(horse)
+            flattened_horse = flatten_horse(interpreted_horse)
+            title = get_horse_title(interpreted_horse)
+            if flattened_horse in result_dict:
+                result_dict[flattened_horse] += 1
+            else:
+                result_dict[flattened_horse] = 1
+            if title in horse_type_dict:
+                horse_type_dict[title] += 1
+            else:
+                horse_type_dict[title] = 1
 
-    total_settings.append({
-        'starting_horse': starting_horse,
-        'choices': options,
-        'goals': goals,
-        'week_number': week
-    })
+        max_key = max(result_dict, key=result_dict.get)
+        # print('\n\n')
+        # print('horses achieved: ', len(horse_type_dict), '/180')
+        # print('max number of horses with this', result_dict[max_key])
+        horse_attributes = max_key.split('-')
+        goal_horse = {
+            'shape': horse_attributes[0],
+            'color': horse_attributes[1],
+            'spots': horse_attributes[2],
+            'expression': horse_attributes[3],
+            'hat': 'yes' if horse_attributes[4] == 'hat' else 'no',
+            'apples': horse_attributes[5]
+        }
 
-# print map of date to week number
-week_number = 1
-week_counter = 0
-date_map = []
-for x in range(15*7):
-    week_counter += 1
-    if week_counter > 7:
-        week_counter = 1
-        week_number += 1
+        # choose three attributes of this horse to store as goals 
+        goals = {}
+        goal_categories = random.sample(attributes, k=3)
 
-    date = start_date + datetime.timedelta(days=x)
+        for c in goal_categories:
+            goals[c] = goal_horse[c]
 
-    date_formatted = date.strftime("%Y-%m-%d")
-    date_map.append((date_formatted, week_number))
+        total_settings.append({
+            'starting_horse': starting_horse,
+            'choices': options,
+            'goals': goals,
+            'week_number': week + start_numbering_at - 1
+        })
 
-# print(date_map)
+    # print map of date to week number
+    # week_number = 1
+    # week_counter = 0
+    # date_map = []
+    # for x in range(15*7):
+    #     week_counter += 1
+    #     if week_counter > 7:
+    #         week_counter = 1
+    #         week_number += 1
 
-# for mapping in date_map:
-#     print(f"'{mapping[0]}': {mapping[1]},")
+    #     date = start_date + datetime.timedelta(days=x)
 
-for setting in total_settings:
-    print(setting['week_number']+1, ":", "{",f"startingHorse: {setting['starting_horse']},")
-    print("dateList: [")
-    for day in setting['choices']:
-        print(f"'{day[0]}',")
-    print("],")
-    print("choiceList: {"),
-    for day in setting['choices']:
-        print(f"'{day[0]}':","{")
-        print(f"left: {day[1]},")
-        print(f"right: {day[2]}","},")
-    print("},")
-    print("goals: ", setting['goals'],",")
-    print("},")
+    #     date_formatted = date.strftime("%Y-%m-%d")
+    #     date_map.append((date_formatted, week_number))
+
+    # print(date_map)
+
+    # for mapping in date_map:
+    #     print(f"'{mapping[0]}': {mapping[1]},")
+
+    return total_settings
+
+def print_settings(settings):
+    for setting in settings:
+        print(setting['week_number']+1, ":", "{",f"startingHorse: {setting['starting_horse']},")
+        print("dateList: [")
+        for day in setting['choices']:
+            print(f"'{day[0]}',")
+        print("],")
+        print("choiceList: {"),
+        for day in setting['choices']:
+            print(f"'{day[0]}':","{")
+            print(f"left: {day[1]},")
+            print(f"right: {day[2]}","},")
+        print("},")
+        print("goals: ", setting['goals'],",")
+        print("},")
+
+# print_settings(generate_demo_weeks(2026, 09, 28, 15))
+
+week_four_settings = generate_demo_weeks(2026, 10, 12, 1, 4)
+week_goals = week_four_settings[0]['goals']
+
+while ('hat' not in week_goals or
+    'shape' not in week_goals or
+    'spots' not in week_goals or 
+    week_goals['hat'] != 'no' or 
+    week_goals['shape'] != 'round' or
+    week_goals['spots'] != 'speckled'):
+    week_four_settings = generate_demo_weeks(2026, 10, 12, 1, 4)
+    week_goals = week_four_settings[0]['goals']
+
+print_settings(week_four_settings)
 
 # print(total_settings)
 
