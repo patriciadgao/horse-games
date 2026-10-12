@@ -31,12 +31,12 @@ export const HorseArea = (props) => {
     setRightHorse(JSON.parse(localStorage.getItem("right_horse")));
     setGoals(JSON.parse(localStorage.getItem("goals")));
 
-    const isNewlyPaused = localStorage.getItem("playing_state") === "paused";
+    const isNowPaused = localStorage.getItem("playing_state") === "paused";
     const weekFinished = localStorage.getItem("week_finished") === "yes";
     const newPlayingDate = localStorage.getItem("playing_date");
     const isDemoOver = localStorage.getItem("demo_over");
 
-    if (isNewlyPaused && isPaused) {
+    if (isNowPaused && isPaused) {
       toast("oops, the date hasn't changed.", {
         duration: 1800,
         style: {
@@ -46,7 +46,7 @@ export const HorseArea = (props) => {
       });
     }
 
-    setIsPaused(isNewlyPaused);
+    setIsPaused(isNowPaused);
     setIsFinished(weekFinished);
     setPlayingDate(newPlayingDate);
     setDemoOver(isDemoOver);
