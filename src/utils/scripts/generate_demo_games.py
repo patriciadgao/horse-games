@@ -48,7 +48,7 @@ def count_horse_differences(horse1, horse2):
 def generate_different_horse(horse):
     new_horse = generate_horse()
 
-    while count_horse_differences(horse, new_horse) < 2:
+    while count_horse_differences(horse, new_horse) < 3:
         new_horse = generate_horse()
 
     return new_horse
@@ -230,10 +230,11 @@ def print_settings(settings):
         print("goals: ", setting['goals'],",")
         print("},")
 
-# print_settings(generate_demo_weeks(2026, 09, 28, 15))
+# print_settings(generate_demo_weeks(2026, 9, 28, 15))
 
-week_four_settings = generate_demo_weeks(2026, 10, 12, 1, 4)
-week_goals = week_four_settings[0]['goals']
+week_three_settings = generate_demo_weeks(2026, 10, 12, 1, 3)
+week_goals = week_three_settings[0]['goals']
+trials = 1
 
 while ('hat' not in week_goals or
     'shape' not in week_goals or
@@ -241,10 +242,12 @@ while ('hat' not in week_goals or
     week_goals['hat'] != 'no' or 
     week_goals['shape'] != 'round' or
     week_goals['spots'] != 'speckled'):
-    week_four_settings = generate_demo_weeks(2026, 10, 12, 1, 4)
-    week_goals = week_four_settings[0]['goals']
+    week_three_settings = generate_demo_weeks(2026, 10, 12, 1, 3)
+    week_goals = week_three_settings[0]['goals']
+    print(trials)
+    trials += 1
 
-print_settings(week_four_settings)
+print_settings(week_three_settings)
 
 # print(total_settings)
 
