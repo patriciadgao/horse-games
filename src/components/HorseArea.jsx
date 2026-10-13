@@ -94,9 +94,10 @@ export const HorseArea = (props) => {
       <div className="flex flex-col">
         <div className="DisplayFont font-bold text-red-700 flex justify-center">
           <div className="max-w-96">
-            There is some sort of bug that has prevented the choice from
-            changing between today and yesterday. Sorry about that, I'm on it! -
-            Pat
+            There was a bug that prevented the choice from changing between
+            today and yesterday. I've fixed it, but if you've already made the
+            choice for today, come back this afternoon. I'll try to get it so
+            you can make the actual choice for today! (Oct 13)
           </div>
         </div>
         {demoOver && (
