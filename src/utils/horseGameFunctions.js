@@ -233,7 +233,7 @@ export function chooseHorse(option) {
     const currentWeek = JSON.parse(localStorage.getItem('playing_week'));
     const weekData = weekInfo[currentWeek];
 
-    const playingDate = localStorage.getItem('playing_date');
+    let playingDate = localStorage.getItem('playing_date');
 
     // pause if we just played today's date
     if (playingDate === currentDate) {
@@ -244,7 +244,9 @@ export function chooseHorse(option) {
     let weekFinished = false
     if (playingDate !== weekData.dateList.at(-1)) {
         const nextIndex = weekData.dateList.indexOf(playingDate) + 1;
-        localStorage.setItem('playing_date', weekData.dateList[nextIndex]);
+        const nextPlayingDate = weekData.dateList[nextIndex];
+        playingDate = nextPlayingDate
+        localStorage.setItem('playing_date', nextPlayingDate);
         localStorage.removeItem('week_finished');
     } else {
         weekFinished = true;
