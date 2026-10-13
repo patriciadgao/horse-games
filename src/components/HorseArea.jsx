@@ -92,6 +92,13 @@ export const HorseArea = (props) => {
         refresh={() => setNeedsRefresh(true)}
       />
       <div className="flex flex-col">
+        <div className="DisplayFont font-bold text-red-700 flex justify-center">
+          <div className="max-w-96">
+            There is some sort of bug that has prevented the choice from
+            changing between today and yesterday. Sorry about that, I'm on it! -
+            Pat
+          </div>
+        </div>
         {demoOver && (
           <div className="DisplayFont font-bold text-red-700 flex justify-center">
             <div className="max-w-96">
