@@ -40,6 +40,46 @@ export function refreshGameStatus() {
     } else if (playingState === 'paused' && playingDate === currentDate && !weekFinished) {
         localStorage.setItem('playing_state', 'playing');
     }
+
+    /*
+        Fix one-time Oct 13 bug if someone played the buggy way
+        Reset them if so. (Delete chunk after October 14)
+    */
+    // If current playing date is October 14
+    if (playingDate === '2026-10-14') {
+        const lineage = JSON.parse(localStorage.getItem('lineage'));
+        if (lineage.length > 4) {
+            const secondChoiceHorse = lineage[3];
+            const secondHorseString = JSON.stringify(secondChoiceHorse);
+
+            // and the lineage contains one of the errant horses
+            if (secondHorseString === JSON.stringify(
+                { 'color': 'green', 'shape': ['S', 'R', 'T'], 'spots': ['o', 'o'], 'expression': 'frown', 'hat': 'ten-gallon', 'apples': 0 }) ||
+                secondHorseString === JSON.stringify({
+                    'color': 'blue', 'shape': ['S', 'R', 'T'], 'spots': ['o', 'o'], 'expression': 'neutral', 'hat': 'ten-gallon', 'apples': 0
+                })) {
+                // remove errant horse from lineage
+                const newLineage = lineage.slice(0, 3);
+
+                // update horse choices and current horse 
+                const leftHorse = { 'color': 'pink', 'shape': ['R', 'R', 'T'], 'spots': ['o', 'o'], 'expression': 'frown', 'hat': 'ten-gallon', 'apples': 0 };
+                const rightHorse = { 'color': 'pink', 'shape': ['T', 'S', 'S'], 'spots': ['O', 'O'], 'expression': 'frown', 'hat': undefined, 'apples': 0 };
+                const newCurrentHorse = lineage[2];
+
+                // update lineage and horse choices in storage
+                localStorage.setItem('lineage', JSON.stringify(newLineage));
+                localStorage.setItem('left_horse', JSON.stringify(leftHorse));
+                localStorage.setItem('right_horse', JSON.stringify(rightHorse));
+                localStorage.setItem('current_horse', JSON.stringify(newCurrentHorse));
+
+                // reset playing date to Oct 13
+                localStorage.setItem('playing_date', '2026-10-13');
+
+                // set playing state to 'playing'
+                localStorage.setItem('playing_state', 'playing');
+            }
+        }
+    }
 }
 
 export function getGoalPoints(goalType, goal) {
