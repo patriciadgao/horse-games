@@ -92,13 +92,6 @@ export const HorseArea = (props) => {
         refresh={() => setNeedsRefresh(true)}
       />
       <div className="flex flex-col">
-        <div className="DisplayFont font-bold text-red-700 flex justify-center">
-          <div className="max-w-96">
-            There was a bug that prevented the choice from changing between
-            today and yesterday. I've fixed it so you can make the real choice
-            for Tuesday, Oct 13 if you haven't. Enjoy!
-          </div>
-        </div>
         {demoOver && (
           <div className="DisplayFont font-bold text-red-700 flex justify-center">
             <div className="max-w-96">
