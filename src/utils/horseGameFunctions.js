@@ -39,6 +39,8 @@ export function refreshGameStatus() {
         }
     } else if (playingState === 'paused' && playingDate === currentDate && !weekFinished) {
         localStorage.setItem('playing_state', 'playing');
+    } else if (playingState === 'paused' && new Date(playingDate) < new Date(currentDate)) {
+        localStorage.setItem('playing_state', 'playing');
     }
 
     /*
