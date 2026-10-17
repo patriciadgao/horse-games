@@ -12,14 +12,18 @@ export function getStableInfo() {
     const maxApples = JSON.parse(localStorage.getItem('max_apples'));
     const totalWeeks = JSON.parse(localStorage.getItem('total_weeks'));
     const totalPoints = JSON.parse(localStorage.getItem('total_points'));
+    const savedHorse1 = JSON.parse(localStorage.getItem('saved_horse_1'));
+    const savedHorse2 = JSON.parse(localStorage.getItem('saved_horse_2'));
 
     return {
         achievedHorses: achievedHorses.length,
         achievedHats: achievedHats.length,
-        missingHorse: missingHorse,
+        missingHorse,
         maxApples: maxApples ?? 0,
         totalWeeks: totalWeeks ?? 0,
-        totalPoints: totalPoints ?? 0
+        totalPoints: totalPoints ?? 0,
+        savedHorse1,
+        savedHorse2
     }
 }
 
@@ -56,4 +60,39 @@ export function updateStable(newHorse) {
 
     localStorage.setItem('achieved_horses', JSON.stringify(achievedHorses));
     localStorage.setItem('achieved_hats', JSON.stringify(achievedHats));
+}
+
+export function saveHorse(weekToReplace = undefined) {
+    const savedHorse1 = JSON.parse(localStorage.getItem('saved_horse_1'));
+    const savedHorse1Week = JSON.parse(localStorage.getItem('saved_horse_1_week'));
+    const savedHorse2Week = JSON.parse(localStorage.getItem('saved_horse_2_week'));
+
+    const currentHorse = JSON.parse(localStorage.getItem('current_horse'));
+    const currentWeek = JSON.parse(localStorage.getItem('playing_week'));
+
+    if (currentWeek === savedHorse1Week || currentWeek === savedHorse2Week) {
+        return;
+    }
+
+    if (weekToReplace === 1 || !savedHorse1) {
+        localStorage.setItem('saved_horse_1', JSON.stringify(currentHorse));
+        localStorage.setItem('saved_horse_1_week', JSON.stringify(currentWeek));
+        return;
+    } else {
+        localStorage.setItem('saved_horse_2', JSON.stringify(currentHorse));
+        localStorage.setItem('saved_horse_2_week', JSON.stringify(currentWeek));
+        return;
+    }
+}
+
+export function removeSavedHorse(horseNumber) {
+    if (horseNumber === 1) {
+        const savedHorse2 = JSON.parse(localStorage.getItem('saved_horse_2'));
+        const savedHorse2Week = JSON.parse(localStorage.getItem('saved_horse_2_week'));
+
+        localStorage.setItem('saved_horse_1', JSON.stringify(savedHorse2));
+        localStorage.setItem('saved_horse_1_week', JSON.stringify(savedHorse2Week));
+    }
+    localStorage.removeItem('saved_horse_2');
+    localStorage.removeItem('saved_horse_2_week');
 }

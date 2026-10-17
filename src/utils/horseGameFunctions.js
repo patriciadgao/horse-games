@@ -13,7 +13,6 @@ export function startGame(week) {
     localStorage.setItem('goals', JSON.stringify(weekData.goals));
     localStorage.setItem('playing_week', JSON.stringify(week));
     localStorage.removeItem('week_finished');
-    localStorage.removeItem('current_horse_name');
 }
 
 export function getCurrentDate() {

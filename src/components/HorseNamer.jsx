@@ -6,7 +6,9 @@ export const HorseNamer = (props) => {
 
   function nameHorse(formData) {
     const name = formData.get("horseName");
-    localStorage.setItem("current_horse_name", name);
+    const currentHorse = JSON.parse(localStorage.getItem("current_horse"));
+    currentHorse.name = name;
+    localStorage.setItem("current_horse", currentHorse);
     onSetHorseName(name);
     setIsOpen(false);
   }

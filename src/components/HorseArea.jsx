@@ -38,7 +38,7 @@ export const HorseArea = (props) => {
 
   const refreshGame = useCallback(() => {
     const currentHorse = JSON.parse(localStorage.getItem("current_horse"));
-    const currentHorseName = localStorage.getItem("current_horse_name");
+    const currentHorseName = currentHorse.name;
     const newGoals = JSON.parse(localStorage.getItem("goals"));
     setCurrentHorse(currentHorse);
     setGoals(newGoals);
