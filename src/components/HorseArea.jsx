@@ -305,7 +305,7 @@ export const PairOfHorses = (props) => {
   }, [horse1, horse2]);
 
   return (
-    <>
+    <div className="grid cols-2 justify-center">
       <Horse
         horse={horse1}
         small={small}
@@ -322,7 +322,9 @@ export const PairOfHorses = (props) => {
         showAppleBox={hasHatsOrApples}
         oneAppleMax={oneAppleMax}
       />
-    </>
+      <div className="text-center">{horse1 ? horse1.name : ""}</div>
+      <div className="text-center">{horse2 ? horse2.name : ""}</div>
+    </div>
   );
 };
 

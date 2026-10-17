@@ -65,16 +65,11 @@ export function updateStable(newHorse) {
 export function saveHorse(weekToReplace = undefined) {
     const savedHorse1 = JSON.parse(localStorage.getItem('saved_horse_1'));
     const savedHorse1Week = JSON.parse(localStorage.getItem('saved_horse_1_week'));
-    const savedHorse2Week = JSON.parse(localStorage.getItem('saved_horse_2_week'));
 
     const currentHorse = JSON.parse(localStorage.getItem('current_horse'));
     const currentWeek = JSON.parse(localStorage.getItem('playing_week'));
 
-    if (currentWeek === savedHorse1Week || currentWeek === savedHorse2Week) {
-        return;
-    }
-
-    if (weekToReplace === 1 || !savedHorse1) {
+    if (weekToReplace === 1 || !savedHorse1 || currentWeek === savedHorse1Week) {
         localStorage.setItem('saved_horse_1', JSON.stringify(currentHorse));
         localStorage.setItem('saved_horse_1_week', JSON.stringify(currentWeek));
         return;

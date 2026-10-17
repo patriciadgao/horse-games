@@ -19,6 +19,10 @@ export const Faq = (props) => {
         "Yep! Go to the stable, there is an option there to reset everything. However ... that gets rid of ALL previous weeks’ data, not just this one.",
     },
     {
+      question: "How come I have to name my horse?",
+      answer: "It’s just the polite thing to do.",
+    },
+    {
       question: "Does this game collect any of my personal information?",
       answer:
         "Nope! Everything it stores (which is just your choices / horses) stays local to you. It does not travel into “the cloud”, it does not pass GO, it does not collect $200.",
@@ -43,6 +47,16 @@ export const Faq = (props) => {
     {
       question: "Why do my horse’s apples keep changing?",
       answer: "Apples are mysterious things.",
+    },
+    {
+      question: "How does saving horses work?",
+      answer:
+        "Go to the stables and save your current horse at any point during the week. You can only save two horses at a time—your stables isn’t that big.",
+    },
+    {
+      question: "What good does saving a horse do?",
+      answer:
+        "Right now it’s a way to keep the horses around that you are especially proud of.",
     },
     {
       question: "When was Horse Game created?",

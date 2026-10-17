@@ -4,6 +4,7 @@ import { refreshGameStatus } from "../../utils/horseGameFunctions";
 import { clearStable, getStableInfo } from "../../utils/horseStorageFunctions";
 import { Button } from "../Button";
 import { Modal } from "../Modal";
+import { SavedHorses } from "../SavedHorses";
 
 export const Stable = (props) => {
   const { isOpen, setIsOpen, setNeedsRefresh } = props;
@@ -49,6 +50,11 @@ export const Stable = (props) => {
         <div className="DisplayFont mt-12 text-right">
           <Button onClick={() => setIsConfirming(true)}>reset my stats</Button>
         </div>
+        <div className="DisplayFont font-bold text-lg">Your saved horses:</div>
+        <SavedHorses
+          savedHorse1={stableInfo.savedHorse1}
+          savedHorse2={stableInfo.savedHorse2}
+        />
       </div>
       <Modal
         isOpen={isConfirming}

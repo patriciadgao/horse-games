@@ -8,7 +8,7 @@ export const HorseNamer = (props) => {
     const name = formData.get("horseName");
     const currentHorse = JSON.parse(localStorage.getItem("current_horse"));
     currentHorse.name = name;
-    localStorage.setItem("current_horse", currentHorse);
+    localStorage.setItem("current_horse", JSON.stringify(currentHorse));
     onSetHorseName(name);
     setIsOpen(false);
   }
