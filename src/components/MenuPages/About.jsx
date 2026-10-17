@@ -16,8 +16,8 @@ export const About = (props) => {
         </p>
         <p>
           If you find bugs or want to talk about how awesome this game is,
-          please send me a message on Instagram @nopatnocomics or a text or an
-          email if you happen to have my information for those.
+          please send me a message via GitHub or a text or an email if you
+          happen to have my information for those.
         </p>
       </div>
     </Modal>
