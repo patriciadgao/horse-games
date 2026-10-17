@@ -13,3 +13,9 @@
   text-align: center;
   min-height: 100vh;
 }
+
+.SpecialButton {
+  all: unset;
+  cursor: pointer;
+  font-weight: bold;
+}

@@ -14,10 +14,12 @@ import {
 } from "../utils/horseGameFunctions";
 import { Button } from "./Button";
 import { Goals } from "./Goals";
+import { HorseNamer } from "./HorseNamer";
 
 export const HorseArea = (props) => {
   const { needsRefresh, setNeedsRefresh } = props;
   const [currentHorse, setCurrentHorse] = useState();
+  const [horseName, setHorseName] = useState();
   const [leftHorse, setLeftHorse] = useState();
   const [rightHorse, setRightHorse] = useState();
   const [isPaused, setIsPaused] = useState();
@@ -25,12 +27,18 @@ export const HorseArea = (props) => {
   const [playingDate, setPlayingDate] = useState();
   const [demoOver, setDemoOver] = useState();
   const [goals, setGoals] = useState();
+  const [horseNamerOpen, setHorseNamerOpen] = useState();
   const [showConfetti, setShowConfetti] = useState(false);
   const [choiceMadeMessage, setChoiceMadeMessage] = useState();
   const [gameOverMessage, setGameOverMessage] = useState();
 
+  const nameHorse = useCallback((name) => {
+    setHorseName(name);
+  }, []);
+
   const refreshGame = useCallback(() => {
     const currentHorse = JSON.parse(localStorage.getItem("current_horse"));
+    const currentHorseName = localStorage.getItem("current_horse_name");
     const newGoals = JSON.parse(localStorage.getItem("goals"));
     setCurrentHorse(currentHorse);
     setGoals(newGoals);
@@ -56,6 +64,12 @@ export const HorseArea = (props) => {
           boxShadow: "none",
         },
       });
+    }
+
+    if (!currentHorseName) {
+      setHorseNamerOpen(true);
+    } else {
+      setHorseName(currentHorseName);
     }
 
     setIsPaused(isNowPaused);
@@ -86,6 +100,12 @@ export const HorseArea = (props) => {
 
   return (
     <div className="flex flex-col justify-center px-8">
+      <HorseNamer
+        isOpen={horseNamerOpen}
+        setIsOpen={setHorseNamerOpen}
+        currentHorse={currentHorse}
+        onSetHorseName={nameHorse}
+      />
       <PlayingDate
         playingDate={playingDate}
         isPaused={isPaused}
@@ -100,13 +120,16 @@ export const HorseArea = (props) => {
             </div>
           </div>
         )}
-        <div className="mb-2 flex justify-center">
-          <Horse
-            horse={currentHorse}
-            showAppleBox={
-              currentHorse && (currentHorse.apples > 0 || currentHorse.hat)
-            }
-          />
+        <div className="mb-6">
+          <div className="mb-2 flex justify-center">
+            <Horse
+              horse={currentHorse}
+              showAppleBox={
+                currentHorse && (currentHorse.apples > 0 || currentHorse.hat)
+              }
+            />
+          </div>
+          <div>{`Your horse, ${horseName}`}</div>
         </div>
         {isPaused ? (
           isFinished ? (
@@ -201,7 +224,7 @@ const PlayingDate = (props) => {
   });
 
   return (
-    <div className="DisplayFont text-left mb-4">
+    <div className="DisplayFont text-left">
       <div className="font-bold text-xl">
         {isPaused ? currentDateFormatted : playingDateFormatted}
       </div>
