@@ -271,6 +271,7 @@ export function chooseHorse(option) {
     const currentDate = getCurrentDate();
 
     const newHorse = mergeHorses(currentHorse, chosenHorse);
+    newHorse.name = currentHorse.name;
 
     const currentWeek = JSON.parse(localStorage.getItem('playing_week'));
     const weekData = weekInfo[currentWeek];

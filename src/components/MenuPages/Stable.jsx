@@ -52,7 +52,7 @@ export const Stable = (props) => {
             : 0
         }`}</div>
         <div className="DisplayFont font-bold text-lg mt-6">
-          Your saved horses:
+          Your saved horses (max 2):
         </div>
         <SavedHorses
           savedHorse1={stableInfo.savedHorse1}
