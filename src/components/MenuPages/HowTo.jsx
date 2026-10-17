@@ -59,8 +59,8 @@ export const HowTo = (props) => {
         <p>
           This horse will “merge” with your horse, changing its attributes. (Idk
           I wasn’t really thinking about horses mating or whatever when I came
-          up with this concept. I still want you to be able to name each week’s
-          horse eventually so consider it the same horse.)
+          up with this concept. I always wanted you to be able to name your
+          horse each week so consider it the same horse.)
         </p>
         <p>
           Your goal each week will be to achieve as many of three goals as you
