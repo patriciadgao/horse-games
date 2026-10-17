@@ -11,8 +11,12 @@ export const Stable = (props) => {
   const [isConfirming, setIsConfirming] = useState(false);
   const [stableInfo, setStableInfo] = useState(getStableInfo());
 
-  useEffect(() => {
+  const fetchStableInfo = useCallback(() => {
     setStableInfo(getStableInfo());
+  }, []);
+
+  useEffect(() => {
+    fetchStableInfo();
   }, [isOpen]);
 
   const resetStable = useCallback(() => {
@@ -47,14 +51,17 @@ export const Stable = (props) => {
             ? Math.round(stableInfo.totalPoints / stableInfo.totalWeeks)
             : 0
         }`}</div>
-        <div className="DisplayFont mt-12 text-right">
-          <Button onClick={() => setIsConfirming(true)}>reset my stats</Button>
+        <div className="DisplayFont font-bold text-lg mt-6">
+          Your saved horses:
         </div>
-        <div className="DisplayFont font-bold text-lg">Your saved horses:</div>
         <SavedHorses
           savedHorse1={stableInfo.savedHorse1}
           savedHorse2={stableInfo.savedHorse2}
+          fetchStableInfo={fetchStableInfo}
         />
+        <div className="DisplayFont mt-12 text-right">
+          <Button onClick={() => setIsConfirming(true)}>reset my stats</Button>
+        </div>
       </div>
       <Modal
         isOpen={isConfirming}

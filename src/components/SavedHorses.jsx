@@ -1,57 +1,97 @@
+import { useCallback } from "react";
 import { removeSavedHorse, saveHorse } from "../utils/horseStorageFunctions";
 import { Button } from "./Button";
-import { PairOfHorses } from "./HorseArea";
+import { Horse, PairOfHorses } from "./HorseArea";
 
 export const SavedHorses = (props) => {
-  const { savedHorse1, savedHorse2 } = props;
+  const { savedHorse1, savedHorse2, fetchStableInfo } = props;
 
   const currentHorse = JSON.parse(localStorage.getItem("current_horse"));
   const isSavedHorsesFull = savedHorse1 && savedHorse2;
 
   const savedHorse1Week = JSON.parse(
-    localStorage.getItem(`saved_horse_1_week`),
+    localStorage.getItem("saved_horse_1_week"),
+  );
+  const savedHorse2Week = JSON.parse(
+    localStorage.getItem("saved_horse_2_week"),
   );
   const currentHorseWeek = JSON.parse(localStorage.getItem("playing_week"));
 
+  const oneHorseIsSame =
+    savedHorse1Week === currentHorseWeek ||
+    savedHorse2Week === currentHorseWeek;
+
+  const saveAHorse = useCallback(
+    (horseNumber) => {
+      saveHorse(horseNumber);
+      fetchStableInfo();
+    },
+    [fetchStableInfo],
+  );
+
+  const removeAHorse = useCallback(
+    (horseNumber) => {
+      removeSavedHorse(horseNumber);
+      fetchStableInfo();
+    },
+    [fetchStableInfo],
+  );
+
   return (
     <div>
-      <PairOfHorses horse1={savedHorse1} horse2={savedHorse2} small />
+      {isSavedHorsesFull && (
+        <div className="grid grid-cols-2 py-4 max-w-[350px]">
+          <PairOfHorses horse1={savedHorse1} horse2={savedHorse2} small />
+          <div className="text-center">{savedHorse1?.name}</div>
+          <div className="text-center">{savedHorse2?.name}</div>
+          <SaveHorseButton
+            savedHorseNumber={1}
+            oneHorseIsSame={oneHorseIsSame}
+            saveAHorse={saveAHorse}
+          />
+          <SaveHorseButton
+            savedHorseNumber={2}
+            oneHorseIsSame={oneHorseIsSame}
+            saveAHorse={saveAHorse}
+          />
+          <Button onClick={() => removeAHorse(1)} centerText>
+            remove
+          </Button>
+          <Button onClick={() => removeAHorse(2)} centerText>
+            remove
+          </Button>
+        </div>
+      )}
       {!savedHorse1 && !savedHorse2 && (
         <div className="pb-2">Aww, you haven’t saved any horses yet.</div>
       )}
-      {!isSavedHorsesFull ? (
+      {!isSavedHorsesFull && (
         <>
           {savedHorse1 && (
-            <Button onClick={() => removeSavedHorse(1)}>
-              {`remove ${savedHorse1.name}`}
-            </Button>
+            <div className="grid grid-cols-1 py-4 max-w-[175px]">
+              <Horse horse={savedHorse1} small />
+              <div className="text-center">{savedHorse1.name}</div>
+              <Button onClick={() => removeAHorse(1)}>
+                {`remove ${savedHorse1.name}`}
+              </Button>
+            </div>
           )}
-          {JSON.stringify(savedHorse1) !== JSON.stringify(currentHorse) && (
-            <Button onClick={() => saveHorse()}>
-              {savedHorse1Week === currentHorseWeek
-                ? `saved updated version of ${currentHorse?.name}`
-                : `save ${currentHorse?.name}`}
-            </Button>
-          )}
+          {JSON.stringify(savedHorse1) !== JSON.stringify(currentHorse) &&
+            savedHorse1Week !== currentHorseWeek && (
+              <Button onClick={() => saveAHorse()}>
+                {savedHorse1Week === currentHorseWeek
+                  ? `saved updated version of ${currentHorse?.name}`
+                  : `save ${currentHorse?.name}`}
+              </Button>
+            )}
         </>
-      ) : (
-        <div>
-          <SaveHorseButton savedHorseNumber={1} />
-          <SaveHorseButton savedHorseNumber={2} />
-          <Button onClick={() => removeSavedHorse(1)}>
-            {`remove ${savedHorse1.name}`}
-          </Button>
-          <Button onClick={() => removeSavedHorse(2)}>
-            {`remove ${savedHorse2.name}`}
-          </Button>
-        </div>
       )}
     </div>
   );
 };
 
 const SaveHorseButton = (props) => {
-  const { savedHorseNumber } = props;
+  const { savedHorseNumber, oneHorseIsSame, saveAHorse } = props;
   const savedHorseWeek = JSON.parse(
     localStorage.getItem(`saved_horse_${savedHorseNumber}_week`),
   );
@@ -61,11 +101,17 @@ const SaveHorseButton = (props) => {
   const currentHorseWeek = JSON.parse(localStorage.getItem("playing_week"));
   const currentHorse = JSON.parse(localStorage.getItem("current_horse"));
 
-  return (
-    <Button onClick={() => saveHorse(savedHorseNumber)}>
+  const isSameHorse =
+    JSON.stringify(savedHorse) === JSON.stringify(currentHorse) &&
+    savedHorseWeek === currentHorseWeek;
+
+  return isSameHorse || oneHorseIsSame ? (
+    <div />
+  ) : (
+    <Button onClick={() => saveAHorse(savedHorseNumber)} centerText>
       {currentHorseWeek === savedHorseWeek
-        ? `save updated version of ${currentHorse?.name}`
-        : `replace ${savedHorse?.natedme}`}
+        ? `re-save ${currentHorse?.name} here`
+        : `replace with ${currentHorse?.name}`}
     </Button>
   );
 };
