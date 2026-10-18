@@ -51,7 +51,7 @@ export const Faq = (props) => {
     {
       question: "How does saving horses work?",
       answer:
-        "Go to the stables and save your current horse at any point during the week. You can only save two horses at a time—your stables isn’t that big.",
+        "Go to the stable and save your current horse at any point during the week. You can only save two horses at a time—your stable isn’t that big.",
     },
     {
       question: "What good does saving a horse do?",
