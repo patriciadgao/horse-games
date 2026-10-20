@@ -71,14 +71,19 @@ export const SavedHorses = (props) => {
             <div className="grid grid-cols-1 py-4 max-w-[175px]">
               <Horse horse={savedHorse1} small />
               <div className="text-center pb-4">{savedHorse1.name}</div>
-              <Button onClick={() => removeAHorse(1)}>
+              <SaveHorseButton
+                savedHorseNumber={1}
+                oneHorseIsSame={oneHorseIsSame}
+                saveAHorse={saveAHorse}
+              />
+              <Button onClick={() => removeAHorse(1)} centerText>
                 {`remove ${savedHorse1.name}`}
               </Button>
             </div>
           )}
           {JSON.stringify(savedHorse1) !== JSON.stringify(currentHorse) &&
             savedHorse1Week !== currentHorseWeek && (
-              <Button onClick={() => saveAHorse()}>
+              <Button onClick={() => saveAHorse()} centerText>
                 {savedHorse1Week === currentHorseWeek
                   ? `saved updated version of ${currentHorse?.name}`
                   : `save ${currentHorse?.name}`}
@@ -105,7 +110,7 @@ const SaveHorseButton = (props) => {
     JSON.stringify(savedHorse) === JSON.stringify(currentHorse) &&
     savedHorseWeek === currentHorseWeek;
 
-  return isSameHorse || oneHorseIsSame ? (
+  return isSameHorse || (oneHorseIsSame && !isSameHorse) ? (
     <div />
   ) : (
     <Button onClick={() => saveAHorse(savedHorseNumber)} centerText>
