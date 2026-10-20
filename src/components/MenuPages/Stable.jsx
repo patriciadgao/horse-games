@@ -37,7 +37,7 @@ export const Stable = (props) => {
         {stableInfo.missingHorse && (
           <div className="pb-6">
             <div>A horse you’re missing:</div>
-            <div className="mt-2 w-[150px] flex items-center flex-col gap-2">
+            <div className="mt-2 w-[100px] flex items-center flex-col gap-2">
               <img
                 src={require(`../../img/${stableInfo.missingHorse}.png`)}
                 alt={stableInfo.missingHorse}

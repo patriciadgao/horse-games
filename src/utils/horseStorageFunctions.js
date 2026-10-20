@@ -52,7 +52,10 @@ export function updateStable(newHorse) {
             localStorage.removeItem('missing_horse');
         } else {
             const newMissingHorseOptions = horses.filter((h) => !achievedHorses.includes(h));
-            const missingHorse = choose(newMissingHorseOptions);
+            let missingHorse = undefined;
+            if (newMissingHorseOptions.length > 0) {
+                missingHorse = choose(newMissingHorseOptions);
+            }
 
             localStorage.setItem('missing_horse', missingHorse);
         }
