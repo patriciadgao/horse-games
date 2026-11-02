@@ -41,7 +41,12 @@ export const SavedHorses = (props) => {
     <div>
       {isSavedHorsesFull && (
         <div className="grid grid-cols-2 py-4 max-w-[350px]">
-          <PairOfHorses horse1={savedHorse1} horse2={savedHorse2} small />
+          <PairOfHorses
+            horse1={savedHorse1}
+            horse2={savedHorse2}
+            small
+            oneAppleMax
+          />
           <div className="text-center pb-4">{savedHorse1?.name}</div>
           <div className="text-center pb-4">{savedHorse2?.name}</div>
           <SaveHorseButton
@@ -69,7 +74,7 @@ export const SavedHorses = (props) => {
         <>
           {savedHorse1 && (
             <div className="grid grid-cols-1 py-4 max-w-[175px]">
-              <Horse horse={savedHorse1} small />
+              <Horse horse={savedHorse1} small oneAppleMax />
               <div className="text-center pb-4">{savedHorse1.name}</div>
               <SaveHorseButton
                 savedHorseNumber={1}
