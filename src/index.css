@@ -6,24 +6,29 @@
 @import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap");
 
-.DisplayFont {
-  font-family: "Fuzzy Bubbles", "Gaegu", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 body {
   margin: 0;
-  font-family:
-    "Fuzzy Bubbles", "Instrument Sans", "Comfortaa", "Ubuntu", "Cantarell",
-    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  /* font-family:
+    "Instrument Sans", "Comfortaa", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 400;
   font-size: 15px;
 }
 
-code {
-  font-family:
-    source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+.Gaegu {
+  font-family: "Gaegu";
+}
+
+.FuzzyBubbles {
+  font-family: "Fuzzy Bubbles";
+}
+
+.InstrumentSans {
+  font-family: "Instrument Sans";
+}
+
+.Comfortaa {
+  font-family: "Comfortaa";
 }

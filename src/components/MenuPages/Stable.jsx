@@ -3,12 +3,14 @@ import { horses } from "../../utils/horseBasics";
 import { refreshGameStatus } from "../../utils/horseGameFunctions";
 import { clearStable, getStableInfo } from "../../utils/horseStorageFunctions";
 import { Button } from "../Button";
+import { FontPicker } from "../FontPicker";
 import { Modal } from "../Modal";
 import { SavedHorses } from "../SavedHorses";
 
 export const Stable = (props) => {
   const { isOpen, setIsOpen, setNeedsRefresh } = props;
   const [isConfirming, setIsConfirming] = useState(false);
+  const [fontChangeModalOpen, setFontChangeModalOpen] = useState(false);
   const [stableInfo, setStableInfo] = useState(getStableInfo());
 
   const fetchStableInfo = useCallback(() => {
@@ -60,6 +62,9 @@ export const Stable = (props) => {
           fetchStableInfo={fetchStableInfo}
         />
         <div className="DisplayFont mt-12 text-right">
+          <Button onClick={() => setFontChangeModalOpen(true)}>
+            change font
+          </Button>
           <Button onClick={() => setIsConfirming(true)}>reset my stats</Button>
         </div>
       </div>
@@ -71,6 +76,13 @@ export const Stable = (props) => {
         <div className="DisplayFont">
           <Button onClick={resetStable}>yes</Button>
         </div>
+      </Modal>
+      <Modal
+        isOpen={fontChangeModalOpen}
+        setIsOpen={setFontChangeModalOpen}
+        title="I love fonts!"
+      >
+        <FontPicker setNeedsRefresh={setNeedsRefresh} />
       </Modal>
     </Modal>
   );

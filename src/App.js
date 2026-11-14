@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 import './App.css';
 import { Header } from './components/Header';
@@ -7,9 +7,16 @@ import { Menu } from './components/Menu';
 
 function App() {
   const [needsRefresh, setNeedsRefresh] = useState(false);
+  const [font, setFont] = useState(localStorage.getItem('font') ?? 'FuzzyBubbles');
+
+  useEffect(() => {
+    if (needsRefresh) {
+      setFont(localStorage.getItem('font'));
+    }
+  }, [needsRefresh])
 
   return (
-    <div className="App bg-amber-50 items-center">
+    <div className={`App ${font} bg-amber-50 items-center`}>
       <Toaster position="top-left" />
       <Header />
       <Menu needsRefresh={needsRefresh} setNeedsRefresh={setNeedsRefresh} />
