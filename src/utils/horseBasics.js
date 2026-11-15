@@ -5,7 +5,12 @@ export const spots = ['plain', 'speckled', 'spot']
 export const spotGenes = ['o', 'O']
 export const expressions = ['neutral', 'smile', 'frown']
 export const apples = 5
-export const hats = ['boss-of-the-plains', 'bowler', 'ten-gallon', 'top']
+export const hats = ['boss-of-the-plains', 'bowler', 'ten-gallon',
+    'top',
+    'brown-beret', 'fez', 'fish-bucket',
+    'green-beret', 'orange-beret', 'peanut-bucket',
+    'pink-beret', 'wizard-bucket', 'yellow-bowler'
+]
 
 export const horses = [
     "round-tan-plain-neutral",

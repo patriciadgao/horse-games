@@ -8,9 +8,17 @@ export const HatBox = (props) => {
       {hats.map((h) => (
         <div key={h} className="flex flex-col items-center justify-center">
           <Hat small hat={h} />
-          <p>{h}</p>
+          <p className="text-center">{getHatName(h)}</p>
         </div>
       ))}
     </div>
   );
 };
+
+function getHatName(hat) {
+  if (hat.includes("bucket") || hat.includes("beret")) {
+    const parts = hat.split("-");
+    return `${parts[1]} (${parts[0]})`;
+  }
+  return hat;
+}

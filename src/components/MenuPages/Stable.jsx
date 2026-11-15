@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { horses } from "../../utils/horseBasics";
+import { hats, horses } from "../../utils/horseBasics";
 import { refreshGameStatus } from "../../utils/horseGameFunctions";
 import { clearStable, getStableInfo } from "../../utils/horseStorageFunctions";
 import { Button } from "../Button";
@@ -35,7 +35,7 @@ export const Stable = (props) => {
       <div className="text-md text-left">
         <div className="DisplayFont font-bold text-lg">Your achievements:</div>
         <div>{`horse types: ${stableInfo.achievedHorses}/${horses.length} (${Math.round((stableInfo.achievedHorses * 100) / horses.length)}%)`}</div>
-        <div>{`hat types: ${stableInfo.achievedHatNumber}/4`}</div>
+        <div>{`hat types: ${stableInfo.achievedHatNumber}/${hats.length} (${Math.round((stableInfo.achievedHatNumber * 100) / hats.length)}%)`}</div>
         <HatBox hats={stableInfo.achievedHats} />
         <div>{`max apples: ${stableInfo.maxApples}`}</div>
         {stableInfo.missingHorse && (

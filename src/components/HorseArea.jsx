@@ -381,7 +381,7 @@ export const Hat = (props) => {
   const { hat, small = false } = props;
 
   const hatWidth = useMemo(() => {
-    if (["top", "bowler"].includes(hat)) {
+    if (["top", "bowler", "fez"].includes(hat)) {
       return small ? 42.5 : 85;
     }
     return small ? 50 : 100;

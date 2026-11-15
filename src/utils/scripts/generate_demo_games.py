@@ -15,8 +15,8 @@ spot_genes = ['O', 'o']
 expressions = ['neutral', 'smile', 'frown']
 apples = 5
 apple_rarity = 0.25
-hats = ['boss-of-the-plains', 'bowler', 'ten-gallon', 'top']
-hat_rarity = 0.25
+hats = ['boss-of-the-plains', 'bowler', 'ten-gallon', 'top', 'brown-beret', 'fez', 'fish-bucket', 'green-beret', 'orange-beret', 'peanut-bucket', 'pink-beret', 'wizard-bucket', 'yellow-bowler']
+hat_rarity = 0.35
 attributes = ['color', 'shape', 'spots', 'expression', 'hat', 'apples']
 
 def generate_horse():
@@ -230,24 +230,7 @@ def print_settings(settings):
         print("goals: ", setting['goals'],",")
         print("},")
 
-# print_settings(generate_demo_weeks(2026, 9, 28, 15))
-
-week_three_settings = generate_demo_weeks(2026, 10, 12, 1, 3)
-week_goals = week_three_settings[0]['goals']
-trials = 1
-
-while ('hat' not in week_goals or
-    'shape' not in week_goals or
-    'spots' not in week_goals or 
-    week_goals['hat'] != 'no' or 
-    week_goals['shape'] != 'round' or
-    week_goals['spots'] != 'speckled'):
-    week_three_settings = generate_demo_weeks(2026, 10, 12, 1, 3)
-    week_goals = week_three_settings[0]['goals']
-    print(trials)
-    trials += 1
-
-print_settings(week_three_settings)
+print_settings(generate_demo_weeks(2026, 9, 28, 15))
 
 # print(total_settings)
 
