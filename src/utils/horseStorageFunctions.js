@@ -17,7 +17,8 @@ export function getStableInfo() {
 
     return {
         achievedHorses: achievedHorses.length,
-        achievedHats: achievedHats.length,
+        achievedHats: achievedHats,
+        achievedHatNumber: achievedHats.length,
         missingHorse,
         maxApples: maxApples ?? 0,
         totalWeeks: totalWeeks ?? 0,

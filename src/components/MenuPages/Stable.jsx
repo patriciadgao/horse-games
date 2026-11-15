@@ -4,6 +4,7 @@ import { refreshGameStatus } from "../../utils/horseGameFunctions";
 import { clearStable, getStableInfo } from "../../utils/horseStorageFunctions";
 import { Button } from "../Button";
 import { FontPicker } from "../FontPicker";
+import { HatBox } from "../HatBox";
 import { Modal } from "../Modal";
 import { SavedHorses } from "../SavedHorses";
 
@@ -34,7 +35,8 @@ export const Stable = (props) => {
       <div className="text-md text-left">
         <div className="DisplayFont font-bold text-lg">Your achievements:</div>
         <div>{`horse types: ${stableInfo.achievedHorses}/${horses.length} (${Math.round((stableInfo.achievedHorses * 100) / horses.length)}%)`}</div>
-        <div>{`hat types: ${stableInfo.achievedHats}/4`}</div>
+        <div>{`hat types: ${stableInfo.achievedHatNumber}/4`}</div>
+        <HatBox hats={stableInfo.achievedHats} />
         <div>{`max apples: ${stableInfo.maxApples}`}</div>
         {stableInfo.missingHorse && (
           <div className="pb-6">
@@ -65,7 +67,7 @@ export const Stable = (props) => {
           <Button onClick={() => setFontChangeModalOpen(true)}>
             change font
           </Button>
-          <Button onClick={() => setIsConfirming(true)}>reset my stats</Button>
+          <Button onClick={() => setIsConfirming(true)}>reset stats</Button>
         </div>
       </div>
       <Modal
