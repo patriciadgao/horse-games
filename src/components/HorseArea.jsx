@@ -152,7 +152,9 @@ export const HorseArea = (props) => {
                   numberOfPieces={700}
                 />
               )}
-              <div>{gameOverMessage}</div>
+              <div className="flex justify-center">
+                <div className="max-w-[400px]">{gameOverMessage}</div>
+              </div>
             </>
           ) : (
             <>
@@ -174,7 +176,9 @@ export const HorseArea = (props) => {
                   numberOfPieces={100}
                 />
               )}
-              <div>{choiceMadeMessage}</div>
+              <div className="flex justify-center">
+                <div className="max-w-[400px]">{choiceMadeMessage}</div>
+              </div>
             </>
           )
         ) : (

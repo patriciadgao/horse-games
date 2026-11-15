@@ -367,7 +367,7 @@ export function generateGameOverMessage(horse, goals) {
         return choose([
             'Way to go achieving all those goals!',
             'You’re a star :)',
-            'Wahoo! You’ve won horse game! (Actually there is not really a way to win horse game, but you have won it in my heart.',
+            'Wahoo! You’ve won horse game! (Actually there is not really a way to win horse game, but you have won it in my heart.)',
             'NICE!',
             'Looks like you’ve earned the right to say that you are really good at horses.',
             'Yay!!!!',
