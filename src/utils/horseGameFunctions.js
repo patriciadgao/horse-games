@@ -255,6 +255,39 @@ export function getPointsTotal(goals, horse) {
     return totalPoints;
 }
 
+export function areAllGoalsMet(goals, horse) {
+    const horseInfo = interpretHorse(horse);
+    let totalGoals = 0;
+
+    for (const [key, value] of Object.entries(goals)) {
+        if (isGoalMet(key, value, horseInfo)) {
+            totalGoals += 1
+        }
+    }
+
+    return totalGoals === Object.entries(goals).length;
+}
+
+export function getThisWeekPoints(goals, horse) {
+    const lineage = JSON.parse(localStorage.getItem('lineage'));
+
+    const generatedHorses = lineage.filter((_, i) => i % 2 === 0 && i != 0 && i != 14);
+    let bonusPoints = 0;
+
+    for (const generatedHorse of generatedHorses) {
+        if (areAllGoalsMet(goals, generatedHorse)) {
+            bonusPoints += 45;
+        }
+    }
+
+    const goalPoints = getPointsTotal(goals, horse);
+
+    return {
+        thisWeekPoints: goalPoints + bonusPoints,
+        thisWeekBonus: bonusPoints
+    }
+}
+
 export function getPossiblePoints(goals) {
     let pointsSum = 0;
 
@@ -297,7 +330,7 @@ export function chooseHorse(option) {
         // upon finishing the week, update average points 
         let totalPoints = JSON.parse(localStorage.getItem('total_points')) ?? 0;
         let totalWeeks = JSON.parse(localStorage.getItem('total_weeks')) ?? 0;
-        const thisWeekPoints = getPointsTotal(weekData.goals, newHorse);
+        const { thisWeekPoints } = getThisWeekPoints(weekData.goals, newHorse);
 
         localStorage.setItem('total_points', JSON.stringify(totalPoints + thisWeekPoints));
         localStorage.setItem('total_weeks', JSON.stringify(totalWeeks + 1));

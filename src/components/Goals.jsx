@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import { interpretHorse } from "../utils/horseFunctions";
 import {
   getGoalText,
-  getPointsTotal,
+  getThisWeekPoints,
   isGoalMet,
 } from "../utils/horseGameFunctions";
 
@@ -20,8 +20,8 @@ export const Goals = (props) => {
     });
   }, [goals, currentHorse]);
 
-  const totalEarned = useMemo(() => {
-    return getPointsTotal(goals, currentHorse);
+  const { thisWeekBonus, thisWeekPoints } = useMemo(() => {
+    return getThisWeekPoints(goals, currentHorse);
   }, [goals, currentHorse]);
 
   return (
@@ -48,8 +48,25 @@ export const Goals = (props) => {
         })}
       </div>
       {isFinished && (
-        <div className="DisplayFont font-bold mt-6 mb-2 text-lg">
-          {`points earned this week: ${totalEarned}`}
+        <div className="mt-6 mb-2">
+          {thisWeekBonus > 0 && (
+            <>
+              <div className="font-bold text-md">
+                {`goal points +${thisWeekPoints - thisWeekBonus}`}
+              </div>
+              <div className="font-bold text-md">
+                {`bonus points* +${thisWeekBonus}`}
+              </div>
+            </>
+          )}
+          <div className="DisplayFont font-bold text-lg">
+            {`total earned this week: ${thisWeekPoints}`}
+          </div>
+          {thisWeekBonus > 0 && (
+            <div className="mt-6 max-w-[400px]">
+              {`*You earn 45 bonus points for each horse throughout the week that met all three goals. You did this ${thisWeekBonus / 45} time${thisWeekBonus / 45 > 1 ? "s" : ""}!`}
+            </div>
+          )}
         </div>
       )}
     </div>
