@@ -68,7 +68,7 @@ export const SavedHorses = (props) => {
         </div>
       )}
       {!savedHorse1 && !savedHorse2 && (
-        <div className="pb-2">Aww, you haven’t saved any horses yet.</div>
+        <div className="pb-2">aww, you haven’t saved any horses yet.</div>
       )}
       {!isSavedHorsesFull && (
         <>

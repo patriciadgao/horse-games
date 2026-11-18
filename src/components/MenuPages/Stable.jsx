@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
+import { getAchievements } from "../../utils/horseAchievements";
 import { hats, horses } from "../../utils/horseBasics";
 import { refreshGameStatus } from "../../utils/horseGameFunctions";
 import { clearStable, getStableInfo } from "../../utils/horseStorageFunctions";
+import { Achievements } from "../Achievements";
 import { Button } from "../Button";
 import { FontPicker } from "../FontPicker";
 import { HatBox } from "../HatBox";
@@ -13,9 +15,11 @@ export const Stable = (props) => {
   const [isConfirming, setIsConfirming] = useState(false);
   const [fontChangeModalOpen, setFontChangeModalOpen] = useState(false);
   const [stableInfo, setStableInfo] = useState(getStableInfo());
+  const [achieved, setAchieved] = useState(getAchievements());
 
   const fetchStableInfo = useCallback(() => {
     setStableInfo(getStableInfo());
+    setAchieved(getAchievements());
   }, []);
 
   useEffect(() => {
@@ -33,14 +37,14 @@ export const Stable = (props) => {
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen} title="stable">
       <div className="text-md text-left">
-        <div className="DisplayFont font-bold text-lg">Your achievements:</div>
+        <div className="DisplayFont font-bold text-lg">Your stats:</div>
         <div>{`horse types: ${stableInfo.achievedHorses}/${horses.length} (${Math.round((stableInfo.achievedHorses * 100) / horses.length)}%)`}</div>
         <div>{`hat types: ${stableInfo.achievedHatNumber}/${hats.length} (${Math.round((stableInfo.achievedHatNumber * 100) / hats.length)}%)`}</div>
         <HatBox hats={stableInfo.achievedHats} />
         <div>{`max apples: ${stableInfo.maxApples}`}</div>
         {stableInfo.missingHorse && (
           <div className="pb-6">
-            <div>A horse you’re missing:</div>
+            <div>a horse you’re missing:</div>
             <div className="mt-2 w-[100px] flex items-center flex-col gap-2">
               <img
                 src={require(`../../img/${stableInfo.missingHorse}.png`)}
@@ -63,6 +67,7 @@ export const Stable = (props) => {
           savedHorse2={stableInfo.savedHorse2}
           fetchStableInfo={fetchStableInfo}
         />
+        <Achievements achievements={achieved} />
         <div className="DisplayFont mt-12 text-right">
           <Button onClick={() => setFontChangeModalOpen(true)}>
             change font

@@ -1,3 +1,4 @@
+import { updateAchievements } from "./horseAchievements";
 import { weekInfo, weekMapping } from "./horseDemoInfo";
 import { choose, interpretHorse, mergeHorses } from "./horseFunctions";
 import { updateStable } from "./horseStorageFunctions";
@@ -268,10 +269,23 @@ export function areAllGoalsMet(goals, horse) {
     return totalGoals === Object.entries(goals).length;
 }
 
+export function getNumGoalsMet(goals, horse) {
+    const horseInfo = interpretHorse(horse);
+    let totalGoals = 0;
+
+    for (const [key, value] of Object.entries(goals)) {
+        if (isGoalMet(key, value, horseInfo)) {
+            totalGoals += 1
+        }
+    }
+
+    return totalGoals;
+}
+
 export function getThisWeekPoints(goals, horse) {
     const lineage = JSON.parse(localStorage.getItem('lineage'));
 
-    const generatedHorses = lineage.filter((_, i) => i % 2 === 0 && i != 0 && i != 14);
+    const generatedHorses = lineage.filter((_, i) => i % 2 === 0 && i !== 0 && i !== 14);
     let bonusPoints = 0;
 
     for (const generatedHorse of generatedHorses) {
@@ -350,6 +364,12 @@ export function chooseHorse(option) {
 
     // update stable
     updateStable(newHorse);
+
+    // if the week is finished, update achievements
+    if (weekFinished) {
+        const { thisWeekPoints, thisWeekBonus } = getThisWeekPoints(weekData.goals, newHorse);
+        updateAchievements(thisWeekPoints, thisWeekBonus);
+    }
 }
 
 export function generateChoiceMadeMessage(horse) {
