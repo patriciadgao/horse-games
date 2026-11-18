@@ -119,19 +119,10 @@ export const achievements = [
 ];
 
 /*
-    This is only meant to be run upon the week being finished
-    (that just makes it easier to calculate)
+    This captures the achievements that can be updated every day
 */
-export function updateAchievements(thisWeekPoints, thisWeekBonus) {
+export function updateDailyAchievements() {
     const lineage = JSON.parse(localStorage.getItem('lineage'));
-
-    /* 
-        If somehow it's not the end of a week, abort!
-    */
-    if (lineage.length < 15) {
-        return;
-    }
-
     const interpretedLineage = lineage.map((h) => interpretHorse(h));
     const achievementsSoFar = JSON.parse(localStorage.getItem('achievements')) ?? [...achievements];
     const stableInfo = getStableInfo();
@@ -139,36 +130,12 @@ export function updateAchievements(thisWeekPoints, thisWeekBonus) {
     const yourHorsesThisWeek = lineage.filter((_, i) => i % 2 === 0);
     const yourHorsesThisWeekInterpreted = yourHorsesThisWeek.map((h) => interpretHorse(h));
 
-    const newAchivements = achievementsSoFar.map((a) => {
+    const newAchievements = achievementsSoFar.map((a) => {
         if (a.has) {
             return a;
         }
 
         const trueVersion = { ...a, has: true };
-
-        // all weekly goals met
-        if (a.label === 'Horse Master') {
-            if ((thisWeekPoints - thisWeekBonus) > 300) {
-                return trueVersion;
-            }
-            return a;
-        }
-
-        // all goals met during the week, but not at the end of the week
-        if (a.label === 'Horse Apprentice') {
-            if (thisWeekPoints === thisWeekBonus) {
-                return trueVersion;
-            }
-            return a;
-        }
-
-        // no points this week
-        if (a.label === 'Consolation Prize') {
-            if (thisWeekPoints === 0) {
-                return trueVersion;
-            }
-            return a;
-        }
 
         // all hats achieved
         if (a.label === 'Milliner’s Favorite') {
@@ -234,6 +201,134 @@ export function updateAchievements(thisWeekPoints, thisWeekBonus) {
             return a;
         }
 
+        // has swapped hats 5+ times
+        if (a.label === "Hat Swapper") {
+            let numHatSwaps = a.hatSwapCount;
+
+            for (const horseNum of [2, 4, 6, 8, 10, 12, 14]) {
+                if (lineage.length > horseNum) {
+                    const originalHat = lineage[horseNum - 2].hat;
+                    const otherHat = lineage[horseNum - 1].hat;
+                    const horseHat = lineage[horseNum].hat;
+
+                    if (originalHat !== undefined && otherHat !== undefined && horseHat !== undefined
+                        && originalHat !== otherHat && otherHat === horseHat) {
+                        numHatSwaps += 1;
+                        if (numHatSwaps > 4) {
+                            return {
+                                ...trueVersion,
+                                hatSwapCount: numHatSwaps
+                            };
+                        }
+                    }
+                }
+            }
+
+            return {
+                ...a,
+                hatSwapCount: numHatSwaps
+            }
+        }
+
+        // all 4 shapes achieved in a week 
+        if (a.label === 'Shapeshifter') {
+            const shapesThisWeek = [];
+
+            yourHorsesThisWeekInterpreted.forEach((h) => {
+                if (!shapesThisWeek.includes(h.shape)) {
+                    shapesThisWeek.push(h.shape);
+                }
+            });
+
+            if (shapesThisWeek.length === 4) {
+                return trueVersion;
+            }
+            return a;
+        }
+
+        // merge two short horses and get a short horse / merge two non-short horses and get the other non-short horse shape
+        if (a.label === 'Stay Short' || a.label === 'What!!') {
+            for (const horseNum of [2, 4, 6, 8, 10, 12, 14]) {
+                if (interpretedLineage.length > horseNum) {
+                    const originalShape = interpretedLineage[horseNum - 2].shape;
+                    const otherShape = interpretedLineage[horseNum - 1].shape;
+                    const horseShape = interpretedLineage[horseNum].shape;
+
+                    if (a.label === 'Stay Short' && originalShape === 'short' && otherShape === 'short' && horseShape === 'short') {
+                        return trueVersion;
+                    }
+
+                    if (a.label === 'What!!' && originalShape !== 'short' && otherShape !== originalShape && otherShape !== 'short'
+                        && horseShape !== originalShape && horseShape !== otherShape && horseShape !== 'short'
+                    ) {
+                        return trueVersion;
+                    }
+                }
+            }
+
+            return a;
+        }
+
+        return a;
+    });
+
+    localStorage.setItem('achievements', JSON.stringify(newAchievements));
+}
+
+/*
+    This is only meant to be run upon the week being finished
+    (that just makes it easier to calculate)
+
+    It captures the achievements that can only be updated upon 
+    the week being finished
+*/
+export function updateWeeklyAchievements(thisWeekPoints, thisWeekBonus) {
+    const lineage = JSON.parse(localStorage.getItem('lineage'));
+
+    /* 
+        If somehow it's not the end of a week, abort!
+    */
+    if (lineage.length < 15) {
+        return;
+    }
+
+    const achievementsSoFar = JSON.parse(localStorage.getItem('achievements')) ?? [...achievements];
+    const stableInfo = getStableInfo();
+
+    const yourHorsesThisWeek = lineage.filter((_, i) => i % 2 === 0);
+    const yourHorsesThisWeekInterpreted = yourHorsesThisWeek.map((h) => interpretHorse(h));
+
+    const newAchievements = achievementsSoFar.map((a) => {
+        if (a.has) {
+            return a;
+        }
+
+        const trueVersion = { ...a, has: true };
+
+        // all weekly goals met
+        if (a.label === 'Horse Master') {
+            if ((thisWeekPoints - thisWeekBonus) > 300) {
+                return trueVersion;
+            }
+            return a;
+        }
+
+        // all goals met during the week, but not at the end of the week
+        if (a.label === 'Horse Apprentice') {
+            if (thisWeekPoints === thisWeekBonus) {
+                return trueVersion;
+            }
+            return a;
+        }
+
+        // no points this week
+        if (a.label === 'Consolation Prize') {
+            if (thisWeekPoints === 0) {
+                return trueVersion;
+            }
+            return a;
+        }
+
         // no smiles all week
         if (a.label === 'Unhappy Week') {
             const smilingHorses = yourHorsesThisWeek.filter((h) => h.expression === 'smile');
@@ -278,32 +373,6 @@ export function updateAchievements(thisWeekPoints, thisWeekBonus) {
             return a;
         }
 
-        // has swapped hats 5+ times
-        if (a.label === "Hat Swapper") {
-            let numHatSwaps = a.hatSwapCount;
-
-            for (const horseNum of [2, 4, 6, 8, 10, 12]) {
-                const originalHat = lineage[horseNum - 2].hat;
-                const otherHat = lineage[horseNum - 1].hat;
-                const horseHat = lineage[horseNum].hat;
-
-                if (originalHat && otherHat && horseHat && originalHat !== otherHat && otherHat === horseHat) {
-                    numHatSwaps += 1;
-                    if (numHatSwaps > 4) {
-                        return {
-                            ...trueVersion,
-                            hatSwapCount: numHatSwaps
-                        };
-                    }
-                }
-            }
-
-            return {
-                ...a,
-                hatSwapCount: numHatSwaps
-            }
-        }
-
         // spots changed every day for a week
         if (a.label === 'Funky Spotty') {
             let spotChanges = 0;
@@ -346,43 +415,6 @@ export function updateAchievements(thisWeekPoints, thisWeekBonus) {
             return a;
         }
 
-        // all 4 shapes achieved in a week 
-        if (a.label === 'Shapeshifter') {
-            const shapesThisWeek = [];
-
-            yourHorsesThisWeekInterpreted.forEach((h) => {
-                if (!shapesThisWeek.includes(h.shape)) {
-                    shapesThisWeek.push(h.shape);
-                }
-            });
-
-            if (shapesThisWeek.length === 4) {
-                return trueVersion;
-            }
-            return a;
-        }
-
-        // merge two short horses and get a short horse / merge two non-short horses and get the other non-short horse shape
-        if (a.label === 'Stay Short' || a.label === 'What!!') {
-            for (const horseNum of [2, 4, 6, 8, 10, 12]) {
-                const originalShape = interpretedLineage[horseNum - 2].shape;
-                const otherShape = interpretedLineage[horseNum - 1].shape;
-                const horseShape = interpretedLineage[horseNum].shape;
-
-                if (a.label === 'Stay Short' && originalShape === 'short' && otherShape === 'short' && horseShape === 'short') {
-                    return trueVersion;
-                }
-
-                if (a.label === 'What!!' && originalShape !== 'short' && otherShape !== originalShape && otherShape !== 'short'
-                    && horseShape !== originalShape && horseShape !== otherShape && horseShape !== 'short'
-                ) {
-                    return trueVersion;
-                }
-            }
-
-            return a;
-        }
-
         // at least one goal met every day in the week
         if (a.label === 'Yeah Yeah Yeah') {
             const currentWeek = JSON.parse(localStorage.getItem('playing_week'));
@@ -410,9 +442,11 @@ export function updateAchievements(thisWeekPoints, thisWeekBonus) {
 
             return a;
         }
+
+        return a;
     });
 
-    localStorage.setItem('achievements', JSON.stringify(newAchivements));
+    localStorage.setItem('achievements', JSON.stringify(newAchievements));
 }
 
 export function getAchievements() {

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { getAchievements } from "../../utils/horseAchievements";
+import { getAchievements } from "../../utils/horseAchievementFunctions";
 import { hats, horses } from "../../utils/horseBasics";
 import { refreshGameStatus } from "../../utils/horseGameFunctions";
 import { clearStable, getStableInfo } from "../../utils/horseStorageFunctions";

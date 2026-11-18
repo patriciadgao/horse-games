@@ -9,7 +9,7 @@ export const Achievements = (props) => {
   return (
     <div>
       <div className="DisplayFont font-bold text-lg">Your achievements:</div>
-      <div>{`these refresh at the end of every week. Total: ${numAchieved}/${total} (${Math.round((numAchieved * 100) / total)}%)`}</div>
+      <div>{`total: ${numAchieved}/${total} (${Math.round((numAchieved * 100) / total)}%)`}</div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 max-w-[800px]">
         {achievements.map((a) => {
           return (

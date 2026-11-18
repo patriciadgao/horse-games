@@ -1,4 +1,4 @@
-import { updateAchievements } from "./horseAchievements";
+import { updateDailyAchievements, updateWeeklyAchievements } from "./horseAchievementFunctions";
 import { weekInfo, weekMapping } from "./horseDemoInfo";
 import { choose, interpretHorse, mergeHorses } from "./horseFunctions";
 import { updateStable } from "./horseStorageFunctions";
@@ -365,10 +365,13 @@ export function chooseHorse(option) {
     // update stable
     updateStable(newHorse);
 
-    // if the week is finished, update achievements
+    // update daily achievements
+    updateDailyAchievements();
+
+    // if the week is finished, update weekly achievements
     if (weekFinished) {
         const { thisWeekPoints, thisWeekBonus } = getThisWeekPoints(weekData.goals, newHorse);
-        updateAchievements(thisWeekPoints, thisWeekBonus);
+        updateWeeklyAchievements(thisWeekPoints, thisWeekBonus);
     }
 }
 
